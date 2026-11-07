@@ -1,0 +1,60 @@
+/* Vojtiech Havel — tom I · księga o postarzanych, obszernych kartach */
+:root{--ink:#302116}
+.codex-illuminated .stage{inset:62px 0 72px;perspective:3500px}
+.codex-illuminated .masthead{top:4px}
+.codex-illuminated .book{filter:drop-shadow(0 29px 26px #000e) drop-shadow(0 6px 2px #180900)}
+.codex-illuminated .back-cover{inset:-16px -17px -16px -17px;border:9px ridge #38200d;border-radius:16px;box-shadow:inset 0 0 0 3px #b58d57,15px 19px 26px #020101e8}
+.codex-illuminated .paper-edge{inset:9px -2px 5px 3px;border:3px solid #a28054;background:repeating-linear-gradient(0deg,#97774c 0,#e9d6a8 1px,#bba077 2px,#eee0bc 3px,#ab8156 5px);box-shadow:inset -10px 0 14px #6b452988,inset 0 0 31px #5b341e,4px 5px 5px #0009}
+.codex-illuminated .paper-edge::after{content:'';position:absolute;right:-8px;top:12px;bottom:8px;width:8px;background:repeating-linear-gradient(0deg,#77522c 0,#c5a57a 2px,#6b4624 3px);border-radius:0 5px 7px 0;box-shadow:4px 2px 9px #000b}
+.codex-illuminated .folio,.codex-illuminated .sheet-side{border:3px solid #a17747;background-image:linear-gradient(104deg,#f7e5b7d7 0%,#f0dab1ad 30%,#caa4746b 72%,#ab8659a8 100%),url('assets/paper.webp');background-size:cover; background-blend-mode:normal,multiply}
+.codex-illuminated .folio.left{border-radius:14px 1px 2px 13px;box-shadow:inset -40px 0 38px -16px #3d2617a6,inset 12px 0 23px #7e492d4a,inset 0 0 42px #98663666,0 0 0 1px #5c3319}
+.codex-illuminated .folio.right{border-radius:2px 13px 14px 1px;box-shadow:inset 40px 0 38px -16px #3d2617a6,inset -12px 0 23px #7e492d4a,inset 0 0 42px #98663666,0 0 0 1px #5c3319}
+.codex-illuminated .gutter{left:calc(var(--pw) - 24px);width:48px;z-index:9;background:linear-gradient(90deg,transparent 0%,#8858314f 17%,#3b200c99 36%,#180e06c9 50%,#3b200c99 64%,#8858314f 83%,transparent 100%);filter:blur(.4px)}
+.codex-illuminated .folio::before,.codex-illuminated .sheet-side::before{inset:2px;opacity:.95;background-size:100% 100%}
+.codex-illuminated .folio::after,.codex-illuminated .sheet-side::after{inset:0;opacity:.6;mix-blend-mode:multiply;background:radial-gradient(ellipse 23% 8% at 2% 18%,#85502424,transparent),radial-gradient(ellipse 21% 15% at 96% 92%,#854e2430,transparent),radial-gradient(ellipse 22% 13% at 98% 3%,#5a281829,transparent),radial-gradient(ellipse 24% 12% at 6% 94%,#83512329,transparent),repeating-radial-gradient(circle at 22% 41%,transparent 0,transparent 11px,#72452306 12px,#72452306 14px,transparent 16px),radial-gradient(#552f1716 .75px,transparent 1px) 0 0/6px 7px}
+.codex-illuminated .folio-content{padding:clamp(23px,calc(var(--pw)*.088),70px);padding-top:clamp(35px,calc(var(--pw)*.12),89px);padding-bottom:clamp(31px,calc(var(--pw)*.084),65px);font-size:clamp(13px,calc(var(--pw)*.030),21px);line-height:1.46}
+.codex-illuminated .folio-content p{line-height:1.44;margin-bottom:.76em;hyphens:auto;word-spacing:normal;text-align:left}
+.codex-illuminated .folio-content .folio-title{font-size:clamp(18px,calc(var(--pw)*.052),39px);margin-bottom:14px;line-height:1.18}
+.codex-illuminated .folio-content.vignette-folio p{text-align:left;hyphens:auto;word-spacing:normal}
+.codex-illuminated .folio-vignette{float:right;width:43%;height:clamp(150px,calc(var(--pw)*.43),300px);margin:4px 0 12px 17px;box-shadow:0 7px 19px #70402129;border:0;background:transparent;outline:0}
+.codex-illuminated .folio-vignette-art{height:88%;-webkit-mask-image:radial-gradient(ellipse 78% 76% at 50% 48%,#000 59%,transparent 94%);mask-image:radial-gradient(ellipse 78% 76% at 50% 48%,#000 59%,transparent 94%);filter:saturate(.89) contrast(1.06)}
+.codex-illuminated .folio-vignette figcaption{height:12%;font:italic clamp(9px,calc(var(--pw)*.017),12px) 'IM Fell English',Georgia,serif;background:transparent;padding-top:2px;color:#795736;white-space:normal;overflow:hidden}
+.codex-illuminated .folio-content.illustrated{padding-bottom:clamp(28px,calc(var(--pw)*.075),57px)}
+.codex-illuminated .illustration-frame{width:94%;height:79%;margin:3px auto 0;border:0;box-shadow:none;background:transparent}
+.codex-illuminated .story-illustration{width:100%;height:91%;border:0;box-shadow:none;-webkit-mask-image:radial-gradient(ellipse 78% 76% at 50% 47%,#000 67%,transparent 98%);mask-image:radial-gradient(ellipse 78% 76% at 50% 47%,#000 67%,transparent 98%);filter:saturate(.91) contrast(1.08)}
+.codex-illuminated .illustration-frame figcaption{font:italic clamp(12px,calc(var(--pw)*.026),18px) 'IM Fell English',Georgia,serif;color:#644027;text-align:center;line-height:1.32;margin:1px auto 0;padding:3px 8px;border-top:1px solid #aa7f446b;max-width:88%}
+.codex-illuminated .folio-content .initial{border-width:3px;box-shadow:0 0 0 2px #87522a,0 0 0 4px #c69e55,inset 0 0 10px #1b0e0a}
+.codex-illuminated .cover-inner{box-shadow:inset 0 0 0 3px #b58f50,inset 0 0 0 18px #523222}
+.codex-illuminated .stage::after{top:84%;height:110px;width:min(1350px,88vw);background:#000b;filter:blur(34px)}
+.codex-illuminated .ambient-shadow{background:radial-gradient(ellipse 34vw 32vh at 12% 28%,#e1a34e25,transparent 90%),radial-gradient(ellipse 32vw 32vh at 90% 22%,#e5aa4c1f,transparent 90%),radial-gradient(ellipse 85vw 92vh at 50% 52%,transparent 24%,#070302a8 100%),linear-gradient(#140b0566,transparent 33%,#0c050266 85%)}
+.codex-illuminated .scrolling-haze{background:radial-gradient(ellipse 51vw 20vh at 50% 70%,#ffd7a118,transparent 74%),radial-gradient(ellipse 33vw 32vh at 22% 21%,#c9984c10,transparent 77%)}
+@media(max-height:740px) and (min-width:801px){.codex-illuminated .stage{inset:60px 0 70px}}
+@media(max-width:930px){.codex-illuminated .folio-vignette{float:none;width:86%;height:clamp(95px,calc(var(--pw)*.48),185px);margin:4px auto 9px}.codex-illuminated .folio-content .folio-title{margin-bottom:8px}.codex-illuminated .illustration-frame{height:70%}}
+@media(max-width:550px){.codex-illuminated .stage{inset:75px 0 78px}.codex-illuminated .folio-content{padding:22px 15px 29px;padding-top:28px;font-size:10px}.codex-illuminated .folio-content p{line-height:1.32}.codex-illuminated .folio-content .folio-title{font-size:13px;margin-bottom:6px}.codex-illuminated .folio-vignette{display:none}.codex-illuminated .illustration-frame{height:62%}.codex-illuminated .illustration-frame figcaption{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.codex-illuminated .scrolling-haze{animation:none}}
+
+/* Hide the masthead while pages are spread open; the full-height folios become the focus. */
+.codex-illuminated .masthead{transition:opacity .5s ease,transform .5s ease}
+body.codex-illuminated.codex-reading .masthead{opacity:0;transform:translateY(-18px);pointer-events:none}
+
+/* Na wąskich ekranach jedna pełna karta na ekran, z przewijaniem stron przyciskami. */
+@media(max-width:699px){
+ .codex-illuminated .book.open,
+ .codex-illuminated .book.open[data-mobile-side="left"]{transform:translateX(var(--pw))}
+ .codex-illuminated .book.open[data-mobile-side="right"]{transform:translateX(0)}
+ .codex-illuminated .folio-content{padding:clamp(23px,calc(var(--pw)*.083),42px);padding-top:clamp(32px,calc(var(--pw)*.114),55px);padding-bottom:clamp(31px,calc(var(--pw)*.10),48px);font-size:clamp(12px,calc(var(--pw)*.041),17px)}
+ .codex-illuminated .folio-content .folio-title{font-size:clamp(16px,calc(var(--pw)*.05),24px);margin-bottom:11px}
+ .codex-illuminated .folio-content .initial{font-size:clamp(34px,calc(var(--pw)*.10),49px);padding:2px 7px;margin:1px 9px 3px 0}
+ .codex-illuminated .folio-content p{line-height:1.42}
+ .codex-illuminated .folio-vignette{float:right;display:block;width:38%;height:clamp(130px,calc(var(--pw)*.46),205px);margin:4px 0 9px 11px}
+ .codex-illuminated .illustration-frame{height:74%;border-width:0}
+ .codex-illuminated .illustration-frame figcaption{font-size:clamp(11px,calc(var(--pw)*.034),15px)}
+ .codex-illuminated .bottom-ui{bottom:12px}
+}
+@media(max-width:420px){
+ .codex-illuminated .toolbar #reader{max-width:none}
+ .codex-illuminated .toolbar button{font-size:9px;padding:8px 5px}
+ .codex-illuminated .help{max-width:96vw;font-size:12px}
+}
+
+@media(max-width:699px){.codex-illuminated .book{transition-duration:1040ms}}
