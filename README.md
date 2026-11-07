@@ -1,39 +1,34 @@
-# Vojtiech Havel — kronika otwarta
+# Vojtiech Havel — Kronika wojaka
 
-Interaktywna książka o młodym Vojciechu Havelu pochodzącym z Přítok, około roku 1400. To **powieść fabularna do RP** (nie opracowanie historyczne). Jej pierwsza część opowiada o dzieciństwie, dorastaniu, pierwszym spotkaniu z rycerzem Janem Švarcem z ziem opawskich oraz o początkach służby giermka.
+Interaktywna, trójwymiarowa księga w estetyce realistycznego średniowiecza, osadzona fabularnie w okolicach Přítok i Kuttenbergu na początku XV wieku. Projekt jest osobną stroną GitHub Pages — bez zależności od innych repozytoriów.
 
-## Przeczytaj
+**Strona:** https://hogcraft2-cpu.github.io/vojtiech-havel-codex/
 
-https://hogcraft2-cpu.github.io/vojtiech-havel-codex/
+## Opowieść
 
-## Opublikowana zawartość
+Kronika opowiada o Vojtiechu, chłopcu z rodziny utrzymującej się z przewozu towarów i opieki nad końmi. Wykazuje od wczesnych lat talent do walki, szkoli się pod okiem starego kowala i byłego zbrojnego Víta, przekonuje się jednak, że prawdziwa przemoc różni się od ćwiczeń. Następnie poznaje Jana Švarca — najmłodszego syna Heinricha, który po śmierci ojca opuścił rodowe włości w ziemi opawskiej — i zaczyna trudną służbę. Jan jest porywczy, dumny, nie zawsze moralny, ale umie walczyć i potrafi okazać litość.
 
-- I. Pod strzechą w Přítokach — dzieciństwo i rodzice Mikuláš i Dorota.
-- II. Nauka strachu — podróże z ojcem, napad i pierwsze ćwiczenia.
-- III. Miasto srebra — Kuttenberg, życie na trakcie, zapowiedź rodziny Švarców.
-- IV. Człowiek z Opawy — pojawienie się Jana Švarca, początek znajomości.
-- V. Cena służby — ciężkie obowiązki, treningi i wątpliwa moralność Jana.
-- VI. Giermek — powierzenie Vojciechowi oficjalnych obowiązków.
-- VII. Pierwszy szlak — pierwsza eskorta i nowa tajemnicza misja.
+**To opowieść otwarta:** ostatnia scena jest początkiem kolejnego zlecenia Jana i Vojtiecha. Nie dopisywano zakończenia przyszłych losów postaci.
 
-Rozdział VII celowo nie zawiera zamkniętego zakończenia. Ostatnie strony są puste, czekają na kolejny fragment opowieści rozwijany wraz z wydarzeniami na serwerze RP.
+## Funkcje
 
-Założenia fabularne: rodzice Vojciecha, szczegóły dzieciństwa i pierwszej służby zostały dopisane jako fikcja literacka, natomiast Jan Švarc zachowuje podane przez gracza pochodzenie i charakter (najmłodszy syn Heinricha, odejście po śmierci ojca, służba za pieniądze, porywczość, nieufność i zasady moralne).
+- 30 kart i osiem rozdziałów (ostatnia karta stanowi skórzaną tylną okładkę).
+- Animowana okładka, dwie duże strony wewnątrz i trójwymiarowe przewracanie.
+- Oryginalny herb Havela, malarskie sceny z Přítok, szermierki, koni i spotkania z Janem.
+- Animowane tło średniowiecznej pracowni, świeca i drobiny kurzu.
+- Syntetyzowany dźwięk przewracania stron; przycisk ♪ włącza/wyłącza audio.
+- Spis treści, sterowanie strzałkami i przyciskami, zapis ostatniej strony, pełen ekran.
 
-## Ilustracje
+## Dopisywanie dalszych wydarzeń
 
-- `assets/vojciech-childhood.svg` — miniatura dzieciństwa w stajni.
-- `assets/vojciech-squire.svg` — miniatura pierwszych nauk u Jana.
-- `assets/crest.webp` — herb przesłany przez użytkownika.
-- `assets/cover.webp` — dotychczasowa skórzana okładka księgi.
-- `assets/paper.webp` i `assets/study.webp` — pergamin i tło pracowni.
+Edytuj `pages.js`. Każdy obiekt `window.CODEX_PAGES` to **jedna karta księgi**. Dwie kolejne karty to jedna rozkładówka. Kolejny rozdział należy dodać **przed** końcową kartą typu `backcover`. Liczba kart musi pozostać parzysta — w razie potrzeby dodaj kartę typu `blank`.
 
-Ilustracje są artystyczną stylizacją na miniatury rękopiśmienne, nie autentycznymi zabytkami z roku 1400.
+Spis treści znajduje się w `window.CODEX_CHAPTERS`. Pole `spread` to liczony od zera numer rozkładówki. Rozdziały mogą korzystać z `type: "text"`, a sceny z `type: "illustration"` wraz z `scene: "village" | "training" | "stables" | "knight"`. Ozdobne obrazy czterech scen znajdują się w `assets/story-scenes.webp`.
 
-## Dodawanie dalszych rozdziałów
+Silnik stron, animacje i audio są w `app.js`, wygląd w `styles.css`, a układ strony w `index.html`. Projekt działa bez instalacji bibliotek JavaScript. Wystarczy otworzyć `index.html` lub wejść na stronę GitHub Pages.
 
-Treść zawiera plik `pages.js`. Tablica `window.CODEX_PAGES` to pojedyncze strony, a `window.CODEX_CHAPTERS` — odnośniki w spisie treści. Nową historię dopisuje się zamiast kolejnych wpisów typu `blank`. Zachowaj parzystą liczbę stron: każda para tworzy jeden rozkład książki. Wpis typu `text` przyjmuje `title` i tablicę `paragraphs`, a `illustration` przyjmuje `title`, `src` i `caption`.
+## Publikacja
 
-Stronę możesz otworzyć lokalnie poprzez `index.html`, bez instalowania bibliotek. `.github/workflows/bootstrap.yml` automatycznie wdraża ją przez GitHub Pages po zmianach na `main`.
+Workflow `.github/workflows/bootstrap.yml` automatycznie kontroluje składnię JavaScript, podstawowe pliki i ilustracje, po czym publikuje `main` na GitHub Pages.
 
-Sterowanie: kliknij okładkę, używaj przycisków „Poprzednia” i „Następna”, strzałek klawiatury, spisu treści lub pełnego ekranu.
+**Ważne:** bohaterowie, wydarzenia oraz sceny są autorską fabułą RP. Oprawa graficzna nawiązuje do realistycznego średniowiecza znanego z gier pokroju Kingdom Come: Deliverance II, ale nie korzysta z materiałów wyciętych z tej gry.
