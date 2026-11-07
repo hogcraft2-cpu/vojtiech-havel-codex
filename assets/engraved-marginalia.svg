@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+<!-- Four original sepia engravings: the Bohemian keep, horse, shield & sword, scribal folio. -->
+<defs>
+<g id="stone" stroke="#67452a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" fill="none">
+<path d="M92 322V166h34V98h55v68h40V66h57v100h36v156Z" fill="#a7835470"/>
+<path d="M84 322H327M110 190h87M230 184h65M100 98v-19h10v19h12V79h10v19h12V79h10v19h27M221 66V46h12v20h14V46h12v20h19V46h12v20M120 228v28M154 228v28M188 228v28M231 230v28M278 230v28"/>
+<path d="M172 322v-65q20-32 40 0v65M239 306v-28q13-20 26 0v28M137 160q16-18 30 0v24h-30z" fill="#553c2699"/>
+<path d="M59 330q114-32 241 10M66 347q150-16 286 0M115 139l41-20 32 23M257 95l-18 34 38 16" stroke-width="3"/>
+<path d="M70 365Q175 339 336 367M90 380Q195 354 324 387" stroke-width="2"/>
+</g>
+<g id="horse" stroke="#633f27" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+<path d="M507 242Q524 202 563 185L587 152L594 111L610 143L641 115L650 151Q665 163 677 173L710 222Q721 247 693 256L657 244L647 294L612 324L585 315L603 286L574 281Q565 331 545 343L520 335Q522 283 507 242Z" fill="#bfa47760"/>
+<path d="M587 152Q568 161 554 189M631 161Q649 186 666 200M618 168l11 2M654 243q-21-5-31-23M557 229q27-10 44 3" fill="none"/>
+<path d="M525 216Q491 201 477 242Q487 274 509 281" fill="none"/>
+<path d="M513 273Q492 298 494 331L476 352M555 288Q557 322 540 348M626 290Q637 318 632 343" fill="none"/>
+<path d="M534 242Q558 238 580 251L604 238" fill="none" stroke-width="3"/>
+</g>
+<g id="arms" stroke="#663f26" stroke-linejoin="round" fill="none">
+<path d="M163 496L286 728M285 497L157 728" stroke-width="9"/>
+<path d="M150 520L163 482L179 522M267 522L287 484L300 524" stroke-width="5"/>
+<path d="M132 685L207 646M244 650L321 686" stroke-width="10"/>
+<path d="M201 532Q246 508 296 540L285 650Q255 690 204 710Q167 674 156 635L159 552Z" fill="#b59b7360" stroke-width="7"/>
+<path d="M212 579Q230 566 246 586Q263 564 281 582M245 573v92M209 615q38 17 70 0" stroke-width="4"/>
+<path d="M190 738q54-14 119 0" stroke-width="3"/>
+</g>
+<g id="script" stroke="#6d472e" stroke-linejoin="round" stroke-linecap="round" fill="none">
+<path d="M476 520Q557 499 639 515Q686 525 709 515V700Q595 687 477 717Z" fill="#d4b68d40" stroke-width="5"/>
+<path d="M503 546Q576 530 659 544M505 571Q563 560 629 570M506 599Q558 590 651 604M505 628Q573 609 663 624M505 652Q565 645 638 659M509 678Q565 666 599 677" stroke-width="3"/>
+<path d="M686 443Q652 459 629 508Q615 553 601 668" stroke-width="8"/>
+<path d="M688 445Q673 420 653 443Q633 461 640 487M686 442Q717 455 708 495Q695 507 666 492M688 442Q722 419 729 445" stroke-width="3"/>
+<circle cx="660" cy="704" r="29" fill="#7e403087" stroke-width="5"/>
+<path d="M643 705h35m-18-18v35" stroke-width="4"/>
+</g>
+</defs>
+<use href="#stone"/><use href="#horse"/><use href="#arms"/><use href="#script"/>
+</svg>
