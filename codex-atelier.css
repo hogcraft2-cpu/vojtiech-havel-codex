@@ -86,7 +86,7 @@ body.codex-premium{background:#0b0705;}
 }
 /* Folio-specific stamps, placed in the borders rather than over text. */
 .codex-premium .atelier-stamp{
-  position:absolute;z-index:3;pointer-events:none;right:6%;top:21%;
+  position:absolute;z-index:1;pointer-events:none;right:6%;top:21%;
   width:clamp(24px,calc(var(--pw)*.09),58px);aspect-ratio:1;
   border:2px solid #8d5732a1;border-radius:50%;
   color:#8b4c31d6;
@@ -99,7 +99,7 @@ body.codex-premium{background:#0b0705;}
 }
 .codex-premium .folio.left .atelier-stamp{right:auto;left:6%;}
 .codex-premium .atelier-border-flower{
-  position:absolute;z-index:3;pointer-events:none;
+  position:absolute;z-index:1;pointer-events:none;
   left:5%;bottom:8%;width:clamp(36px,calc(var(--pw)*.155),105px);aspect-ratio:1;
   opacity:.66;
   background:url('assets/atelier-rosette.svg') center/contain no-repeat;
@@ -141,7 +141,7 @@ body.codex-premium{background:#0b0705;}
   color:#5e3422;text-align:center;
 }
 .codex-premium .folio.atelier-plate .atelier-stamp{
-  top:auto;bottom:8%;right:9%;z-index:6;
+  top:auto;bottom:8%;right:9%;z-index:1;
   background:radial-gradient(circle at 37% 27%,#b9613b,#6e2921);
   border:3px double #aa6e40;
   color:#d5ae64;
