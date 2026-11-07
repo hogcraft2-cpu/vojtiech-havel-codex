@@ -1,0 +1,209 @@
+/*
+  Kodeks Havela — oprawa wielkoformatowa 2026.
+  Nadpisuje wyłącznie prezentację; opowieść i przewracanie kartek pozostają edytowalne.
+*/
+:root { --ink:#2b1a11; --gold:#dabb74; --gold-dark:#8c5f32; }
+body.codex-illuminated {
+  background:#100905;
+}
+.codex-illuminated .study {
+  background-position:center center;
+  filter:saturate(.86) brightness(.76) contrast(1.16);
+  transform-origin:center 52%;
+  animation:studyDrift 31s ease-in-out infinite alternate;
+}
+.codex-illuminated .ambient-shadow {
+  background:
+    radial-gradient(ellipse 35vw 30vh at 15% 22%,rgba(249,147,44,.19),transparent 88%),
+    radial-gradient(ellipse 31vw 26vh at 87% 18%,rgba(249,140,32,.19),transparent 82%),
+    radial-gradient(ellipse 73vw 85vh at 50% 55%,transparent 24%,rgba(10,5,2,.71) 100%),
+    linear-gradient(to bottom,rgba(15,8,3,.56),transparent 26%,rgba(15,8,3,.32) 72%,rgba(3,2,1,.77));
+}
+.codex-illuminated .stage {
+  inset:76px 0 92px;
+  perspective:3200px;
+}
+.codex-illuminated .stage::before {
+  content:"";
+  position:absolute;
+  top:39%;left:50%;
+  transform:translate(-50%,-50%) rotate(-1deg);
+  width:min(1530px,95vw);
+  height:min(880px,82vh);
+  z-index:-2;
+  pointer-events:none;
+  border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(124,70,31,.20) 0%,rgba(81,43,16,.11) 48%,transparent 76%);
+  filter:blur(38px);
+  animation:codex-table-glow 7.3s ease-in-out infinite alternate;
+}
+.codex-illuminated .stage::after {
+  top:86%;height:95px;width:min(1380px,86vw);
+  background:#030201bc;filter:blur(39px);
+}
+.codex-illuminated .masthead {top:4px}
+.codex-illuminated .masthead .overline{font-size:10px;color:#e5bd73}
+.codex-illuminated .masthead h1{font-size:clamp(22px,2.3vw,33px);line-height:1.1}
+.codex-illuminated .masthead p {font-size:13px}
+.codex-illuminated .divider-ornament{margin-top:1px}
+.codex-illuminated .book{
+ filter:drop-shadow(0 26px 29px #000e) drop-shadow(0 5px 3px #180900);
+ transition:transform 1280ms cubic-bezier(.14,.65,.2,1);
+}
+.codex-illuminated .back-cover{
+ inset:-13px -14px -12px -16px;
+ border:9px ridge #362010;
+ border-radius:16px 10px 11px 16px;
+ box-shadow:inset 0 0 0 3px #ae814b,12px 20px 37px #000e;
+}
+.codex-illuminated .paper-edge{
+ inset:10px 3px 7px 6px;
+ border:4px solid #82633d;
+ border-radius:7px;
+ background:repeating-linear-gradient(0deg,#92724c 0px,#e6d5ac 1px,#d2b88e 3px,#ad8b5a 4px);
+ box-shadow:inset 0 0 37px #67472b,0 0 0 4px #201209,0 5px 11px #0009;
+}
+.codex-illuminated .folio,.codex-illuminated .sheet-side{
+ border:3px solid #967040;
+ background:
+   linear-gradient(100deg,rgba(255,242,205,.82),rgba(239,217,170,.58) 49%,rgba(180,137,78,.40)),
+   url("assets/paper.webp") center/cover no-repeat;
+ background-blend-mode:normal,multiply;
+ box-shadow:inset 0 0 46px #83512c77,0 0 0 2px #6c4222;
+}
+.codex-illuminated .folio.left{
+ border-radius:16px 2px 3px 15px;
+ box-shadow:inset -45px 0 47px -22px #43210a87,inset 0 0 42px #6d442c7b,0 0 0 2px #9a6e3e;
+}
+.codex-illuminated .folio.right{
+ border-radius:3px 15px 16px 2px;
+ box-shadow:inset 45px 0 47px -22px #43210a87,inset 0 0 42px #6d442c7b,0 0 0 2px #9a6e3e;
+}
+.codex-illuminated .folio::before,.codex-illuminated .sheet-side::before{
+ inset:0;opacity:.95;
+ background:url("assets/manuscript-frame.svg") center/100% 100% no-repeat;
+}
+.codex-illuminated .folio::after,.codex-illuminated .sheet-side::after{
+ background:
+  repeating-radial-gradient(circle at 19% 28%,transparent 0,transparent 14px,rgba(83,43,16,.025) 15px,transparent 17px),
+  radial-gradient(#60391b15 .65px,transparent 1.15px) 0 0/7px 8px;
+ opacity:.48;mix-blend-mode:multiply;
+}
+.codex-illuminated .gutter{
+ left:calc(var(--pw) - 20px);width:40px;
+ background:linear-gradient(90deg,transparent 0%,#70462564 22%,#2c160aa5 49%,#68422270 74%,transparent 100%);
+}
+.codex-illuminated .folio-content{
+ padding:clamp(23px,calc(var(--pw)*.087),72px);
+ padding-top:clamp(33px,calc(var(--pw)*.116),91px);
+ padding-bottom:clamp(38px,calc(var(--pw)*.092),76px);
+ font-size:clamp(13px,calc(var(--pw)*.031),23px);
+ line-height:1.51;
+}
+.codex-illuminated .folio-content.illuminated-page::before{
+ top:clamp(12px,calc(var(--pw)*.034),26px);
+ color:#8f6634;letter-spacing:.13em;
+}
+.codex-illuminated .folio-content .folio-title{
+ font-size:clamp(16px,calc(var(--pw)*.052),41px);
+ line-height:1.19;
+ border-bottom:1px solid #9b713c;
+ margin:0 0 15px;
+ padding-bottom:11px;
+ text-shadow:0 1px #f7ddb0,0 2px 4px #97634146;
+}
+.codex-illuminated .folio-content p{margin:0 0 .75em;line-height:1.52;hyphens:auto}
+.codex-illuminated .folio-content .initial{
+ font-size:clamp(36px,calc(var(--pw)*.103),85px);
+ border-width:3px;
+ margin:3px 12px 4px 0;
+ border-radius:3px;
+ box-shadow:0 0 0 2px #7b4d27,0 0 0 4px #c8a05c,inset 0 0 9px #110c0a;
+}
+.codex-illuminated .folio-content .folio-bottom{
+ bottom:clamp(16px,calc(var(--pw)*.032),27px);
+ color:#745031;letter-spacing:.12em;
+}
+.codex-illuminated .folio-content .folio-glyph{
+ color:#a67636;text-shadow:0 1px #f0dcab;
+}
+.codex-illuminated .folio-vignette{
+ width:46%;
+ height:clamp(120px,calc(var(--pw)*.45),320px);
+ margin:6px 1px 15px 15px;
+ border:4px double #9b692f;
+ box-shadow:0 0 0 3px #e4cb91,0 0 0 5px #8b6031,0 8px 15px #40271952;
+}
+.codex-illuminated .folio-vignette-art,
+.codex-illuminated .story-illustration{
+ background-image:url("assets/manuscript-plates.webp");
+ filter:contrast(1.09) saturate(.91);
+}
+.codex-illuminated .illustration-frame{
+ width:88%;height:67%;
+ border:6px ridge #b18443;
+ box-shadow:0 0 0 3px #f0d6a0,0 0 0 6px #88612f,0 12px 25px #44291170;
+}
+.codex-illuminated .illustration-frame figcaption{
+ font-size:clamp(12px,calc(var(--pw)*.028),18px);line-height:1.35;margin-top:13px;
+}
+.codex-illuminated .front-cover{filter:drop-shadow(6px 10px 13px #000b)}
+.codex-illuminated .cover-inner{box-shadow:inset 0 0 0 3px #d0a861,inset 0 0 0 18px #4b2c1c}
+.codex-illuminated .bottom-ui{bottom:9px;gap:4px}
+.codex-illuminated .toolbar{
+ background:linear-gradient(130deg,#22150ce8,#120906ef);
+ border:2px double #b28b52;
+ padding:6px 9px;
+ box-shadow:0 0 0 2px #2b170b,0 9px 26px #000b;
+}
+.codex-illuminated .toolbar button{padding:8px 12px}
+.codex-illuminated .page-status{font-size:15px}
+.codex-illuminated .help{font-size:12px}
+.codex-illuminated .lamplight{filter:blur(3px);animation-duration:2.5s}
+.codex-illuminated .candle-halo{filter:blur(29px);opacity:.8}
+.codex-illuminated .scrolling-haze{
+ background:
+   radial-gradient(ellipse 55vw 20vh at 50% 67%,rgba(245,192,106,.10),transparent 75%),
+   radial-gradient(ellipse 22vw 30vh at 2% 29%,rgba(250,205,152,.06),transparent 85%);
+ animation-duration:19s;
+}
+.codex-illuminated .smoke-stack{top:3%;opacity:.85}
+.codex-illuminated #dust{opacity:.73}
+@keyframes codex-table-glow{
+ from{opacity:.6;transform:translate(-50%,-50%) rotate(-1deg) scale(.97)}
+ to{opacity:1;transform:translate(-50%,-50%) rotate(1deg) scale(1.035)}
+}
+@media(max-height:740px) and (min-width:801px){
+ .codex-illuminated .masthead p{font-size:11px}
+ .codex-illuminated .masthead h1{font-size:22px}
+ .codex-illuminated .stage{inset:65px 0 82px}
+ .codex-illuminated .help{font-size:11px}
+ .codex-illuminated .bottom-ui{bottom:6px}
+}
+@media(max-width:930px){
+ .codex-illuminated .folio-vignette{display:none}
+ .codex-illuminated .folio-content{
+    padding:clamp(14px,calc(var(--pw)*.088),47px);
+    padding-top:clamp(25px,calc(var(--pw)*.126),64px);
+    padding-bottom:clamp(28px,calc(var(--pw)*.095),52px);
+    font-size:clamp(10px,calc(var(--pw)*.034),17px);
+ }
+ .codex-illuminated .folio-content .folio-title{font-size:clamp(13px,calc(var(--pw)*.056),29px)}
+ .codex-illuminated .folio-content .initial{font-size:clamp(29px,calc(var(--pw)*.12),58px);border-width:2px}
+ .codex-illuminated .illustration-frame{height:62%}
+ .codex-illuminated .toolbar button{padding:8px 6px}
+}
+@media(max-width:550px){
+ .codex-illuminated .stage{inset:76px 0 84px}
+ .codex-illuminated .folio-content{padding:17px 13px 24px;padding-top:28px;font-size:10px}
+ .codex-illuminated .folio-content .folio-title{font-size:13px;line-height:1.06;margin-bottom:5px;padding-bottom:4px}
+ .codex-illuminated .folio-content .initial{font-size:26px;margin:0 4px 0 0;padding:0 3px 1px;border-width:1px}
+ .codex-illuminated .folio-content p{line-height:1.32}
+ .codex-illuminated .toolbar{padding:3px;gap:2px}
+ .codex-illuminated .toolbar button{padding:7px 4px;font-size:8px}
+ .codex-illuminated .illustration-frame{height:55%;border-width:2px}
+}
+@media(prefers-reduced-motion:reduce){
+ .codex-illuminated .stage::before{animation:none}
+ .codex-illuminated .candle-halo,.codex-illuminated .scrolling-haze{animation:none}
+}
