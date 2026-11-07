@@ -5,7 +5,7 @@ window.CODEX_PAGES=[
 {type:'crest',title:'Znak Havela',note:'Herb przedstawiający czarnego kruka. Umieszczony tutaj jako znak bohatera kroniki.'},
 {type:'miniature',title:'Chłopiec z Přítok',src:'assets/vojtiech-childhood.svg',note:'Miniatura I. W stajni rodzinnego gospodarstwa.'},
 {type:'text',title:'Pod strzechą',initial:'P',paragraphs:[
-'řítoky leżały blisko dróg prowadzących ku bogatemu Kuttenbergowi, lecz w domu Havelów nie przelewało się od srebra. Vojtiech dorastał przy skromnym gospodarstwie, w którym każdą zimę trzeba było dobrze przeliczyć zapasy.',
+'řítoky leżały blisko dróg prowadzących ku bogatemu Kuttenbergowi, lecz w domu Havelów nie przelewało się od srebra. Vojtiech dorastał przy skromnym gospodarstwie, w którym każdą zimę trzeba było dobrze przeliczyć zapasy.',
 'Nie znał wygody szlacheckich komnat. Pierwsze wspomnienia wiązał z mokrą słomą, dymem paleniska i skrzypieniem kół.' ]},
 {type:'text',title:'Ojciec Mikuláš',initial:'M',paragraphs:[
 'ikuláš Havel uprawiał niewielki kawałek ziemi i trudnił się przewozem zboża, drewna i towarów dla kupców. Dobrze znał konie oraz drogi prowadzące do miasta.',
@@ -74,7 +74,7 @@ window.CODEX_PAGES=[
 {type:'text',title:'Ku dalszym drogom',initial:'O',paragraphs:[
 'puściwszy Přítoky, Vojtiech zabrał niewiele: odzież, drobne oszczędności i pamięć o rodzinnym domu. Jan Švarc nie obiecywał mu majątku ani sławy.',
 'Przed nimi były podróże, służba u kolejnych panów i wybory, przez które chłopiec ze stajni miał dopiero stać się człowiekiem zdolnym odpowiadać za innych.' ]},
-{type:'blank'},{type:'blank'},{type:'blank'},{type:'blank'},{type:'blank'},{type:'blank'}
+{type:'blank'},{type:'blank'},{type:'blank'},{type:'blank'},{type:'blank'},{type:'blank'},{type:'blank'}
 ];
 window.CODEX_CHAPTERS=[
  {title:'Karta tytułowa i znak Havela',spread:0},
