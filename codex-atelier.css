@@ -1,0 +1,233 @@
+/*
+  Atelier Edition: warstwa po istniejącym Codex Premium.
+  Różnorodna kompozycja, zdobienia marginalne, faktura i obwoluta.
+  Nie zmienia tekstu fabuły ani mechanizmu przewracania.
+*/
+:root {--atelier-ochre:#a97834;--atelier-vermillion:#8b2b22;--atelier-indigo:#294859;}
+body.codex-premium{background:#0b0705;}
+.codex-premium .study{
+  filter:sepia(.24) saturate(.9) brightness(.75) contrast(1.2);
+}
+.codex-premium .stage::before{
+  background:radial-gradient(ellipse 70% 50% at 50% 50%,#db9b465b,transparent 74%);
+  animation:atelier-fire-glow 5.7s ease-in-out infinite alternate;
+}
+@keyframes atelier-fire-glow{
+  0%{opacity:.46;transform:translate(-50%,-50%) scale(.98)}
+  45%{opacity:.83}
+  100%{opacity:.64;transform:translate(-50%,-50%) scale(1.04)}
+}
+/* A weighty page block, hand-cut edges, leather board thickness. */
+.codex-premium .book{
+  filter:drop-shadow(0 4px 3px #000e) drop-shadow(0 35px 29px #000e) drop-shadow(0 54px 28px #0008);
+}
+.codex-premium .back-cover{
+  border-width:14px;
+  box-shadow:inset 0 0 0 2px #e3b875,inset 0 0 0 7px #382214,inset 0 0 0 9px #987042,10px 13px 13px #000d,18px 27px 35px #000b;
+}
+.codex-premium .paper-edge{
+  border:5px solid #674020;
+  box-shadow:inset 0 0 21px #5f3314,inset -17px 0 24px #604023d9,0 3px #946b3e,0 6px #4a2b15,0 9px #b18b55,0 13px #30190c,8px 24px 14px #000a;
+}
+.codex-premium .book.open::before{
+  content:"";position:absolute;z-index:4;pointer-events:none;
+  left:calc(-1 * var(--pw) - 6px);top:0;
+  width:calc(2 * var(--pw) + 12px);height:100%;
+  border-radius:16px 15px 19px 16px;
+  box-shadow:inset 0 -16px 24px #46210c54,inset 0 13px 19px #a5763655;
+}
+/* Tiny imperfection and wax/oil glazes. */
+.codex-premium .folio,.codex-premium .sheet-side{
+  background:
+    radial-gradient(ellipse 32% 27% at 15% 6%,#fff2d185,transparent 98%),
+    radial-gradient(ellipse 18% 24% at 96% 83%,#79452a46,transparent 95%),
+    radial-gradient(ellipse 37% 25% at 63% 115%,#8c4c282e,transparent),
+    url('assets/paper.webp') center/cover;
+  background-blend-mode:screen,multiply,multiply,normal;
+}
+.codex-premium .folio.left{
+  box-shadow:inset -60px 0 54px -26px #2d1309ae,inset 0 0 49px #6a401e7d,0 0 0 3px #3a200f;
+}
+.codex-premium .folio.right{
+  box-shadow:inset 59px 0 54px -26px #2d1309ae,inset 0 0 50px #6a401e70,0 0 0 3px #3a200f;
+}
+.codex-premium .gutter{
+  width:66px;left:calc(var(--pw) - 33px);z-index:14;
+  background:linear-gradient(90deg,transparent,#6f472b7b 19%,#1a0b05e6 48%,#50301bd4 71%,transparent);
+  filter:blur(1.1px);
+}
+/* The thin etched border is augmented with a hand-coloured rosette. */
+.codex-premium .folio-content::selection,.codex-premium .folio-content p::selection {background:#9c69396b;}
+.codex-premium .folio-content{
+  font-kerning:normal;text-rendering:optimizeLegibility;
+}
+.codex-premium .folio-content p{
+  line-height:1.52;letter-spacing:.004em;
+  font-family:'IM Fell English',Georgia,serif;
+}
+.codex-premium .folio-content .folio-title{
+  color:#54231b;
+  text-shadow:0 1px #ffebc4,1px 2px 2px #70452471;
+}
+.codex-premium .folio-content .folio-title::after{
+  content:"❧  ✠  ❦  ✠  ❧";
+  width:91%;font-size:clamp(11px,calc(var(--pw)*.031),24px);
+}
+.codex-premium .folio-content .initial{
+  position:relative;
+  color:#ffe2a0;
+  border:4px ridge #cba05a;
+  border-radius:8px 3px 7px 3px;
+  background:
+    radial-gradient(ellipse at 70% 26%,#ae783d88,transparent 48%),
+    repeating-conic-gradient(from 7deg at 50% 50%,#812d2455 0deg 17deg,#a76e2c40 17deg 22deg),
+    linear-gradient(135deg,#5f1e19,#a13c27 58%,#592017);
+  box-shadow:0 0 0 2px #552b1c,0 0 0 5px #bd9451,0 0 0 7px #9b6433,inset 0 0 15px #180a08,0 5px 10px #66432860;
+}
+/* Folio-specific stamps, placed in the borders rather than over text. */
+.codex-premium .atelier-stamp{
+  position:absolute;z-index:3;pointer-events:none;right:6%;top:21%;
+  width:clamp(24px,calc(var(--pw)*.09),58px);aspect-ratio:1;
+  border:2px solid #8d5732a1;border-radius:50%;
+  color:#8b4c31d6;
+  display:grid;place-items:center;
+  font:normal clamp(17px,calc(var(--pw)*.052),35px) Georgia,serif;
+  background:radial-gradient(circle,#c99c6550,#9e673726 67%,transparent);
+  box-shadow:0 0 0 3px #c09b6140,inset 0 0 10px #6134183f;
+  transform:rotate(var(--stamp-rotation,-11deg));
+  opacity:.71;
+}
+.codex-premium .folio.left .atelier-stamp{right:auto;left:6%;}
+.codex-premium .atelier-border-flower{
+  position:absolute;z-index:3;pointer-events:none;
+  left:5%;bottom:8%;width:clamp(36px,calc(var(--pw)*.155),105px);aspect-ratio:1;
+  opacity:.66;
+  background:url('assets/atelier-rosette.svg') center/contain no-repeat;
+  filter:sepia(.21) saturate(.84);
+  transform:rotate(var(--floral-rotation,-13deg));
+}
+.codex-premium .folio.left .atelier-border-flower{left:auto;right:5%;transform:scaleX(-1) rotate(-13deg);}
+.codex-premium .folio.atelier-column .atelier-stamp{top:75%;opacity:.45}
+.codex-premium .folio.atelier-column .atelier-border-flower{opacity:.35}
+/* A chapter lead carries an illuminated rubric and a narrow red ruling. */
+.codex-premium .folio.atelier-chapter .folio-content .folio-title{
+  border-left:4px solid #ad6636!important;
+  padding-left:clamp(8px,calc(var(--pw)*.025),19px);
+  margin-left:-2px;
+}
+.codex-premium .folio.atelier-chapter .folio-content .folio-title::before{
+  content:"✥  INCIPIT  ✥";display:block;
+  font:600 clamp(8px,calc(var(--pw)*.014),12px) Cinzel,serif;
+  color:#ae6332;letter-spacing:.19em;margin-bottom:8px;
+}
+.codex-premium .folio.atelier-chapter .prem-chapter-mark{opacity:.6}
+/* Illustration pages: each spread has distinct treatment, no rigid repeated cards. */
+.codex-premium .folio.atelier-plate .illustration-frame{
+  border:0!important;outline:0!important;
+  width:96%;height:79%;padding:7px;
+  background:linear-gradient(135deg,#895b30,#d5b16e 17%,#9b6630 28%,#ddbc79 47%,#875c32 71%,#d0a15d 87%,#7e4d2a);
+  clip-path:polygon(0 2%,2% 0,98% 0,100% 3%,100% 98%,98% 100%,2% 100%,0 98%);
+  box-shadow:0 9px 18px #35200f55;
+}
+.codex-premium .folio.atelier-plate .story-illustration{
+  width:100%;height:85%;opacity:.98;
+  -webkit-mask-image:radial-gradient(ellipse 97% 95% at 50% 45%,#000 80%,transparent 100%);
+  mask-image:radial-gradient(ellipse 97% 95% at 50% 45%,#000 80%,transparent 100%);
+  border:2px solid #8d562d;
+  filter:sepia(.08) saturate(.83) contrast(1.15);
+}
+.codex-premium .folio.atelier-plate .illustration-frame figcaption{
+  font-size:clamp(11px,calc(var(--pw)*.025),17px);letter-spacing:.015em;
+  color:#5e3422;text-align:center;
+}
+.codex-premium .folio.atelier-plate .atelier-stamp{
+  top:auto;bottom:8%;right:9%;z-index:6;
+  background:radial-gradient(circle at 37% 27%,#b9613b,#6e2921);
+  border:3px double #aa6e40;
+  color:#d5ae64;
+  box-shadow:0 2px 6px #4e20136f;
+}
+.codex-premium .folio.atelier-plate.plate-variant-1 .illustration-frame{
+  background:linear-gradient(140deg,#6a3f29,#c39c55,#8a5130,#d6ae66,#604021);
+  border-radius:22% 2% 18% 2%;
+}
+.codex-premium .folio.atelier-plate.plate-variant-1 .story-illustration{
+  border-radius:21% 1% 15% 1%;
+}
+.codex-premium .folio.atelier-plate.plate-variant-2 .illustration-frame{
+  width:90%;height:81%;border-radius:3% 19% 3% 19%;
+  background:linear-gradient(25deg,#7b522c,#d2b873,#84532e,#d4a862);
+}
+.codex-premium .folio.atelier-plate.plate-variant-2 .story-illustration{border-radius:2% 18% 2% 18%}
+.codex-premium .folio.atelier-plate.plate-variant-3 .illustration-frame{
+  border-radius:48% 48% 5% 5%/16% 16% 3% 3%;
+  background:linear-gradient(120deg,#663b27,#e3c081,#a3743e,#d3a966,#754322);
+}
+.codex-premium .folio.atelier-plate.plate-variant-3 .story-illustration{
+  border-radius:48% 48% 4% 4%/15% 15% 3% 3%;
+}
+/* A separate dark ink vignette on selected prose leaves. */
+.codex-premium .folio.atelier-prose .folio-vignette{
+  width:43%;height:clamp(115px,calc(var(--pw)*.36),245px);
+  float:right;margin:4px 0 10px 14px;
+  background:transparent;box-shadow:none;
+}
+.codex-premium .folio.atelier-prose .folio-vignette-art{
+  -webkit-mask-image:radial-gradient(ellipse 73% 76% at 49% 47%,#000 55%,transparent 98%);
+  mask-image:radial-gradient(ellipse 73% 76% at 49% 47%,#000 55%,transparent 98%);
+  filter:saturate(.75) contrast(1.14) sepia(.1);
+}
+.codex-premium .folio.atelier-prose .folio-vignette figcaption{display:none}
+/* Endpapers and open-book cloth bookmark. */
+.codex-premium .book.open .back-cover::after{
+  content:"";position:absolute;pointer-events:none;z-index:2;
+  top:95%;right:11%;width:clamp(14px,calc(var(--pw)*.035),26px);height:clamp(45px,calc(var(--ph)*.12),95px);
+  background:linear-gradient(90deg,#4d201c,#ad3f30 37%,#a82b2c 57%,#481f21);
+  clip-path:polygon(0 0,100% 0,100% 100%,50% 82%,0 100%);
+  box-shadow:1px 4px 3px #160606;
+}
+/* Soft moving light belongs to the environment, not an opaque veil over text. */
+.codex-premium .reading-light{
+  opacity:.57;mix-blend-mode:soft-light;
+}
+.codex-premium .book.open .reading-light{animation:atelier-illumination 8.5s ease-in-out infinite alternate}
+@keyframes atelier-illumination{
+  from{opacity:.31;filter:brightness(.83)}
+  43%{opacity:.75;filter:brightness(1.11)}
+  to{opacity:.52;filter:brightness(.95)}
+}
+.codex-premium .atelier-embers{
+  position:fixed;inset:0;z-index:8;pointer-events:none;opacity:.28;
+  background:
+    radial-gradient(circle at 4% 52%,#ffda9a 0 1px,transparent 3px),
+    radial-gradient(circle at 15% 69%,#ffd6a0 0 1px,transparent 3px),
+    radial-gradient(circle at 91% 40%,#ffa652 0 1px,transparent 4px),
+    radial-gradient(circle at 94% 22%,#efbd7e 0 1px,transparent 4px);
+  animation:atelier-ember-rise 12s linear infinite alternate;
+}
+@keyframes atelier-ember-rise{0%{transform:translateY(1.5%);opacity:.15}100%{transform:translateY(-2.5%);opacity:.43}}
+.codex-premium .atelier-reading-caption{
+  pointer-events:none;position:absolute;z-index:8;left:50%;bottom:4.1%;transform:translateX(-50%);
+  color:#dbbd7a8a;font:400 clamp(9px,calc(var(--pw)*.018),12px) Cinzel,Georgia,serif;
+  letter-spacing:.27em;text-shadow:0 1px 5px #000;
+  opacity:0;transition:opacity .8s;
+}
+.codex-premium .book.open .atelier-reading-caption{opacity:.75}
+/* Accessible layouts: even with decorations, nothing covers text. */
+@media(max-width:1050px){
+ .codex-premium .atelier-stamp{opacity:.35}
+ .codex-premium .atelier-border-flower{opacity:.33}
+}
+@media(max-width:699px){
+ .codex-premium .folio.atelier-prose .folio-vignette{width:37%;height:clamp(105px,calc(var(--pw)*.39),170px)}
+ .codex-premium .atelier-reading-caption{display:none}
+ .codex-premium .atelier-stamp{opacity:.22}
+ .codex-premium .atelier-border-flower{opacity:.18}
+ .codex-premium .folio.atelier-chapter .folio-content .folio-title::before{font-size:8px;margin-bottom:3px}
+ .codex-premium .folio.atelier-plate .illustration-frame{height:70%}
+ .codex-premium .folio.atelier-plate .story-illustration{height:83%}
+}
+@media(prefers-reduced-motion:reduce){
+ .codex-premium .atelier-embers,.codex-premium .stage::before,
+ .codex-premium .book.open .reading-light{animation:none!important}
+}
