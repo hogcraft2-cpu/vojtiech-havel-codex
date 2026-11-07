@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" aria-hidden="true">
+<defs><g id="leaf" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M100 98 C109 72 126 60 128 25" stroke="#90602e" stroke-width="4"/>
+<path d="M113 68 C95 54 91 45 97 28 C118 34 122 51 113 68Z" fill="#234a53" stroke="#8b652e" stroke-width="2.5"/>
+<path d="M123 43 C135 48 150 46 162 30 C161 58 144 69 117 64" fill="#9c3931" stroke="#7b4627" stroke-width="2.5"/>
+<path d="M108 85 C94 79 79 82 70 92 C73 67 91 59 114 73" fill="#bb8c38" stroke="#704c29" stroke-width="2.5"/>
+<path d="M128 25Q148 27 152 11" stroke="#9a6c38" stroke-width="3"/>
+<circle cx="151" cy="13" r="5" fill="#b88848" stroke="#593220" stroke-width="1"/>
+</g></defs>
+<circle cx="100" cy="100" r="88" fill="none" stroke="#986735" stroke-opacity=".77" stroke-width="2.2" stroke-dasharray="6 4"/>
+<circle cx="100" cy="100" r="68" fill="none" stroke="#a87a3d" stroke-width="2"/>
+<circle cx="100" cy="100" r="50" fill="none" stroke="#8d5c34" stroke-width="1.5" stroke-dasharray="3 3"/>
+<use href="#leaf"/><use href="#leaf" transform="rotate(90 100 100)"/><use href="#leaf" transform="rotate(180 100 100)"/><use href="#leaf" transform="rotate(270 100 100)"/>
+<path d="M100 62L114 86 138 100 114 114 100 138 86 114 62 100 86 86Z" fill="#a87836" stroke="#653d26" stroke-width="3"/>
+<path d="M100 72L108 92 128 100 108 108 100 128 92 108 72 100 92 92Z" fill="#7f2922" stroke="#d5a950" stroke-width="2.5"/>
+<circle cx="100" cy="100" r="9" fill="#e1b965" stroke="#6b3c21" stroke-width="3"/>
+<g fill="#b9904c" stroke="#694022" stroke-width="1.5"><circle cx="100" cy="7" r="5"/><circle cx="193" cy="100" r="5"/><circle cx="100" cy="193" r="5"/><circle cx="7" cy="100" r="5"/></g>
+</svg>
