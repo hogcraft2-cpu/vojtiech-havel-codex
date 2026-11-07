@@ -15,12 +15,12 @@ window.CODEX_PAGES = [
   {
     "type": "illustration",
     "title": "Ziemia, która go wychowała",
-    "scene": "village",
+    "scene": "stables",
     "note": "Přítoky, nieopodal Kuttenbergu. Początek drogi Vojtiecha."
   },
   {
     "type": "text",
-    "title": "Rozdział I. Przytoky",
+    "title": "Rozdział I. Přítoky",
     "initial": "P",
     "paragraphs": [
       "řítoky budziły się wcześnie. Jeszcze przed świtem słychać było skrzypienie studziennych żurawi, parskanie koni i krzyk koguta, który zdawał się uważać za pana całej osady. W jednym z domów, niewielkim i niemal zawsze przesiąkniętym zapachem dymu, dorastał Vojtiech Havel.",
@@ -249,7 +249,7 @@ window.CODEX_CHAPTERS = [
     "spread": 0
   },
   {
-    "title": "Rozdział I. Przytoky",
+    "title": "Rozdział I. Přítoky",
     "spread": 1
   },
   {
