@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#140d08" />
+  <meta name="description" content="Interaktywna średniowieczna księga Vojtiecha Havela, Anno Domini 1400." />
+  <title>Vojtiech Havel • Księga 1400</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Uncial+Antiqua&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="pages.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="study" aria-hidden="true"></div>
+  <div class="ambient-shadow" aria-hidden="true"></div>
+  <div class="lamplight" aria-hidden="true"><span class="lamp-flame"></span></div>
+  <canvas id="dust" aria-hidden="true"></canvas>
+  <div class="frame" aria-hidden="true"><span class="a"></span><span class="b"></span><span class="c"></span><span class="d"></span></div>
+
+  <header class="masthead">
+    <span class="overline">A N N O &nbsp; D O M I N I &nbsp; M C D</span>
+    <h1>VOJTIECH HAVEL</h1>
+    <p>Księga z roku pańskiego 1400</p>
+    <span class="divider-ornament" aria-hidden="true">❧ ✠ ❧</span>
+  </header>
+
+  <main class="stage" id="stage">
+    <div class="book" id="book" aria-label="Interaktywna średniowieczna księga">
+      <div class="back-cover" aria-hidden="true"></div>
+      <div class="paper-edge" aria-hidden="true"></div>
+      <div class="spread" id="spread">
+        <article class="folio left" id="leftPage" aria-label="Lewa strona"></article>
+        <article class="folio right" id="rightPage" aria-label="Prawa strona"></article>
+        <span class="gutter" aria-hidden="true"></span>
+      </div>
+      <div class="flip-sheet" id="flipSheet" aria-hidden="true">
+        <article class="sheet-side sheet-front" id="flipFront"></article>
+        <article class="sheet-side sheet-back" id="flipBack"></article>
+      </div>
+      <div class="front-cover" id="frontCover" title="Kliknij, aby otworzyć księgę" role="button" tabindex="0" aria-label="Otwórz księgę">
+        <div class="cover-outer"><span class="cover-texture"></span><span class="cover-glint"></span></div>
+        <div class="cover-inner"><span class="cover-inside-pattern">✥</span></div>
+      </div>
+    </div>
+  </main>
+
+  <div class="bottom-ui">
+    <p class="help" id="hint">Dotknij okładki lub wybierz „Otwórz księgę”</p>
+    <nav class="toolbar" aria-label="Nawigacja po księdze">
+      <button id="prev" type="button" disabled aria-label="Poprzednie strony">‹ <span>Poprzednia</span></button>
+      <button id="toc" type="button" aria-label="Spis treści">Spis treści</button>
+      <span class="page-status" id="status" aria-live="polite">Okładka</span>
+      <button id="next" type="button">Otwórz księgę <span>›</span></button>
+      <button id="close" type="button" hidden>Zamknij</button>
+      <button id="fullscreen" class="small-button" type="button" title="Pełny ekran" aria-label="Pełny ekran">⛶</button>
+    </nav>
+  </div>
+
+  <dialog id="tocDialog" class="toc-dialog" aria-labelledby="tocTitle">
+    <div class="toc-header"><h2 id="tocTitle">Spis treści</h2><button id="closeToc" aria-label="Zamknij spis treści">✕</button></div>
+    <p class="toc-intro">Wybierz rozkładówkę, do której chcesz przejść.</p>
+    <div id="tocEntries" class="toc-entries"></div>
+  </dialog>
+
+  <noscript><div class="noscript">Aby otworzyć księgę, włącz JavaScript w przeglądarce.</div></noscript>
+</body>
+</html>
