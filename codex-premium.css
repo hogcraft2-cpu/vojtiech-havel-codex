@@ -1,0 +1,349 @@
+/* VOJTIECH HAVEL CODEX — GILDED CHRONICLE EDITION.
+   Decorative layer, intentionally separate from functionality and folio data. */
+
+:root{
+ --folio-brown:#4e2818;
+ --folio-ink:#442616;
+ --folio-red:#8d3024;
+ --folio-verdigris:#244b52;
+ --folio-gold:#b68438;
+ --folio-pale:#ecd4a0;
+}
+body.codex-premium{background:#0d0907}
+.codex-premium .study{
+ filter:sepia(.16) saturate(.83) brightness(.66) contrast(1.18);
+ animation:premium-study-drift 37s ease-in-out infinite alternate;
+}
+@keyframes premium-study-drift {
+ from {transform:scale(1.04) translate(-.6%,-.3%)}
+ to {transform:scale(1.085) translate(.6%,.5%)}
+}
+.codex-premium .ambient-shadow{
+ background:
+ radial-gradient(ellipse 30vw 48vh at 6% 33%,#b16c2c45,transparent 83%),
+ radial-gradient(ellipse 32vw 54vh at 96% 25%,#ce853d35,transparent 83%),
+ radial-gradient(ellipse 73vw 95vh at 50% 44%,transparent 34%,#060302dc 100%),
+ linear-gradient(to bottom,#0d070397 0%,transparent 24%,#0b050263 75%,#080303c9 100%);
+}
+.codex-premium .stage{perspective:3900px; isolation:isolate}
+.codex-premium .stage::before{
+ content:"";
+ position:absolute;z-index:-1;pointer-events:none;
+ width:min(96vw,1560px);height:80%;
+ top:56%;left:50%;border-radius:50%;
+ transform:translate(-50%,-50%);
+ background:radial-gradient(ellipse at center,#cd8b3242,transparent 64%);
+ filter:blur(34px);
+ animation:tablelight 4.8s ease-in-out infinite alternate;
+}
+@keyframes tablelight{from{opacity:.55}to{opacity:.9}}
+.codex-premium .book{
+ filter:drop-shadow(0 13px 9px #070302bb) drop-shadow(0 33px 27px #030201f2);
+}
+.codex-premium .book.open{
+ filter:drop-shadow(0 17px 14px #080302d0) drop-shadow(0 38px 25px #020100ee);
+}
+.codex-premium .back-cover{
+ background-color:#23130d;
+ border:12px ridge #614021;
+ box-shadow:inset 0 0 0 2px #d3a463,inset 0 0 0 8px #25140b,
+ 0 17px 20px #000b,16px 24px 30px #050201;
+}
+.codex-premium .paper-edge{
+ border:4px solid #6f4929;
+ background:
+ repeating-linear-gradient(to bottom,#715132 0px,#f3d9aa 1px,#cba976 2px,#e9d3a8 3px,#93704c 4px,#dfc498 5px),
+ linear-gradient(to right,#87603d,#eacfa4);
+ background-blend-mode:multiply;
+ box-shadow:inset -13px 0 18px #654020b0,inset 0 0 14px #6340189c,
+ 1px 4px 0 #82542e,4px 7px 0 #3b2413,8px 11px 16px #000a;
+}
+.codex-premium .paper-edge::after{
+ width:12px;right:-13px;border-radius:2px 10px 10px 2px;
+ background:repeating-linear-gradient(0deg,#684021 0,#ad8759 1px,#e9d2a0 2px,#9d7745 4px,#4b2c1a 5px);
+ box-shadow:inset 4px 0 4px #4a291c,3px 0 7px #160801;
+}
+.codex-premium .folio,.codex-premium .sheet-side{
+ background:
+ radial-gradient(ellipse at 18% 18%,#fff0c486 0%,transparent 52%),
+ radial-gradient(ellipse at 89% 81%,#9b6d4f61 0%,transparent 46%),
+ linear-gradient(to bottom right,#ecd2a2b0,#f3e2b4a0 50%,#d9b88793),
+ url('assets/paper.webp') center/cover;
+ background-blend-mode:screen,multiply,normal,multiply;
+ border:3px solid #9f7143;
+}
+.codex-premium .folio.left{
+ border-radius:17px 1px 1px 19px;
+ box-shadow:inset -49px 0 49px -21px #3b1d10af,inset 12px 0 28px #7c502f68,
+ inset 0 0 53px #7e491d74,0 0 0 2px #472415;
+}
+.codex-premium .folio.right{
+ border-radius:1px 18px 18px 1px;
+ box-shadow:inset 48px 0 48px -19px #3a1c0fad,inset -12px 0 26px #80523150,
+ inset 0 0 51px #8d552873,0 0 0 2px #452716;
+}
+.codex-premium .folio::before,
+.codex-premium .sheet-side::before{
+ background:
+ url("assets/manuscript-frame.svg") center / 100% 100% no-repeat;
+ opacity:.87;
+ filter:sepia(.15) saturate(.88) drop-shadow(0 1px 0 #fbe8ba);
+}
+.codex-premium .folio::after,
+.codex-premium .sheet-side::after{
+ opacity:.78;
+ background:
+ radial-gradient(ellipse 32% 21% at 0 1%,#86542c4b,transparent),
+ radial-gradient(ellipse 24% 17% at 100% 0,#6a3c2345,transparent),
+ radial-gradient(ellipse 30% 17% at 0 100%,#7045254d,transparent),
+ radial-gradient(ellipse 25% 24% at 100% 100%,#8651324a,transparent),
+ radial-gradient(#59391f0c .8px,transparent 1.5px) 0 0 / 9px 11px;
+ mix-blend-mode:multiply;
+}
+.codex-premium .folio-content{
+ color:#392216;
+ padding-top:clamp(32px,calc(var(--pw)*.112),90px);
+}
+.codex-premium .folio-content p{
+ color:#39261b;
+ text-wrap:pretty;
+ text-align:left;
+ letter-spacing:.008em;
+ word-spacing:normal;
+}
+.codex-premium .folio-content.illuminated-page::before{
+ content:"ANNO ✠ DOMINI • MCD";
+ position:absolute;top:3.2%;left:20%;right:20%;
+ color:#895c33;
+ text-shadow:0 1px #f9edc9;
+ font:600 clamp(8px,calc(var(--pw)*.016),13px) Cinzel,Georgia,serif;
+ letter-spacing:.18em;text-align:center;opacity:.72;
+}
+.codex-premium .folio-content .folio-title{
+ position:relative;
+ font:normal clamp(17px,calc(var(--pw)*.055),40px)/1.15
+ 'UnifrakturMaguntia','Uncial Antiqua',serif;
+ color:#5e221e;
+ text-shadow:0 1px 0 #f3d5a0,0 2px 2px #a57a4349;
+ border-bottom:0!important;
+ padding-bottom:clamp(12px,calc(var(--pw)*.032),24px);
+ margin-bottom:clamp(7px,calc(var(--pw)*.022),19px);
+ letter-spacing:.01em;
+}
+.codex-premium .folio-content .folio-title::after{
+ content:"❦  ❧ ✠ ❧  ❦";
+ display:block;
+ width:88%;margin:clamp(5px,calc(var(--pw)*.018),13px) auto 0;
+ padding-top:4px;
+ border-top:1px solid #a0764b95;
+ color:#a36b33;
+ font:normal clamp(11px,calc(var(--pw)*.03),21px)/1.0 'Cinzel',serif;
+ letter-spacing:.15em;
+ text-shadow:0 1px #f7e4ba;
+}
+.codex-premium .folio-content.chapter-folio::after{
+ content:"";
+ position:absolute;
+ right:4.5%;bottom:5.2%;
+ width:clamp(35px,calc(var(--pw)*.11),81px);
+ height:clamp(35px,calc(var(--pw)*.11),81px);
+ border-radius:50%;
+ border:3px double #8d5d31;
+ background:
+ radial-gradient(circle at 35% 31%,#c98c55ab,#a54c3580 49%,#772e1fa6 76%,transparent 79%),
+ radial-gradient(circle,#4a2019,#9c5d36);
+ opacity:.74;
+ box-shadow:inset 0 0 8px #361311,0 2px 3px #8f5125;
+ pointer-events:none;z-index:2;
+}
+.codex-premium .folio-content.chapter-folio .folio-title{
+ color:#6f261c;
+}
+.codex-premium .folio-content .initial{
+ font:normal clamp(43px,calc(var(--pw)*.133),96px)/.76 'UnifrakturMaguntia','Uncial Antiqua',serif;
+ margin:5px 13px 5px 0;
+ padding:7px 11px 9px;
+ color:#eec66b;
+ text-shadow:-1px -1px #3a1c18,1px 2px 1px #4c1611,0 0 9px #de9a46a3;
+ background:
+ radial-gradient(ellipse at 54% 45%,#61311c 16%,#792723 65%,#351d18);
+ border:3px ridge #b78a45;
+ border-radius:3px 9px 3px 9px;
+ box-shadow:
+ 0 0 0 2px #875326,0 0 0 4px #c59a51,
+ 0 0 0 6px #6e4028,0 5px 8px #65352244,inset 0 0 12px #e0ae4439;
+}
+.codex-premium .folio-content .folio-bottom{
+ font:normal clamp(11px,calc(var(--pw)*.025),17px) 'IM Fell English',serif;
+ letter-spacing:.17em;color:#775033;
+ border-top:1px solid #9a754755;
+ width:36%;left:32%;right:32%;padding-top:8px;
+ bottom:clamp(11px,calc(var(--pw)*.033),27px);
+}
+.codex-premium .folio-content .folio-glyph{
+ display:block;
+ width:82%;margin:13px auto 5px;
+ text-align:center;
+ color:#9b6935;
+ font-size:clamp(12px,calc(var(--pw)*.026),20px);
+ opacity:.8;
+}
+.codex-premium .folio-vignette{
+ box-shadow:0 7px 12px #7a4d2935;
+ border:0;
+ background:none;
+}
+.codex-premium .folio-vignette-art{
+ filter:saturate(.94) contrast(1.06) sepia(.10);
+ -webkit-mask-image:radial-gradient(ellipse 79% 85% at 49% 50%,black 57%,transparent 96%);
+ mask-image:radial-gradient(ellipse 79% 85% at 49% 50%,black 57%,transparent 96%);
+}
+.codex-premium .folio-vignette figcaption{
+ letter-spacing:.01em;text-align:center;
+ color:#815e3c;
+}
+.codex-premium .folio-content.illustrated .folio-title{
+ margin-bottom:4px;
+}
+.codex-premium .illustration-frame{
+ position:relative;
+ width:90%;height:78%;
+ margin:0 auto;
+ padding:clamp(6px,calc(var(--pw)*.014),12px);
+ background:
+ radial-gradient(ellipse at center,#ecd9b175,#d2aa6c49),
+ linear-gradient(125deg,#a36d31,#dab26a,#b47d42);
+ border:clamp(3px,calc(var(--pw)*.01),8px) double #a57536;
+ outline:2px solid #70502f80;outline-offset:3px;
+ box-shadow:0 2px 1px #fff0c5,0 11px 20px #4f291f63,inset 0 0 14px #7b492c69;
+}
+.codex-premium .story-illustration{
+ width:100%;height:85%;
+ filter:sepia(.10) saturate(.82) contrast(1.12);
+ -webkit-mask-image:radial-gradient(ellipse 92% 94% at 50% 48%,black 72%,transparent 100%);
+ mask-image:radial-gradient(ellipse 92% 94% at 50% 48%,black 72%,transparent 100%);
+}
+.codex-premium .illustration-frame figcaption{
+ height:15%;
+ border:0;margin:0 auto;
+ font:italic clamp(12px,calc(var(--pw)*.027),18px)/1.24 'IM Fell English',Georgia,serif;
+ color:#6c4026;
+ display:flex;justify-content:center;align-items:center;
+ background:none;
+}
+.codex-premium .crest-image{
+ filter:sepia(.08) contrast(1.16) drop-shadow(0 4px 6px #66402469);
+}
+.codex-premium .folio-content.title-illuminated::after{
+ content:"✥";
+ position:absolute;left:0;right:0;bottom:17%;
+ text-align:center;
+ font:normal clamp(23px,calc(var(--pw)*.07),57px) Georgia,serif;
+ color:#995d2e65;
+ pointer-events:none;
+}
+.codex-premium .gutter{
+ left:calc(var(--pw) - 28px);width:56px;
+ background:
+ linear-gradient(90deg,transparent,#a2764f5e 17%,#5c32178f 31%,#1a0b06e6 49%,#6e452693 69%,transparent);
+ box-shadow:inset 5px 0 7px #1c0e0663;
+}
+.codex-premium .flip-sheet .sheet-side{
+ box-shadow:inset 0 0 42px #53311e77,0 2px 1px #170d08;
+}
+.codex-premium .flip-sheet.forward.animate .sheet-front,
+.codex-premium .flip-sheet.backward.animate .sheet-front{
+ animation:paper-warp 1.2s ease-in-out both;
+}
+@keyframes paper-warp{
+ 0%,100% {filter:brightness(1);border-radius:2px}
+ 37% {filter:brightness(1.15);border-radius:4% 13% 10% 6%}
+ 70% {filter:brightness(.86);border-radius:9% 5% 7% 10%}
+}
+.codex-premium .reading-light{
+ background:
+ radial-gradient(ellipse 25% 31% at var(--glow-x,47%) var(--glow-y,46%),#ffefb930,transparent 85%),
+ linear-gradient(110deg,transparent 24%,#efd2a00c 48%,transparent 72%);
+ mix-blend-mode:soft-light;
+ opacity:.9;
+ pointer-events:none;
+}
+.codex-premium .book.open .reading-light{
+ animation:reading-light-pulse 7.1s ease-in-out infinite alternate;
+}
+@keyframes reading-light-pulse {from{opacity:.43}to{opacity:.94}}
+/* The desk itself participates in the story instead of being a flat wallpaper. */
+.codex-premium .scribe-objects{
+ position:fixed;left:0;bottom:0;z-index:-1;
+ pointer-events:none;width:100%;height:100%;
+ opacity:.75;
+}
+.codex-premium .scribe-quill{
+ position:absolute;left:5%;bottom:8%;width:19vw;height:34vh;
+ transform:rotate(-26deg);
+ filter:drop-shadow(4px 8px 5px #000b);
+ opacity:.72;
+}
+.codex-premium .scribe-wax{
+ position:absolute;right:7%;bottom:12%;
+ width:clamp(42px,7vw,110px);height:clamp(42px,7vw,110px);
+ border-radius:50%;border:9px ridge #80402a;
+ background:radial-gradient(circle at 37% 27%,#b85d37,#70251d 57%,#43150e);
+ box-shadow:inset 0 0 0 4px #6d2619,0 7px 16px #000a;
+ transform:rotate(13deg);
+ opacity:.76;
+}
+.codex-premium .scribe-wax:before{
+ content:"✠";position:absolute;inset:0;display:grid;place-items:center;
+ color:#d39d58;opacity:.62;font:normal clamp(24px,4vw,49px) Georgia,serif;
+ text-shadow:0 1px 2px #2c1109;
+}
+.codex-premium .scribe-wax:after{
+ content:"";position:absolute;left:41%;top:90%;width:30%;height:78%;
+ background:linear-gradient(100deg,#71271e,#b55138,#531d18);
+ clip-path:polygon(0 0,100% 0,92% 100%,45% 76%,5% 100%);
+ filter:drop-shadow(2px 4px 4px #0008);
+}
+.codex-premium .emberfield{
+ position:fixed;inset:0;pointer-events:none;z-index:7;opacity:.45;
+ background:
+ radial-gradient(circle at 12% 29%,#ffc867bd 0 1px,transparent 3px),
+ radial-gradient(circle at 81% 18%,#ffdc9177 0 1px,transparent 3px),
+ radial-gradient(circle at 89% 51%,#ffd38577 0 1.5px,transparent 4px),
+ radial-gradient(circle at 19% 66%,#ffc56770 0 1px,transparent 3px);
+ animation:ember-drift 15s ease-in-out infinite alternate;
+}
+@keyframes ember-drift{0%{transform:translate3d(0,0,0);opacity:.18}100%{transform:translate3d(1%,-4%,0);opacity:.53}}
+.codex-premium .toolbar{
+ border:2px ridge #a37742;
+ background:linear-gradient(135deg,#2a180ee8,#120906f5);
+ box-shadow:0 0 0 1px #462816,0 10px 28px #000e,0 0 23px #cd8f3423;
+}
+.codex-premium .toolbar button:hover:not(:disabled){
+ box-shadow:inset 0 0 8px #a36b3420,0 0 9px #c08f463d;
+}
+.codex-premium .folio-content .folio-title:hover{
+ text-shadow:0 1px 0 #f3d5a0,0 0 12px #be95465c;
+}
+@media(max-width:1100px){
+ .codex-premium .scribe-quill,.codex-premium .scribe-wax{opacity:.34}
+}
+@media(max-width:930px){
+ .codex-premium .folio-vignette{width:41%;height:clamp(97px,calc(var(--pw)*.33),175px);float:right;margin:4px 1px 9px 10px}
+ .codex-premium .illustration-frame{height:70%}
+ .codex-premium .folio-content .folio-title::after{font-size:11px}
+ .codex-premium .folio-content .initial{padding:5px 7px;margin:3px 7px 3px 0}
+}
+@media(max-width:699px){
+ .codex-premium .scribe-objects{display:none}
+ .codex-premium .folio-content .folio-title{font-size:clamp(16px,calc(var(--pw)*.06),28px)}
+ .codex-premium .folio-content .folio-title::after{font-size:11px;margin-top:5px}
+ .codex-premium .folio-content .folio-bottom{font-size:11px}
+ .codex-premium .illustration-frame{height:67%;width:92%;padding:5px}
+ .codex-premium .folio-content .initial{font-size:clamp(31px,calc(var(--pw)*.12),57px)}
+}
+@media(prefers-reduced-motion:reduce){
+ .codex-premium .study,.codex-premium .stage::before,
+ .codex-premium .book.open .reading-light,.codex-premium .emberfield,
+ .codex-premium .flip-sheet .sheet-side{animation:none!important}
+}
