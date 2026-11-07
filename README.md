@@ -17,9 +17,9 @@ Interaktywna księga fabularna w estetyce iluminowanych kronik z początku XV wi
 
 ## Kronika
 
-Opowieść zaczyna się od dzieciństwa Vojtiecha w Přítokach około 1386 roku, szkolenia pod okiem kowala Víta, pierwszych doświadczeń szermierczych oraz spotkania z Janem Švarcem. Kolejne rozdziały obejmują służbę i dojrzewanie Vojtiecha do **20. roku życia (około 1406)**, kiedy nadal pozostaje giermkiem. Historia jest **otwarta** — ostatnia scena prowadzi do kolejnej wyprawy.
+Opowieść zaczyna się od narodzin i dzieciństwa Vojtiecha w Přítokach około 1386 roku, szkolenia pod okiem kowala Víta, pierwszych doświadczeń szermierczych oraz spotkania z Janem Švarcem. Dalsze rozdziały opisują naukę szermierki, spotkanie z Janem Švarcem, służbę giermka i dojrzewanie Vojtiecha **do roku pańskiego 1403**, gdy ma około **17 lat**. Opowieść kończy się zwyczajną sceną z jego życia, nie opisuje wydarzeń po 1403 roku i pozostawia możliwość dopisania kolejnych kart.
 
-Rok 1400 na okładce jest stylizowanym symbolem epoki; narracja obejmuje kilka lat przed nim i po nim.
+Rok 1400 na okładce jest stylizowanym symbolem epoki; właściwy przedział narracji to **około 1386–1403**. Ostatnim rozdziałem jest **XI. Rok pański 1403**.
 
 ## Edycja Premium — oprawa iluminowanego kodeksu
 
