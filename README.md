@@ -13,7 +13,7 @@ Interaktywna księga fabularna w estetyce iluminowanych kronik z początku XV wi
 - Drewniane biurko, ruchomy dym świec, migoczące światło, unoszący się pył, powolny ruch scenerii.
 - Dźwięk przewracania stron ♪; można go wyłączyć.
 - Przycisk **Czytaj** otwiera powiększony, przewijany widok tekstu, wygodny na telefonie.
-- Spis treści, klawisze ← →, tryb pełnoekranowy, zapamiętywanie rozkładówki, prawdziwa tylna oprawa.
+- Spis treści, klawisze ← →, tryb pełnoekranowy, **automatyczny start od pierwszej rozkładówki przy każdym otwarciu**, prawdziwa tylna oprawa.
 
 ## Kronika
 
@@ -25,7 +25,11 @@ Rok 1400 na okładce jest stylizowanym symbolem epoki; narracja obejmuje kilka l
 
 `pages.js` zawiera `window.CODEX_PAGES`; każda pozycja to jedna karta, dwie pozycje to rozkładówka. Dostępne rodzaje to `title`, `crest`, `illustration`, `text`, `map`, `drawing`, `blank`, `backcover`. Kolejne teksty dopisuj **przed** ostatnimi kartami `blank` i `backcover`. Liczba stron musi być parzysta.
 
-Nazwy i numery rozdziałów są w `window.CODEX_CHAPTERS`. Funkcja `renderPage` w `app.js` zamienia treść na edytowalny HTML. Wygląd jest w `styles.css`, a ornamenty w `assets/manuscript-frame.svg`.
+Nazwy i numery rozdziałów są w `window.CODEX_CHAPTERS`. Funkcja `renderPage` w `app.js` zamienia treść na edytowalny HTML. Podstawowy wygląd jest w `styles.css`, a nowa, powiększona oprawa w `codex-large.css` (ładowanym jako ostatni). Ornamenty są w `assets/manuscript-frame.svg`, a sceny malarskie w `assets/manuscript-plates.webp`. Responsywna wielkość księgi i nawigacja znajdują się w `app.js`.
+
+## Jak zaczyna się czytanie
+
+Każde nowe wejście na stronę i każde ponowne otwarcie okładki zaczyna się od **kart 1–2**. Nie zapisujemy ostatnio czytanej rozkładówki w przeglądarce. W trakcie czytania można swobodnie przechodzić przyciskami, klawiaturą i spisem treści. Zapamiętywana jest tylko osobista preferencja włączenia dźwięku kartek.
 
 ## Publikacja
 
