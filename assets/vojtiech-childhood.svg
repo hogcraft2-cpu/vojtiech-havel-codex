@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 720" role="img" aria-label="Miniatura średniowieczna przedstawiająca młodego Vojtiecha Havela przy koniu w stajni Přítok">
+<defs>
+ <linearGradient id="p" x2="0" y2="1"><stop stop-color="#eed4a1"/><stop offset="1" stop-color="#c8a874"/></linearGradient>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#7b9da4"/><stop offset="1" stop-color="#d7c594"/></linearGradient>
+ <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".62" numOctaves="3" seed="7"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".13"/></feComponentTransfer></filter>
+ <clipPath id="inner"><path d="M53 606V180Q57 92 260 57Q463 92 467 180V606Z"/></clipPath>
+</defs>
+<rect width="520" height="720" rx="8" fill="url(#p)"/>
+<path d="M17 17H503V703H17Z" fill="none" stroke="#6b3324" stroke-width="12"/>
+<path d="M31 31H489V689H31Z" fill="none" stroke="#d1a748" stroke-width="5"/>
+<path d="M41 41H479V679H41Z" fill="none" stroke="#824e33" stroke-width="2"/>
+<g fill="#952f30" stroke="#6b3435" stroke-width="2">
+<path d="M48 46q-17 8 2 33q25 2 36-16Q65 70 48 46Z"/><path d="M472 46q17 8-2 33q-25 2-36-16Q455 70 472 46Z"/>
+<path d="M48 674q-17-8 2-33q25-2 36 16Q65 650 48 674Z"/><path d="M472 674q17-8-2-33q-25-2-36 16Q455 650 472 674Z"/>
+</g>
+<g clip-path="url(#inner)">
+ <rect x="48" y="47" width="424" height="574" fill="url(#sky)"/>
+ <circle cx="366" cy="151" r="55" fill="#eac88a" opacity=".6"/>
+ <path d="M48 350Q115 290 183 320Q264 245 356 323Q414 285 472 323V606H48Z" fill="#77856b"/>
+ <path d="M48 414Q100 379 159 400Q240 349 304 398Q390 357 472 408V606H48Z" fill="#a0a17a"/>
+ <g fill="#d9c9a0" stroke="#604832" stroke-width="4">
+  <path d="M317 298v-97l20-11 19 12v96Z"/><path d="M302 206l37-57 40 56Z" fill="#80483a"/>
+  <path d="M392 315v-75l32-18 27 17v76Z"/><path d="M385 244l35-37 42 36Z" fill="#874c3a"/>
+ </g>
+ <path d="M48 455Q191 436 309 454Q405 428 472 450V606H48Z" fill="#957d55"/>
+ <!-- Stable: timber posts and thatched roof -->
+ <path d="M48 219L220 151L316 194L316 230L48 289Z" fill="#533923" stroke="#3b2d20" stroke-width="8"/>
+ <path d="M48 219L220 151L316 194" fill="none" stroke="#cfac63" stroke-width="16" stroke-dasharray="17 6"/>
+ <path d="M58 247L88 233L88 609H58Z" fill="#5e4430" stroke="#302518" stroke-width="5"/>
+ <path d="M271 216L299 219L300 606H269Z" fill="#5e4430" stroke="#302518" stroke-width="5"/>
+ <path d="M48 330H300M48 384H300" stroke="#775038" stroke-width="12" opacity=".85"/>
+ <path d="M48 500h422v120H48Z" fill="#9a8051"/>
+ <path d="M57 531l123-29M140 597l120-30M345 536l115 33" stroke="#cfb17a" stroke-width="3"/>
+ <!-- Horse -->
+ <path d="M110 487Q84 439 106 392Q133 347 191 359Q224 358 233 396Q238 426 213 473L201 561H181L172 472L143 476L138 561H116Z" fill="#78432d" stroke="#4c3023" stroke-width="7"/>
+ <path d="M166 384Q183 338 189 285Q185 263 203 254L231 247Q246 253 252 270Q257 281 256 298L240 324L226 339Q235 369 236 403Z" fill="#9a5939" stroke="#553424" stroke-width="7"/>
+ <path d="M195 278L188 227Q197 214 210 242L216 274M228 264l9-47q19 12 10 43" fill="#8b4c31" stroke="#4a3226" stroke-width="6"/>
+ <path d="M182 309Q177 292 177 269M185 336Q172 315 173 289M182 350Q169 338 163 319" stroke="#32241d" stroke-width="10"/>
+ <ellipse cx="239" cy="283" rx="5" ry="6" fill="#241915"/><path d="M222 316Q237 321 245 304" stroke="#3a281e" stroke-width="3" fill="none"/>
+ <path d="M227 279L255 279L259 304L244 328" stroke="#4b3726" stroke-width="5" fill="none"/>
+ <!-- Vojtiech, adolescent-->
+ <path d="M320 429Q334 385 366 382Q408 386 415 424L428 549H316Z" fill="#786447" stroke="#453c32" stroke-width="6"/>
+ <path d="M339 429L336 551M399 431L407 551" stroke="#bda47c" stroke-width="9"/>
+ <path d="M347 373L347 402L371 423L394 401L394 366Z" fill="#d4a477" stroke="#674531" stroke-width="5"/>
+ <ellipse cx="372" cy="349" rx="35" ry="43" fill="#ddb187" stroke="#65422e" stroke-width="6"/>
+ <path d="M337 342Q342 299 385 312Q404 323 403 352Q385 344 379 322Q370 347 344 345Z" fill="#493529"/>
+ <path d="M340 334q-12 6-5 24M394 327q13 13 7 30" fill="none" stroke="#493529" stroke-width="11"/>
+ <circle cx="357" cy="348" r="3" fill="#4b362d"/><circle cx="385" cy="347" r="3" fill="#4b362d"/>
+ <path d="M359 370Q372 377 384 367" stroke="#8e6348" stroke-width="3" fill="none"/>
+ <path d="M339 418Q313 426 296 390L246 343" fill="none" stroke="#d9af84" stroke-width="18" stroke-linecap="round"/>
+ <path d="M403 417Q424 445 437 485" fill="none" stroke="#d9af84" stroke-width="17" stroke-linecap="round"/>
+ <path d="M337 541h31l-8 62h-30ZM385 541h29l6 62h-28Z" fill="#554232" stroke="#34271e" stroke-width="5"/>
+ <path d="M330 600q-18 17 20 17h22l-6-17ZM389 600q-8 17 34 17h8l-10-17Z" fill="#2b2620"/>
+ <!-- Old father -->
+ <path d="M443 437Q439 395 464 385Q489 398 491 443V581H443Z" fill="#79523e" stroke="#54352b" stroke-width="5"/>
+ <circle cx="464" cy="360" r="27" fill="#be9069" stroke="#5c3f31" stroke-width="4"/>
+ <path d="M437 357Q438 325 459 328Q487 325 491 356Q477 333 447 349Z" fill="#5b4b37"/>
+ <path d="M450 374Q463 404 478 373L470 398H456Z" fill="#6b5942"/>
+</g>
+<path d="M53 606V180Q57 92 260 57Q463 92 467 180V606Z" fill="none" stroke="#985a35" stroke-width="8"/>
+<path d="M64 606V183Q69 109 260 72Q451 109 456 183V606Z" fill="none" stroke="#d8b25d" stroke-width="3"/>
+<path d="M60 634H460" stroke="#865033" stroke-width="3"/><text x="260" y="663" font-family="Georgia,serif" font-size="21" font-style="italic" text-anchor="middle" fill="#74372a">Přítoky · Młodość Vojtiecha</text>
+<rect x="5" y="5" width="510" height="710" fill="#806537" filter="url(#grain)" opacity=".26" pointer-events="none"/>
+</svg>
