@@ -4,7 +4,7 @@
   const book = $('book'), prev = $('prev'), next = $('next'), close = $('close');
   const left = $('leftPage'), right = $('rightPage'), sheet = $('flipSheet');
   const flipFront = $('flipFront'), flipBack = $('flipBack');
-  const dialog = $('tocDialog');
+  const dialog = $('tocDialog'), readerDialog = $('readerDialog');
   const pages = Array.isArray(window.CODEX_PAGES) ? window.CODEX_PAGES : [];
   if (!pages.length || pages.length % 2 !== 0) throw new Error('Księga wymaga parzystej liczby kart w pages.js.');
 
@@ -77,19 +77,37 @@
     <text x="100" y="21" font-size="11" font-family="serif" text-anchor="middle" fill="#86633d">FORTITUDO</text>
   </svg>`;
 
+  // Painted plate placement follows the chronology; each folio remains editable HTML.
+  const scenicFolios = {3:'village',7:'training',11:'stables',14:'knight',16:'training',20:'stables',25:'knight',28:'village',31:'training',32:'stables',35:'knight',36:'village'};
+  const sceneCaptions = {village:'Přítoky i okolice Kuttenbergu',training:'Pierwsze nauki szermierki',stables:'Stajnia i dawna codzienność',knight:'Jan Švarc i jego giermek'};
   function renderPage(page, number) {
     const foot = folioNo(number);
-    const title = page.title ? `<h2 class="folio-title">${esc(page.title)}</h2>` : '';
-    if (page.type === 'title') return `<div class="folio-content"><div class="folio-cover-title">${esc(page.title)}</div><div class="folio-line"></div><div class="page-title-ornament">❧ ✠ ❧</div><div class="folio-cover-sub">${esc(page.subtitle)}</div><p class="lead-in">${esc(page.text)}</p>${foot}</div>`;
-    if (page.type === 'crest') return `<div class="folio-content">${title}<img class="crest-image" src="assets/crest.webp" alt="Oryginalny herb Vojtiecha Havela"/><p class="annotation">${esc(page.note)}</p>${foot}</div>`;
-    if (page.type === 'illustration' && page.scene) return `<div class="folio-content illustrated">${title}<div class="story-illustration scene-${esc(page.scene)}" role="img" aria-label="${esc(page.title)}"></div><p class="annotation">${esc(page.note)}</p>${foot}</div>`;
-    if (page.type === 'backcover') return `<div class="folio-content rear-content"><div class="rear-cover"><span class="rear-border"></span><span class="rear-symbol">✠</span><span class="rear-headline">${esc(page.title)}</span><span class="rear-ornament">❧ ✠ ❧</span><span class="rear-subtitle">${esc(page.subtitle)}</span></div></div>`;
-    if (page.type === 'illustration') return `<div class="folio-content">${title}<figure class="manuscript-art"><img src="${esc(page.src)}" alt="${esc(page.caption||page.title)}" loading="eager"><figcaption>${esc(page.caption||'')}</figcaption></figure>${foot}</div>`;
-    if (page.type === 'miniature') return `<div class="folio-content">${title}<figure class="miniature-figure"><img class="miniature-image" src="${esc(page.src)}" alt="${esc(page.title||'Miniatura Vojtiecha Havela')}" loading="eager" /><figcaption class="annotation">${esc(page.note||'Ilustracja kroniki')}</figcaption></figure>${foot}</div>`;
-    if (page.type === 'text') return `<div class="folio-content">${title}${(page.paragraphs||[]).map((p,i)=>`<p>${i===0&&page.initial?`<span class="initial">${esc(page.initial)}</span>`:''}${esc(p)}</p>`).join('')}${page.footer?`<p class="annotation">${esc(page.footer)}</p>`:''}${foot}</div>`;
-    if (page.type === 'map') return `<div class="folio-content">${title}${mapSvg}<p class="annotation">${esc(page.note)}</p>${foot}</div>`;
-    if (page.type === 'drawing') return `<div class="folio-content">${title}${swordSvg}<p class="annotation">${esc(page.note)}</p>${foot}</div>`;
-    return `<div class="folio-content">${foot}</div>`;
+    const title = page.title ? '<h2 class="folio-title">'+esc(page.title)+'</h2>' : '';
+    const wrapper=(body,cls='')=>'<div class="folio-content illuminated-page '+cls+'">'+body+foot+'</div>';
+    const smallCross='<span class="folio-glyph" aria-hidden="true">❧ ✠ ❧</span>';
+    if(page.type==='backcover') return '<div class="folio-content rear-content"><div class="rear-cover"><span class="rear-border"></span><span class="rear-symbol">✠</span><span class="rear-headline">'+esc(page.title)+'</span><span class="rear-ornament">❧ ✠ ❧</span><span class="rear-subtitle">'+esc(page.subtitle)+'</span></div></div>';
+    if(page.type==='title') return wrapper('<div class="folio-prologue">Kronika z początków XV stulecia</div><div class="folio-cover-title">'+esc(page.title)+'</div><div class="folio-line"></div><div class="page-title-ornament">❦ ✠ ❦</div><div class="folio-cover-sub">'+esc(page.subtitle)+'</div><p class="lead-in">'+esc(page.text)+'</p>'+smallCross,'title-illuminated');
+    if(page.type==='crest') return wrapper(title+'<img class="crest-image" src="assets/crest.webp" alt="Herb Vojtiecha Havela — czarny kruk"/><p class="annotation">'+esc(page.note)+'</p>'+smallCross,'heraldic-page');
+    if(page.type==='illustration') {
+      const scene=['village','training','stables','knight'].includes(page.scene)?page.scene:'village';
+      return wrapper(title+'<figure class="illustration-frame"><div class="story-illustration scene-'+scene+'" role="img" aria-label="'+esc(page.title)+'"></div><figcaption>'+esc(page.note || sceneCaptions[scene])+'</figcaption></figure>'+smallCross,'illustrated');
+    }
+    if(page.type==='text'){
+      const scene=page.plate || scenicFolios[number];
+      const vignette=scene && sceneCaptions[scene]?
+        '<figure class="folio-vignette"><span class="folio-vignette-art scene-'+scene+'" role="img" aria-label="'+esc(sceneCaptions[scene])+'"></span><figcaption>'+esc(sceneCaptions[scene])+'</figcaption></figure>':'';
+      const initialIsLetter=page.initial&&/^\p{L}$/u.test(page.initial);
+      const paragraphs=(page.paragraphs||[]).map((paragraph,i)=>{
+        const start=i===0 && page.initial?(initialIsLetter?'<span class="initial">'+esc(page.initial)+'</span>':esc(page.initial)):'';
+        return '<p>'+start+esc(paragraph)+'</p>';
+      }).join('');
+      const chapter=page.title?.startsWith('Rozdział') ? 'chapter-folio' : '';
+      return wrapper(title+vignette+paragraphs+(page.footer?'<p class="annotation">'+esc(page.footer)+'</p>':'')+smallCross,'prose-folio '+chapter);
+    }
+    if(page.type==='map') return wrapper(title+mapSvg+'<p class="annotation">'+esc(page.note)+'</p>','map-page');
+    if(page.type==='drawing') return wrapper(title+swordSvg+'<p class="annotation">'+esc(page.note)+'</p>','drawing-page');
+    if(page.type==='blank') return wrapper('<div class="blank-message">Tutaj zapisze się dalsza historia</div>','blank-page');
+    return wrapper(title+smallCross);
   }
 
   function fitFolio(el) {
@@ -121,6 +139,7 @@
     next.disabled = busy || (open && spread === MAX_SPREAD);
     next.innerHTML = open ? 'Następna <span>›</span>' : 'Otwórz księgę <span>›</span>';
     close.hidden = !open;
+    $('reader').disabled = !open || busy;
     $('frontCover').setAttribute('aria-hidden',open?'true':'false');
   }
 
@@ -175,10 +194,11 @@
 
   function sizeBook(){
     const vw=window.innerWidth, vh=window.innerHeight;
-    const hSpace = vh - (vw < 700 ? 206 : 220);
-    const w = Math.max(150,Math.min(452,(vw - (vw<700?24:125))/2, hSpace/1.255));
+    const availableHeight=vh-(vw < 700 ? 172 : 172);
+    const sideMargin=vw < 700 ? 18 : Math.max(100,Math.round(vw*.1));
+    const w=Math.max(145,Math.min(720,(vw-sideMargin)/2,availableHeight/1.30));
     document.documentElement.style.setProperty('--pw',w.toFixed(2)+'px');
-    document.documentElement.style.setProperty('--ph',(w*1.255).toFixed(2)+'px');
+    document.documentElement.style.setProperty('--ph',(w*1.30).toFixed(2)+'px');
   }
 
   $('frontCover').addEventListener('click',openBook);
@@ -189,7 +209,7 @@
   left.addEventListener('click',()=>turnPage(-1));
   right.addEventListener('click',()=>turnPage(1));
   window.addEventListener('keydown',(e)=>{
-    if(dialog.open || e.altKey || e.ctrlKey || e.metaKey) return;
+    if(dialog.open || readerDialog.open || e.altKey || e.ctrlKey || e.metaKey) return;
     if(e.key==='ArrowRight') {e.preventDefault();open?turnPage(1):openBook();}
     if(e.key==='ArrowLeft') {e.preventDefault();turnPage(-1);}
     if(e.key==='Home' && open && !busy) {spread=0;renderSpread();save();updateUI();}
@@ -199,7 +219,21 @@
   $('fullscreen').addEventListener('click',async()=>{
     try {if(document.fullscreenElement) await document.exitFullscreen(); else await document.documentElement.requestFullscreen();} catch(_) { /* Browser may disallow fullscreen. */ }
   });
-  $('toc').addEventListener('click',()=>dialog.showModal());
+
+  // The optional reader provides legible, scrollable text on narrow screens
+  // while the 3D codex stays a two-page, non-scrolling object.
+  const readerPages=$('readerPages');
+  function showReader(){
+    if(!open||busy)return;
+    readerPages.innerHTML=
+      '<article class="reader-leaf">'+renderPage(pages[spread*2],spread*2)+'</article>'+
+      '<article class="reader-leaf">'+renderPage(pages[spread*2+1],spread*2+1)+'</article>';
+    readerDialog.showModal();
+  }
+  $('reader').addEventListener('click',showReader);
+  $('closeReader').addEventListener('click',()=>readerDialog.close());
+  readerDialog.addEventListener('click',e=>{if(e.target===readerDialog)readerDialog.close();});
+    $('toc').addEventListener('click',()=>dialog.showModal());
   $('closeToc').addEventListener('click',()=>dialog.close());
   dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
   const entries=$('tocEntries');

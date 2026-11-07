@@ -129,3 +129,202 @@ button{font:inherit;cursor:pointer}
 @keyframes studyDrift{from{transform:scale(1.02) translate(-.4%,.2%)}to{transform:scale(1.045) translate(.5%,-.3%)}}
 @media(max-width:800px){.story-illustration{width:81%;height:61%;border-width:2px}.folio-content.illustrated .annotation{font-size:.77em}.rear-cover{padding:15px;gap:9px}.rear-symbol{font-size:38px}}
 @media(prefers-reduced-motion:reduce){.study{animation:none}}
+
+
+/* === KODEKS ILUMINOWANY · redakcja projektu 2026 ===
+   Ruchome strony są DOM, nie bitmapą: każdy rozdział można edytować w pages.js. */
+:root{--gold:#d8ac5e;--gold-dark:#82542f;--ink:#28180f;--red-ink:#822c20;--blue-ink:#1a5365}
+body.codex-illuminated{background:#110906;color:#eddbb5}
+.codex-illuminated .study{background-position:center 54%;filter:saturate(.77) contrast(1.12) brightness(.6);animation:studyDrift 34s ease-in-out infinite alternate}
+.codex-illuminated .ambient-shadow{background:
+ radial-gradient(ellipse 44% 60% at 13% 18%,#ce772425,transparent 85%),
+ radial-gradient(ellipse 45% 66% at 89% 12%,#e8ae4b23,transparent 83%),
+ radial-gradient(ellipse 65% 75% at 50% 55%,transparent 15%,#0503029a 100%),
+ linear-gradient(0deg,#100704a6,transparent 43%,#1309057a)}
+.codex-illuminated .masthead{top:7px}
+.codex-illuminated .masthead .overline{font:500 10px Cinzel,serif;letter-spacing:.23em;color:#d0a369}
+.codex-illuminated .masthead h1{margin:2px 0 0;font:600 clamp(21px,2vw,30px) Cinzel,serif;letter-spacing:.18em;color:#eaca92}
+.codex-illuminated .masthead p{font:italic 13px 'IM Fell English',Georgia,serif;color:#e1bc7f}
+.codex-illuminated .divider-ornament{font-size:12px;margin-top:0;letter-spacing:9px}
+.codex-illuminated .stage{inset:69px 0 105px;perspective:2700px}
+.codex-illuminated .book{filter:drop-shadow(0 21px 20px #000e) drop-shadow(0 3px 2px #000)}
+.codex-illuminated .book.open{transform:translateX(calc(var(--pw)/2))}
+.codex-illuminated .back-cover{inset:-9px -10px -9px -13px;border:7px solid #241108;
+ background:linear-gradient(100deg,#1d0c06 0,#4a2514 30%,#24120b 100%);
+ box-shadow:inset 0 0 0 3px #ac7e3f,6px 15px 32px #000d}
+.codex-illuminated .paper-edge{inset:10px 4px 6px 5px;
+ background:repeating-linear-gradient(to bottom,#876942 0,#efddb3 1px,#d4bd8e 3px,#a17c4f 4px);
+ border:3px solid #8b623a;box-shadow:inset 0 0 35px #593b21,0 0 0 3px #24130b}
+.codex-illuminated .folio,.codex-illuminated .sheet-side{
+ color:#29170d;border:2px solid #946c3a;box-shadow:inset 0 0 40px #91663d66,0 0 0 1px #382015;
+ background-color:#dfc69b;
+ background-image:linear-gradient(135deg,rgba(243,221,182,.83),rgba(247,225,185,.8) 40%,rgba(192,149,94,.63)),url('assets/paper.webp');
+ background-blend-mode:normal,multiply;background-size:cover,cover;
+}
+.codex-illuminated .folio.left{border-radius:10px 1px 1px 11px;box-shadow:inset -33px 0 33px -14px #57361e85,inset 0 0 38px #7950316b,0 0 0 2px #9c6e3e}
+.codex-illuminated .folio.right{border-radius:1px 11px 11px 1px;box-shadow:inset 33px 0 33px -14px #57361e85,inset 0 0 38px #7950316b,0 0 0 2px #9c6e3e}
+.codex-illuminated .folio::before,.codex-illuminated .sheet-side::before{
+ inset:0;border:0;background:url('assets/manuscript-frame.svg') center/100% 100% no-repeat;
+ opacity:.83;z-index:6;pointer-events:none}
+.codex-illuminated .folio::after,.codex-illuminated .sheet-side::after{
+ inset:0;opacity:.29;background:radial-gradient(#71421d16 .8px,transparent 1.2px) 0 0/8px 8px;z-index:5}
+.codex-illuminated .gutter{width:28px;left:calc(var(--pw) - 14px);
+ background:linear-gradient(90deg,transparent,#5b361e65 31%,#231004a8 49%,#4d2b1777 70%,transparent)}
+.codex-illuminated .folio-content{
+ height:100%;padding:clamp(21px,calc(var(--pw)*.086),66px);
+ padding-top:clamp(31px,calc(var(--pw)*.122),86px);
+ padding-bottom:clamp(29px,calc(var(--pw)*.075),62px);
+ line-height:1.43;font-family:'IM Fell English',Georgia,serif;
+ font-size:clamp(11px,calc(var(--pw)*.029),20px);color:#2a1c12;overflow:hidden}
+.codex-illuminated .folio-content.illuminated-page::before{
+ content:'✤  ANNO DOMINI MCD  ✤';position:absolute;top:clamp(9px,calc(var(--pw)*.038),24px);
+ left:22%;right:22%;text-align:center;white-space:nowrap;pointer-events:none;
+ color:#8e693f;font:600 clamp(6px,calc(var(--pw)*.017),11px) Cinzel,serif;letter-spacing:.08em;opacity:.83}
+.codex-illuminated .folio-content p{margin-bottom:.73em;line-height:1.42;text-align:justify;text-wrap:pretty}
+.codex-illuminated .folio-content .folio-title{
+ font:normal clamp(14px,calc(var(--pw)*.056),36px)/1.16 'UnifrakturMaguntia','Uncial Antiqua',Georgia,serif;
+ text-align:center;letter-spacing:0;color:#452216;text-shadow:0 1px 0 #f3cd88;
+ margin:-2px auto 15px;padding-bottom:9px;border-bottom:2px solid #ac8246;
+ max-width:100%;overflow-wrap:anywhere}
+.codex-illuminated .folio-content.chapter-folio .folio-title{color:#6e281e}
+.codex-illuminated .folio-content .initial{
+ display:block;float:left;font:normal clamp(30px,calc(var(--pw)*.109),78px)/.95 'UnifrakturMaguntia','Uncial Antiqua',serif;
+ color:#e6c66c;text-shadow:1px 1px #321d18,-1px -1px #bd934d;
+ background:linear-gradient(145deg,#182f4c,#17435b 43%,#621c19 100%);
+ border:2px solid #b28a43;box-shadow:0 0 0 2px #663c22,inset 0 0 6px #100a08;
+ padding:0 9px 4px;margin:2px 10px 2px 0;min-width:1.12em;text-align:center}
+.codex-illuminated .folio-content .folio-bottom{
+ bottom:clamp(13px,calc(var(--pw)*.034),28px);font:italic clamp(9px,calc(var(--pw)*.023),14px) 'IM Fell English',serif;color:#714b31;letter-spacing:.08em}
+.codex-illuminated .folio-glyph{display:block;clear:both;margin:12px 0;text-align:center;
+ font:16px Cinzel,serif;color:#ad854b;letter-spacing:12px;opacity:.85}
+.codex-illuminated .folio-content .crest-image{width:75%;height:58%;margin:5% auto 0;filter:sepia(.09) contrast(1.08) drop-shadow(0 2px 2px #6844282b);mix-blend-mode:multiply}
+.codex-illuminated .folio-prologue{text-align:center;font:500 clamp(11px,calc(var(--pw)*.026),17px) Cinzel,serif;
+ color:#824332;letter-spacing:.16em;margin-top:10%}
+.codex-illuminated .folio-content .folio-cover-title{margin-top:9%;font:normal clamp(23px,calc(var(--pw)*.085),56px)/1.18 'UnifrakturMaguntia','Uncial Antiqua',serif;color:#592b1e}
+.codex-illuminated .folio-content .folio-cover-sub{font-size:1.13em;margin:9px 0 18px;color:#6c482c}
+.codex-illuminated .folio-content .page-title-ornament{color:#9b6b2d;font-size:23px}
+.codex-illuminated .folio-content .lead-in{text-align:center;font-style:italic;margin-top:15px}
+.codex-illuminated .folio-vignette{float:right;width:49%;height:clamp(100px,calc(var(--pw)*.47),300px);
+ margin:4px 0 12px 14px;border:3px double #a06a32;background:#775434;
+ box-shadow:0 0 0 3px #ead19e,0 0 0 4px #7f4e23,0 5px 14px #55321f49;position:relative}
+.codex-illuminated .folio-vignette-art{display:block;width:100%;height:88%;background-image:url('assets/manuscript-plates.webp');
+ background-size:200% 200%;background-repeat:no-repeat;filter:contrast(1.03) saturate(.93)}
+.codex-illuminated .folio-vignette figcaption{height:12%;background:#d2ad72;text-align:center;
+ font:italic clamp(7px,calc(var(--pw)*.016),10px) Georgia,serif;overflow:hidden;color:#593720;padding-top:2px}
+.codex-illuminated .folio-vignette-art.scene-village,
+.codex-illuminated .story-illustration.scene-village{background-position:left top}
+.codex-illuminated .folio-vignette-art.scene-training,
+.codex-illuminated .story-illustration.scene-training{background-position:right top}
+.codex-illuminated .folio-vignette-art.scene-stables,
+.codex-illuminated .story-illustration.scene-stables{background-position:left bottom}
+.codex-illuminated .folio-vignette-art.scene-knight,
+.codex-illuminated .story-illustration.scene-knight{background-position:right bottom}
+.codex-illuminated .story-illustration{background-image:url('assets/manuscript-plates.webp');background-size:200% 200%;
+ width:100%;height:100%;margin:0;filter:contrast(1.05) saturate(.91);border:0;box-shadow:none}
+.codex-illuminated .illustration-frame{position:relative;width:91%;height:65%;margin:7px auto 0;
+ border:5px ridge #a37334;box-shadow:0 0 0 3px #ead6a7,0 0 0 5px #936332,0 9px 15px #6842227a;background:#aa773a}
+.codex-illuminated .illustration-frame figcaption{font:italic clamp(9px,calc(var(--pw)*.026),16px) 'IM Fell English',Georgia,serif;
+ text-align:center;margin:14px auto;color:#704323;max-width:95%}
+.codex-illuminated .folio-content .annotation{font:italic .88em 'IM Fell English',serif;color:#7f4b30;text-align:center}
+.codex-illuminated .folio-content .blank-message{position:absolute;top:48%;left:10%;right:10%;
+ text-align:center;color:#82613875;font:italic clamp(14px,calc(var(--pw)*.04),26px) 'IM Fell English',serif}
+.codex-illuminated .front-cover{filter:drop-shadow(3px 9px 10px #0009)}
+.codex-illuminated .cover-outer{border:5px solid #1e0f08;border-radius:13px;box-shadow:inset 0 0 0 4px #6b3c1e,5px 8px 13px #000d}
+.codex-illuminated .cover-outer::after{content:'';position:absolute;inset:12px;border:2px double #c59757a1;pointer-events:none}
+.codex-illuminated .cover-inner{border:12px solid #25150d;box-shadow:inset 0 0 0 2px #b28748,inset 0 0 0 14px #4a2e1b}
+.codex-illuminated .front-cover .cover-glint{animation:leather-sheen 18s ease-in-out infinite alternate}
+@keyframes leather-sheen{from{transform:translateX(-25%);opacity:.25}to{transform:translateX(20%);opacity:.76}}
+.codex-illuminated .rear-cover{background:radial-gradient(ellipse at 48% 40%,#51301c,#2b170e 67%,#150904);border:6px solid #25130a}
+.codex-illuminated .rear-cover:before{inset:13px;border:6px double #ab864c;box-shadow:inset 0 0 0 9px #21130a,inset 0 0 0 10px #99764d}
+.codex-illuminated .rear-headline{font:normal clamp(17px,calc(var(--pw)*.055),33px) 'UnifrakturMaguntia',serif;color:#e1bf80}
+.codex-illuminated .rear-subtitle{font-size:clamp(13px,calc(var(--pw)*.027),19px)}
+.codex-illuminated .toolbar{padding:7px 8px;border:2px solid #b48a4c;background:#1a0e08e9;
+ box-shadow:0 0 0 2px #28160c,0 8px 25px #000d;border-radius:5px}
+.codex-illuminated .toolbar button{border:1px solid #a98046;background:linear-gradient(135deg,#5e3820,#2a170d);
+ padding:10px 13px;font:600 clamp(9px,.64vw,12px) Cinzel,serif;letter-spacing:.03em;color:#f0d3a2}
+.codex-illuminated .toolbar #reader{border-color:#cfaa67;color:#f6daa1}
+.codex-illuminated .bottom-ui{bottom:13px;gap:6px}
+.codex-illuminated .help{font-size:13px}
+.codex-illuminated .frame{opacity:.68}
+.codex-illuminated .candle-halo{position:fixed;z-index:-2;pointer-events:none;width:35vw;height:45vh;
+ background:radial-gradient(ellipse,#f7a43b3a 0%,#d6791633 22%,transparent 66%);
+ filter:blur(23px);animation:halo-breathe 2.8s ease-in-out infinite alternate}
+.codex-illuminated .halo-left{left:-12%;top:-18%}.codex-illuminated .halo-right{right:-14%;top:-17%;animation-delay:-1.7s}
+@keyframes halo-breathe{0%{opacity:.56;transform:scale(.95)}50%{opacity:1}100%{opacity:.76;transform:scale(1.12)}}
+.codex-illuminated .smoke-stack{position:fixed;z-index:-1;pointer-events:none;width:200px;height:370px;top:-25px}
+.codex-illuminated .smoke-left{left:4%}.codex-illuminated .smoke-right{right:2%;top:-30px}
+.codex-illuminated .smoke-stack i{position:absolute;bottom:5px;left:50%;display:block;width:52px;height:132px;
+ border-radius:50%;background:radial-gradient(ellipse,#f0dfcc32 0%,#d9cabc18 50%,transparent 71%);
+ filter:blur(18px);mix-blend-mode:screen;opacity:0;transform-origin:center bottom;animation:smoke-rise 9.4s linear infinite}
+.codex-illuminated .smoke-stack i:nth-child(2){left:32%;animation-delay:-1.4s;animation-duration:10.5s}
+.codex-illuminated .smoke-stack i:nth-child(3){left:59%;animation-delay:-3.2s;animation-duration:8.6s}
+.codex-illuminated .smoke-stack i:nth-child(4){left:46%;animation-delay:-5.8s;animation-duration:11s}
+.codex-illuminated .smoke-stack i:nth-child(5){left:68%;animation-delay:-7s;animation-duration:10.2s}
+.codex-illuminated .smoke-stack i:nth-child(6){left:26%;animation-delay:-8.3s;animation-duration:12.4s}
+@keyframes smoke-rise{0%{opacity:0;transform:translate(0,56px) scale(.38) rotate(-7deg)}
+ 18%{opacity:.52}45%{opacity:.6;transform:translate(23px,-80px) scale(1.2) rotate(8deg)}
+ 78%{opacity:.31;transform:translate(-11px,-195px) scale(1.9) rotate(-7deg)}
+ 100%{opacity:0;transform:translate(35px,-285px) scale(2.5) rotate(9deg)}}
+.codex-illuminated .scrolling-haze{position:fixed;inset:0;z-index:-2;pointer-events:none;
+ background:radial-gradient(ellipse 37vw 17vh at 50% 72%,#fff5cd08,transparent 74%);
+ animation:haze-drift 24s ease-in-out infinite alternate;filter:blur(25px)}
+@keyframes haze-drift{from{transform:translate(-3%,2%) scale(1)}to{transform:translate(3%,-2%) scale(1.09)}}
+.codex-illuminated .reader-dialog{width:min(950px,calc(100vw - 24px));max-height:92vh;padding:0;border:5px ridge #987044;
+ background:#e7ce9d;color:#3b2115;box-shadow:0 0 0 4px #2a160c,0 25px 110px #000e;overflow:auto}
+.codex-illuminated .reader-dialog::backdrop{background:#090603e6;backdrop-filter:blur(9px)}
+.codex-illuminated .reader-top{position:sticky;top:0;z-index:5;background:#25160c;color:#eed4a0;
+ display:flex;justify-content:space-between;align-items:center;padding:10px 20px;gap:20px}
+.codex-illuminated .reader-top h2{font:normal 27px 'UnifrakturMaguntia',serif;margin:0}
+.codex-illuminated .reader-top button{background:#694123;color:#efdab6;border:1px solid #d8b16c;padding:9px 12px;cursor:pointer}
+.codex-illuminated .reader-pages{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#49301e}
+.codex-illuminated .reader-leaf{background:linear-gradient(130deg,#ebd5a9,#d9b987);
+ min-height:400px;position:relative}
+.codex-illuminated .reader-leaf .folio-content{height:auto;min-height:400px;overflow:visible;
+ padding:65px 47px;font-size:18px;line-height:1.65}
+.codex-illuminated .reader-leaf .folio-content p{font-size:18px;line-height:1.58}
+.codex-illuminated .reader-leaf .folio-content .folio-title{font-size:32px}
+.codex-illuminated .reader-leaf .folio-content .initial{font-size:58px}
+.codex-illuminated .reader-leaf .folio-content .folio-bottom{position:static;display:block;margin-top:35px}
+.codex-illuminated .reader-leaf .folio-vignette{height:190px}
+.codex-illuminated .reader-leaf .illustration-frame{height:320px}
+@media(max-width:930px){
+ .codex-illuminated .folio-vignette{display:none}
+ .codex-illuminated .folio-content{padding:clamp(17px,calc(var(--pw)*.085),49px);
+ padding-top:clamp(23px,calc(var(--pw)*.13),62px);font-size:clamp(10px,calc(var(--pw)*.033),16px)}
+ .codex-illuminated .folio-content .folio-title{font-size:clamp(12px,calc(var(--pw)*.06),26px)}
+ .codex-illuminated .toolbar{gap:3px;padding:5px}
+ .codex-illuminated .toolbar button{padding:9px 7px;font-size:10px}
+ .codex-illuminated .masthead h1{font-size:21px}
+ .codex-illuminated .masthead p{font-size:12px}
+}
+@media(max-width:550px){
+ .codex-illuminated .masthead .overline{font-size:8px}
+ .codex-illuminated .stage{inset:75px 0 82px}
+ .codex-illuminated .bottom-ui{bottom:10px}
+ .codex-illuminated .help{font-size:10px;max-width:88vw;white-space:normal;text-align:center}
+ .codex-illuminated .toolbar{max-width:98vw;gap:2px;padding:3px}
+ .codex-illuminated .toolbar button{font-size:8px;padding:7px 4px}
+ .codex-illuminated .toolbar .small-button{font-size:13px;padding:8px 6px}
+ .codex-illuminated .toolbar #reader{max-width:40px}
+ .codex-illuminated .toolbar #toc{max-width:42px;text-overflow:ellipsis;overflow:hidden}
+ .codex-illuminated .toolbar #close{max-width:42px;text-overflow:ellipsis;overflow:hidden}
+ .codex-illuminated .page-status{min-width:49px;font-size:10px}
+ .codex-illuminated .folio-content{padding:16px 14px 24px;padding-top:24px;font-size:10px}
+ .codex-illuminated .folio-content.illuminated-page::before{font-size:6px;top:8px}
+ .codex-illuminated .folio-content .folio-title{font-size:13px;margin:0 0 6px;padding-bottom:5px}
+ .codex-illuminated .folio-content .initial{font-size:28px;padding:0 3px 1px;margin:0 4px 0 0;border-width:1px}
+ .codex-illuminated .folio-glyph{font-size:10px;margin:4px 0}
+ .codex-illuminated .illustration-frame{height:57%;border-width:2px}
+ .codex-illuminated .illustration-frame figcaption{font-size:9px;margin-top:4px}
+ .codex-illuminated .reader-pages{display:block}
+ .codex-illuminated .reader-leaf .folio-content{padding:65px 30px;font-size:18px}
+ .codex-illuminated .reader-leaf{min-height:450px}
+ .codex-illuminated .reader-leaf .folio-vignette{display:block}
+ .codex-illuminated .smoke-left{left:-13%}
+ .codex-illuminated .smoke-right{right:-14%}
+}
+@media(prefers-reduced-motion:reduce){
+ .codex-illuminated .smoke-stack i,.codex-illuminated .candle-halo,
+ .codex-illuminated .scrolling-haze,.codex-illuminated .front-cover .cover-glint{animation:none!important}
+ .codex-illuminated .smoke-stack i{opacity:.18}
+}

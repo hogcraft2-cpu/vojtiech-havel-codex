@@ -8,22 +8,27 @@
   <title>Vojtiech Havel • Księga 1400</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Uncial+Antiqua&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Uncial+Antiqua&family=UnifrakturMaguntia&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script src="pages.js" defer></script>
   <script src="app.js" defer></script>
 </head>
-<body>
+<body class="codex-illuminated">
   <div class="study" aria-hidden="true"></div>
   <div class="ambient-shadow" aria-hidden="true"></div>
   <div class="lamplight" aria-hidden="true"><span class="lamp-flame"></span></div>
+  <div class="candle-halo halo-left" aria-hidden="true"></div>
+  <div class="candle-halo halo-right" aria-hidden="true"></div>
+  <div class="smoke-stack smoke-left" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="smoke-stack smoke-right" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="scrolling-haze" aria-hidden="true"></div>
   <canvas id="dust" aria-hidden="true"></canvas>
   <div class="frame" aria-hidden="true"><span class="a"></span><span class="b"></span><span class="c"></span><span class="d"></span></div>
 
   <header class="masthead">
-    <span class="overline">A N N O &nbsp; D O M I N I &nbsp; M C D</span>
+    <span class="overline">✥ &nbsp; K R O N I K A &nbsp; W O J A K A &nbsp; ✥</span>
     <h1>VOJTIECH HAVEL</h1>
-    <p>Księga z roku pańskiego 1400</p>
+    <p>Z Přítok ku rycerskiej służbie · 1386–1406</p>
     <span class="divider-ornament" aria-hidden="true">❧ ✠ ❧</span>
   </header>
 
@@ -55,6 +60,7 @@
       <span class="page-status" id="status" aria-live="polite">Okładka</span>
       <button id="next" type="button">Otwórz księgę <span>›</span></button>
       <button id="close" type="button" hidden>Zamknij</button>
+      <button id="reader" type="button" title="Czytaj w powiększeniu" aria-label="Czytaj strony w powiększeniu">Czytaj</button>
       <button id="sound" class="small-button" type="button" title="Dźwięk przewracania kartek" aria-label="Dźwięk przewracania kartek">♪</button>
       <button id="fullscreen" class="small-button" type="button" title="Pełny ekran" aria-label="Pełny ekran">⛶</button>
     </nav>
@@ -64,6 +70,11 @@
     <div class="toc-header"><h2 id="tocTitle">Spis treści</h2><button id="closeToc" aria-label="Zamknij spis treści">✕</button></div>
     <p class="toc-intro">Wybierz rozkładówkę, do której chcesz przejść.</p>
     <div id="tocEntries" class="toc-entries"></div>
+  </dialog>
+
+  <dialog id="readerDialog" class="reader-dialog" aria-labelledby="readerTitle">
+    <div class="reader-top"><h2 id="readerTitle">Księga Vojtiecha</h2><button type="button" id="closeReader" aria-label="Zamknij powiększenie">Zamknij ×</button></div>
+    <div class="reader-pages" id="readerPages"></div>
   </dialog>
 
   <noscript><div class="noscript">Aby otworzyć księgę, włącz JavaScript w przeglądarce.</div></noscript>

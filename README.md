@@ -1,34 +1,34 @@
-# Vojtiech Havel — Kronika wojaka
+# Vojtiech Havel — Kodeks Iluminowany
 
-Interaktywna, trójwymiarowa księga w estetyce realistycznego średniowiecza, osadzona fabularnie w okolicach Přítok i Kuttenbergu na początku XV wieku. Projekt jest osobną stroną GitHub Pages — bez zależności od innych repozytoriów.
+Interaktywna księga fabularna w estetyce iluminowanych kronik z początku XV wieku. Projekt jest całkowicie samodzielny i nie zmienia repozytorium `sacrascript-medieval`.
 
 **Strona:** https://hogcraft2-cpu.github.io/vojtiech-havel-codex/
 
-## Opowieść
+## Nowy wygląd
 
-Kronika opowiada o Vojtiechu, chłopcu z rodziny utrzymującej się z przewozu towarów i opieki nad końmi. Wykazuje od wczesnych lat talent do walki, szkoli się pod okiem starego kowala i byłego zbrojnego Víta, przekonuje się jednak, że prawdziwa przemoc różni się od ćwiczeń. Następnie poznaje Jana Švarca — najmłodszego syna Heinricha, który po śmierci ojca opuścił rodowe włości w ziemi opawskiej — i zaczyna trudną służbę. Jan jest porywczy, dumny, nie zawsze moralny, ale umie walczyć i potrafi okazać litość.
+- Otwierana, gruba skórzana oprawa, złote zdobienia i herb z krukiem.
+- Rozłożona księga z dwoma pełnowymiarowymi pergaminowymi stronami.
+- Gotyckie nagłówki, czerwono-niebieskie iluminowane inicjały, ramy, filigrany, złote linie i ryciny wplecione pomiędzy tekst.
+- Cztery malarskie sceny z poprzedniej wizualizacji przeniesione do osobnej tekstury `assets/manuscript-plates.webp` (4 pola 2×2): wieś, szermierka, stajnie i spotkanie z Janem.
+- Drewniane biurko, ruchomy dym świec, migoczące światło, unoszący się pył, powolny ruch scenerii.
+- Dźwięk przewracania stron ♪; można go wyłączyć.
+- Przycisk **Czytaj** otwiera powiększony, przewijany widok tekstu, wygodny na telefonie.
+- Spis treści, klawisze ← →, tryb pełnoekranowy, zapamiętywanie rozkładówki, prawdziwa tylna oprawa.
 
-**To opowieść otwarta:** ostatnia scena jest początkiem kolejnego zlecenia Jana i Vojtiecha. Nie dopisywano zakończenia przyszłych losów postaci.
+## Kronika
 
-## Funkcje
+Opowieść zaczyna się od dzieciństwa Vojtiecha w Přítokach około 1386 roku, szkolenia pod okiem kowala Víta, pierwszych doświadczeń szermierczych oraz spotkania z Janem Švarcem. Kolejne rozdziały obejmują służbę i dojrzewanie Vojtiecha do **20. roku życia (około 1406)**, kiedy nadal pozostaje giermkiem. Historia jest **otwarta** — ostatnia scena prowadzi do kolejnej wyprawy.
 
-- 30 kart i osiem rozdziałów (ostatnia karta stanowi skórzaną tylną okładkę).
-- Animowana okładka, dwie duże strony wewnątrz i trójwymiarowe przewracanie.
-- Oryginalny herb Havela, malarskie sceny z Přítok, szermierki, koni i spotkania z Janem.
-- Animowane tło średniowiecznej pracowni, świeca i drobiny kurzu.
-- Syntetyzowany dźwięk przewracania stron; przycisk ♪ włącza/wyłącza audio.
-- Spis treści, sterowanie strzałkami i przyciskami, zapis ostatniej strony, pełen ekran.
+Rok 1400 na okładce jest stylizowanym symbolem epoki; narracja obejmuje kilka lat przed nim i po nim.
 
-## Dopisywanie dalszych wydarzeń
+## Edycja treści
 
-Edytuj `pages.js`. Każdy obiekt `window.CODEX_PAGES` to **jedna karta księgi**. Dwie kolejne karty to jedna rozkładówka. Kolejny rozdział należy dodać **przed** końcową kartą typu `backcover`. Liczba kart musi pozostać parzysta — w razie potrzeby dodaj kartę typu `blank`.
+`pages.js` zawiera `window.CODEX_PAGES`; każda pozycja to jedna karta, dwie pozycje to rozkładówka. Dostępne rodzaje to `title`, `crest`, `illustration`, `text`, `map`, `drawing`, `blank`, `backcover`. Kolejne teksty dopisuj **przed** ostatnimi kartami `blank` i `backcover`. Liczba stron musi być parzysta.
 
-Spis treści znajduje się w `window.CODEX_CHAPTERS`. Pole `spread` to liczony od zera numer rozkładówki. Rozdziały mogą korzystać z `type: "text"`, a sceny z `type: "illustration"` wraz z `scene: "village" | "training" | "stables" | "knight"`. Ozdobne obrazy czterech scen znajdują się w `assets/story-scenes.webp`.
-
-Silnik stron, animacje i audio są w `app.js`, wygląd w `styles.css`, a układ strony w `index.html`. Projekt działa bez instalacji bibliotek JavaScript. Wystarczy otworzyć `index.html` lub wejść na stronę GitHub Pages.
+Nazwy i numery rozdziałów są w `window.CODEX_CHAPTERS`. Funkcja `renderPage` w `app.js` zamienia treść na edytowalny HTML. Wygląd jest w `styles.css`, a ornamenty w `assets/manuscript-frame.svg`.
 
 ## Publikacja
 
-Workflow `.github/workflows/bootstrap.yml` automatycznie kontroluje składnię JavaScript, podstawowe pliki i ilustracje, po czym publikuje `main` na GitHub Pages.
+Zmiany w gałęzi `main` publikują się automatycznie na GitHub Pages przez `.github/workflows/bootstrap.yml`.
 
-**Ważne:** bohaterowie, wydarzenia oraz sceny są autorską fabułą RP. Oprawa graficzna nawiązuje do realistycznego średniowiecza znanego z gier pokroju Kingdom Come: Deliverance II, ale nie korzysta z materiałów wyciętych z tej gry.
+**Uwaga:** To fabularyzowana historia postaci RP; ilustracje i projekt graficzny są autorską interpretacją historycznego klimatu, a nie zasobami wyciętymi z gry.
