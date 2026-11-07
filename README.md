@@ -27,6 +27,14 @@ Rok 1400 na okładce jest stylizowanym symbolem epoki; narracja obejmuje kilka l
 
 Nazwy i numery rozdziałów są w `window.CODEX_CHAPTERS`. Funkcja `renderPage` w `app.js` zamienia treść na edytowalny HTML. Podstawowy wygląd jest w `styles.css`, a nowa, powiększona oprawa w `codex-large.css` (ładowanym jako ostatni). Ornamenty są w `assets/manuscript-frame.svg`, a sceny malarskie w `assets/manuscript-plates.webp`. Responsywna wielkość księgi i nawigacja znajdują się w `app.js`.
 
+## Dopracowanie wyglądu i czytania (listopad 2026)
+
+- `codex-folio-enhance.css` jest ostatnią warstwą stylów: nierówna faktura pergaminu, głębsze cienie grzbietu, większa rozkładówka, miękko wtapiające się ryciny i czytelniejsze akapity bez nienaturalnego rozciągania odstępów.
+- Na dużych ekranach widać dwie pełne karty. Podczas czytania nagłówek strony znika, aby niczego nie zasłaniać.
+- Na telefonie oglądasz **jedną dużą kartę naraz**. Przycisk „Następna” pokazuje kolejno kartę prawą, a potem następną rozkładówkę. „Poprzednia” działa odwrotnie.
+- Przycisk „Czytaj” nadal powiększa tekst. Na telefonie wyświetla tylko aktualną kartę.
+- Po zamknięciu i ponownym otwarciu zawsze wracasz do strony pierwszej; pozycja czytania nie jest zapisywana.
+
 ## Jak zaczyna się czytanie
 
 Każde nowe wejście na stronę i każde ponowne otwarcie okładki zaczyna się od **kart 1–2**. Nie zapisujemy ostatnio czytanej rozkładówki w przeglądarce. W trakcie czytania można swobodnie przechodzić przyciskami, klawiaturą i spisem treści. Zapamiętywana jest tylko osobista preferencja włączenia dźwięku kartek.
