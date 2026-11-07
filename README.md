@@ -1,65 +1,39 @@
-# Vojtiech Havel — Interaktywna księga (Anno Domini MCD)
+# Vojtiech Havel — kronika otwarta
 
-Osobny, samodzielny projekt strony internetowej. Nie używa żadnych plików z `sacrascript-medieval` ani zewnętrznych bibliotek JavaScript. Wymaga tylko aktualnej przeglądarki internetowej. Ozdobne czcionki pobierają się z Google Fonts; w trybie offline są zastępowane systemowymi.
+Interaktywna książka o młodym Vojciechu Havelu pochodzącym z Přítok, około roku 1400. To **powieść fabularna do RP** (nie opracowanie historyczne). Jej pierwsza część opowiada o dzieciństwie, dorastaniu, pierwszym spotkaniu z rycerzem Janem Švarcem z ziem opawskich oraz o początkach służby giermka.
 
-## Co jest gotowe?
+## Przeczytaj
 
-- Prawidłowy układ: **jedna okładka zamkniętej księgi** i **dokładnie dwie duże strony po otwarciu**.
-- Animacja otwierania i zamykania księgi oraz przewracania kart w obie strony (CSS 3D).
-- Okładka z napisem `Vojtiech Havel — 1400 rok pański` i krukiem z przesłanego herbu.
-- Kilka stron testowych: karta tytułowa, herb, próbne zapiski, mapa, rycina miecza.
-- Kolejne puste karty na przyszłą historię.
-- Klimatyczne tło pracowni ze stołem, światłem świecy i animowanym pyłem.
-- Spis treści, nawigacja klawiaturą, pamięć ostatniego miejsca i pełny ekran.
+https://hogcraft2-cpu.github.io/vojtiech-havel-codex/
 
-## Uruchomienie na komputerze
+## Opublikowana zawartość
 
-Po rozpakowaniu ZIP-a otwórz **`index.html`** dwuklikiem. Nie trzeba uruchamiać serwera, niczego instalować ani podawać kluczy API.
+- I. Pod strzechą w Přítokach — dzieciństwo i rodzice Mikuláš i Dorota.
+- II. Nauka strachu — podróże z ojcem, napad i pierwsze ćwiczenia.
+- III. Miasto srebra — Kuttenberg, życie na trakcie, zapowiedź rodziny Švarców.
+- IV. Człowiek z Opawy — pojawienie się Jana Švarca, początek znajomości.
+- V. Cena służby — ciężkie obowiązki, treningi i wątpliwa moralność Jana.
+- VI. Giermek — powierzenie Vojciechowi oficjalnych obowiązków.
+- VII. Pierwszy szlak — pierwsza eskorta i nowa tajemnicza misja.
 
-## Nowe repozytorium na GitHubie (bez ruszania innych projektów)
+Rozdział VII celowo nie zawiera zamkniętego zakończenia. Ostatnie strony są puste, czekają na kolejny fragment opowieści rozwijany wraz z wydarzeniami na serwerze RP.
 
-1. Przejdź do [github.com/new](https://github.com/new).
-2. Nazwij nowe repozytorium **`vojtiech-havel-codex`**, ustaw widoczność `Public`, utwórz repozytorium.
-3. W widoku nowego repozytorium wybierz **Add file → Upload files**.
-4. Prześlij **zawartość** katalogu `vojtiech-havel-codex` (a nie katalog nadrzędny). Ważne, żeby `index.html` znalazł się w katalogu głównym. Prześlij również katalog `assets` i `.github/workflows`.
-5. Przejdź do **Settings → Pages** i ustaw **Build and deployment → Source: GitHub Actions**, jeśli nie jest ustawione automatycznie.
-6. Zakładka **Actions** pokaże wdrożenie; po udanym zakończeniu strona będzie pod adresem:
-   `https://TWOJ_LOGIN.github.io/vojtiech-havel-codex/`
+Założenia fabularne: rodzice Vojciecha, szczegóły dzieciństwa i pierwszej służby zostały dopisane jako fikcja literacka, natomiast Jan Švarc zachowuje podane przez gracza pochodzenie i charakter (najmłodszy syn Heinricha, odejście po śmierci ojca, służba za pieniądze, porywczość, nieufność i zasady moralne).
 
-W repozytorium jest gotowy workflow `.github/workflows/pages.yml`; uruchamia wdrożenie po przesłaniu zmian na gałąź `main`.
+## Ilustracje
 
-Jeżeli tworzysz puste repozytorium, można też po prostu przesłać ZIP przez opcję importu w używanym przez siebie kliencie Git (pamiętaj o rozpakowaniu ZIP-a).
+- `assets/vojciech-childhood.svg` — miniatura dzieciństwa w stajni.
+- `assets/vojciech-squire.svg` — miniatura pierwszych nauk u Jana.
+- `assets/crest.webp` — herb przesłany przez użytkownika.
+- `assets/cover.webp` — dotychczasowa skórzana okładka księgi.
+- `assets/paper.webp` i `assets/study.webp` — pergamin i tło pracowni.
 
-## Edytowanie kroniki
+Ilustracje są artystyczną stylizacją na miniatury rękopiśmienne, nie autentycznymi zabytkami z roku 1400.
 
-Cała zawartość znajduje się w pliku **`pages.js`**. Każdy wpis tablicy `CODEX_PAGES` to dokładnie **jedna strona**, a dwie kolejne strony tworzą rozkładówkę. Dozwolone typy: `title`, `text`, `crest`, `map`, `drawing`, `blank`.
+## Dodawanie dalszych rozdziałów
 
-Na początek przygotowano 16 stron. Kolejne rozdziały można dopisać bez zmiany silnika w `app.js`, zachowując parzystą liczbę wpisów. Spis treści edytuje się w tablicy `CODEX_CHAPTERS`.
+Treść zawiera plik `pages.js`. Tablica `window.CODEX_PAGES` to pojedyncze strony, a `window.CODEX_CHAPTERS` — odnośniki w spisie treści. Nową historię dopisuje się zamiast kolejnych wpisów typu `blank`. Zachowaj parzystą liczbę stron: każda para tworzy jeden rozkład książki. Wpis typu `text` przyjmuje `title` i tablicę `paragraphs`, a `illustration` przyjmuje `title`, `src` i `caption`.
 
-## Sterowanie
+Stronę możesz otworzyć lokalnie poprzez `index.html`, bez instalowania bibliotek. `.github/workflows/bootstrap.yml` automatycznie wdraża ją przez GitHub Pages po zmianach na `main`.
 
-- Kliknięcie okładki lub przycisku **Otwórz księgę** otwiera księgę.
-- Kliknięcie prawej strony / przycisk **Następna** / klawisz `→` przewraca do przodu.
-- Kliknięcie lewej strony / przycisk **Poprzednia** / klawisz `←` przewraca wstecz.
-- Przyciskiem **Zamknij** zamykasz księgę.
-- **Spis treści** pozwala przeskakiwać między rozdziałami.
-- **⛶** włącza lub wyłącza pełny ekran.
-
-## Struktura
-
-```
-index.html
-styles.css
-app.js
-pages.js
-assets/
-  cover.webp   (tekstura okładki przygotowana z wcześniejszej wizualizacji)
-  study.webp   (tło średniowiecznej pracowni z wcześniejszej wizualizacji)
-  crest.webp   (oryginalny przesłany herb)
-  paper.webp   (tekstura pergaminu)
-.github/workflows/pages.yml
-.nojekyll
-README.md
-```
-
-To stylizowana, interaktywna księga 3D oparta na transformacjach CSS — nie pełna symulacja fizyki elastycznego papieru. Strony i okładka poruszają się w trójwymiarowej perspektywie, a treści zachowują swój układ.
+Sterowanie: kliknij okładkę, używaj przycisków „Poprzednia” i „Następna”, strzałek klawiatury, spisu treści lub pełnego ekranu.
