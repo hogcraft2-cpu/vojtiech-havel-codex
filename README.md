@@ -21,6 +21,18 @@ Opowieść zaczyna się od dzieciństwa Vojtiecha w Přítokach około 1386 roku
 
 Rok 1400 na okładce jest stylizowanym symbolem epoki; narracja obejmuje kilka lat przed nim i po nim.
 
+## Edycja Premium — oprawa iluminowanego kodeksu
+
+Nowy wygląd jest w plikach `codex-premium.css` i `codex-premium.js`:
+- trójwymiarowa, skórzana oprawa, zaznaczone brzegi stron i mocny cień przy grzbiecie;
+- osobne zdobienia rozdziałów, złocone inicjały, pieczęcie i zmienne symbole na marginesach;
+- pióro skryby oraz lakowa pieczęć na tle stołu;
+- reagujące na kursor, delikatne ciepłe światło i dodatkowy połysk podczas przewracania;
+- bardziej pionowe karty na telefonie, a na komputerze klasyczna rozkładówka;
+- szacunek dla systemowej opcji ograniczenia ruchu (`prefers-reduced-motion`).
+
+Historia i ilustracje nadal pozostają w `pages.js`, a dźwięk kartek można włączać lub wyłączać w panelu nawigacji. Każde otwarcie księgi zaczyna się od strony 1.
+
 ## Edycja treści
 
 `pages.js` zawiera `window.CODEX_PAGES`; każda pozycja to jedna karta, dwie pozycje to rozkładówka. Dostępne rodzaje to `title`, `crest`, `illustration`, `text`, `map`, `drawing`, `blank`, `backcover`. Kolejne teksty dopisuj **przed** ostatnimi kartami `blank` i `backcover`. Liczba stron musi być parzysta.
