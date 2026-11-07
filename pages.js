@@ -1,5 +1,6 @@
-/* Księga Vojtiecha Havela — fikcyjna powieść przygodowa w realiach Czech około 1400 roku.
-   Każdy obiekt = jedna karta. Dalsze losy dopisuj przed stroną typu backcover. */
+/* Kronika Vojtiecha Havela: otwarta powieść RP, Czechy około 1386–1406.
+Każdy element tablicy to jedna karta; rozdziały dopisuj przed ostatnią rozkładówką.
+Sceny przygodowe są fikcyjne i zgodne z historią postaci Jana Švarca. */
 window.CODEX_PAGES = [
   {
     "type": "title",
@@ -235,6 +236,90 @@ window.CODEX_PAGES = [
     ]
   },
   {
+    "type": "text",
+    "title": "Rozdział IX. Zimowy trakt",
+    "initial": "W",
+    "paragraphs": [
+      " osiemnastym roku życia Vojtiech przestał liczyć wyprawy, w których służył Janowi. Niektóre trwały zaledwie dzień, inne zabierały tygodnie. Bywał przy wozach kupieckich, pilnował gońców i nocował w stajniach, gdzie koń otrzymywał lepsze posłanie niż jego giermek. Każda droga zostawiała ślad na butach i wspomnieniach.",
+      "Zimą roku 1404 śnieg zatarł ścieżki pośród lasów. Jan przyjął służbę u pana, którego ludzie spierali się ze swoimi sąsiadami o granicę. Vojtiech miał pilnować koni i dostarczyć wiadomość do oddalonego folwarku. Po raz pierwszy wysłano go samego, bez zbrojnego u boku."
+    ]
+  },
+  {
+    "type": "text",
+    "title": "",
+    "initial": "N",
+    "paragraphs": [
+      "a skraju wsi znalazł dom, w którym ukrywała się rodzina wypędzona z własnej ziemi. Starsza kobieta prosiła o pomoc, jej synowie przemarznięci siedzieli przy wygasłym palenisku. Posłaniec nie powinien się zatrzymywać, ale Vojtiech oddał im część prowiantu i pozostawił suchą opończę. Do Jana wrócił później, niż obiecał.",
+      "Rycerz przyjął tłumaczenie w milczeniu. Dopiero po kilku godzinach powiedział: „Miłosierdzie jest drogie, gdy płaci za nie ktoś inny”. Kazał chłopcu odpracować zwłokę przy koniach, lecz nie odebrał mu prawa do samodzielnych wypraw. Vojtiech nie wiedział, czy usłyszał naganę, czy pierwszą oznakę zaufania."
+    ]
+  },
+  {
+    "type": "illustration",
+    "title": "Żelazo, śnieg i nauka",
+    "scene": "training",
+    "note": "Zima 1404. Każda poprawiona zasłona była cenna, a każda pomyłka bolesna."
+  },
+  {
+    "type": "text",
+    "title": "",
+    "initial": "J",
+    "paragraphs": [
+      "an ćwiczył z nim nadal, lecz dawny drewniany kij ustąpił miejsca tępionej stali. Vojtiech przestał polegać na samej szybkości. Nauczył się trzymać dystans, cofać w błocie i wykorzystywać ciężar przeciwnika, który nacierał z nadmierną pewnością siebie. Z czasem potrafił zmusić Jana do pełnego wysiłku.",
+      "Wieczorami rycerz opowiadał o ziemiach opawskich. Wspominał Heinricha, podupadający Švarštejn i braci, których zostawił za sobą. Vojtiech odkrywał w nim człowieka zdolnego do litości, lecz nieumiejącego zapomnieć urazy. Zrozumiał, że honor Jana nie zawsze oznaczał to samo, co honor z kazania."
+    ]
+  },
+  {
+    "type": "text",
+    "title": "Rozdział X. Pod obcym sztandarem",
+    "initial": "W",
+    "paragraphs": [
+      " dziewiętnastym roku życia Vojtiech znał już wartość ciszy, gdy dwóch możnych zasiadało do rozmowy. Na początku roku 1405 towarzyszył Janowi w podróżach między małymi dworami i osadami. Nieraz lepiej od swego pana pamiętał imiona sług, ceny owsa i drogę przez las, bo rycerz nie cierpiał szczegółów, które nie dotyczyły miecza.",
+      "Przy jednej z narad padła obietnica zapłaty za eskortę, którą później próbowano odwołać. Jan chwycił za pas, gotów siłą wymóc należność. Vojtiech po raz pierwszy odważył się wejść mu w słowo: przypomniał świadków i dokładne brzmienie umowy. Rycerz spojrzał gniewnie, lecz opuścił dłoń."
+    ]
+  },
+  {
+    "type": "text",
+    "title": "",
+    "initial": "S",
+    "paragraphs": [
+      "pór rozstrzygnięto bez rozlewu krwi. Jan przez cały wieczór nie odzywał się do giermka, aż wreszcie postawił przed nim kubek słabego piwa. „Masz zbyt śmiały język”, mruknął. „Ale tym razem był szybszy od mojego miecza”. Vojtiech nie odważył się uśmiechnąć, choć trudno było mu nie poczuć dumy.",
+      "Od tego czasu Jan częściej wysyłał go z wiadomościami, pozwalał też rozmawiać z gospodarzami i ustalać noclegi. Nie oznaczało to łaski bez granic. Za każde niedopatrzenie odpowiadał sam. A kiedy pewien najemnik obraził Jana przy stole, Vojtiech musiał użyć wszelkiego rozsądku, by nie dopuścić do pojedynku."
+    ]
+  },
+  {
+    "type": "illustration",
+    "title": "W cieniu rycerskiego płaszcza",
+    "scene": "knight",
+    "note": "Rok 1405. Giermek zaczyna rozumieć, że słowo bywa równie niebezpieczne jak oręż."
+  },
+  {
+    "type": "text",
+    "title": "",
+    "initial": "P",
+    "paragraphs": [
+      "odróże nauczyły go też, jak mało wart jest dobry zamiar bez środków. Zdarzało się, że zamiast pomóc ubogim, musiał oszczędzać zapasy dla własnych ludzi. Raz odmówił kupcowi, który żądał brutalnego rozpędzenia głodnych wieśniaków z drogi. Jan wysłuchał go i odesłał kupca bez umowy. Nie uczynił tego bezinteresownie; zapłata była mizerna, a ryzyko ogromne.",
+      "Vojtiech nie przestał podziwiać mistrza, lecz przestał brać każde jego słowo za prawdę. Jan również zmienił sposób, w jaki traktował młodzieńca. Nie nazwałby go synem ani przyjacielem. Kiedy jednak pytał, którą drogę wybrać, naprawdę czekał na odpowiedź."
+    ]
+  },
+  {
+    "type": "text",
+    "title": "Rozdział XI. Dwudziesty rok",
+    "initial": "W",
+    "paragraphs": [
+      " roku 1406 Vojtiech Havel liczył dwadzieścia lat. Miał mocne ramiona, bliznę na przedramieniu po nieudanym sparingu i dłonie twarde od wodzy oraz rękojeści. Nie był rycerzem. Nie nosił złoconych ostróg, nie posiadał ziemi ani własnego pocztu. Pozostał giermkiem Jana Švarca, choć niejeden podróżny brał go już za doświadczonego zbrojnego.",
+      "Kiedy wracał czasem do Přítok, wieś wydawała mu się mniejsza niż przed laty. Ojciec przyglądał mu się bez pytań, matka zaś długo zatrzymywała dłoń na jego rękawie. Vojtiech widział już tyle dróg i twarzy, że trudno było opowiedzieć o nich przy jednym wieczornym posiłku."
+    ]
+  },
+  {
+    "type": "text",
+    "title": "",
+    "initial": "P",
+    "paragraphs": [
+      "ewnego dnia Jan otrzymał list opatrzony ciemną pieczęcią. Czytał go długo, a potem wrzucił do ognia, zachowując jedynie mały skrawek z nazwiskiem, którego Vojtiech nie znał. Nazajutrz nakazał przygotować oba konie, zapasy i broń, jakby wyruszali na dłużej niż zwykle.",
+      "„Dokąd jedziemy?” zapytał giermek. Jan zacisnął rzemień przy rękojeści miecza. „Do ludzi, którym nie ufam. Ale obiecali zapłatę i odpowiedź na pytanie, którego nie zdążyłem zadać mojemu ojcu”. Vojtiech nie dopytywał. Wiedział już, że niektóre opowieści przychodzą dopiero w drodze."
+    ]
+  },
+  {
     "type": "blank"
   },
   {
@@ -245,7 +330,7 @@ window.CODEX_PAGES = [
 ];
 window.CODEX_CHAPTERS = [
   {
-    "title": "Karta tytułowa i herb",
+    "title": "Prolog · Herb i pochodzenie",
     "spread": 0
   },
   {
@@ -281,7 +366,19 @@ window.CODEX_CHAPTERS = [
     "spread": 12
   },
   {
-    "title": "Tylna okładka i miejsce na dalsze losy",
+    "title": "Rozdział IX. Zimowy trakt",
     "spread": 14
+  },
+  {
+    "title": "Rozdział X. Pod obcym sztandarem",
+    "spread": 16
+  },
+  {
+    "title": "Rozdział XI. Dwudziesty rok",
+    "spread": 18
+  },
+  {
+    "title": "Tylna okładka · Historia wciąż trwa",
+    "spread": 19
   }
 ];

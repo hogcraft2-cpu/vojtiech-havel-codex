@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1160" preserveAspectRatio="none">
+ <defs>
+  <linearGradient id="gold" x2="1" y2="1"><stop stop-color="#dfb75f"/><stop offset=".48" stop-color="#966324"/><stop offset="1" stop-color="#e6bd67"/></linearGradient>
+  <g id="flor">
+   <path d="M24 220C45 160 38 98 89 56S177 24 212 21" fill="none" stroke="#a7772d" stroke-width="8" stroke-linecap="round"/>
+   <path d="M27 153C55 122 73 117 102 125C81 139 65 138 49 155C76 151 85 169 83 190C66 177 54 179 36 192" fill="#1a5070" stroke="#7b4922" stroke-width="3"/>
+   <path d="M83 62C100 79 117 84 148 68C135 54 114 42 92 47C111 39 117 25 117 17" fill="#9f3428" stroke="#6a4320" stroke-width="3"/>
+   <path d="M55 100C87 98 108 104 128 118C108 129 83 127 65 113" fill="#bc7130" stroke="#785027" stroke-width="2"/>
+   <path d="M91 59C95 93 130 112 153 102C167 96 170 79 154 69C140 61 127 79 136 89" fill="none" stroke="url(#gold)" stroke-width="5"/>
+   <path d="M110 38Q132 13 161 28Q160 42 144 52Q147 35 130 33" fill="#174d69" stroke="#74471d" stroke-width="2"/>
+   <path d="M148 28C162 43 187 35 202 20C184 18 160 11 148 28Z" fill="#9a3029" stroke="#643818" stroke-width="3"/>
+   <circle cx="97" cy="61" r="9" fill="#d1a348" stroke="#673b16" stroke-width="2"/>
+   <circle cx="56" cy="122" r="7" fill="#b84733" stroke="#6e351e" stroke-width="2"/>
+  </g>
+ </defs>
+ <rect x="23" y="22" width="854" height="1116" rx="5" fill="none" stroke="#8d5b29" stroke-width="5"/>
+ <rect x="38" y="38" width="824" height="1084" fill="none" stroke="#d2a350" stroke-width="2"/>
+ <rect x="51" y="51" width="798" height="1058" fill="none" stroke="#967039" stroke-width="1.6" stroke-dasharray="9 5" opacity=".77"/>
+ <use href="#flor"/>
+ <use href="#flor" transform="translate(900 0) scale(-1 1)"/>
+ <use href="#flor" transform="translate(0 1160) scale(1 -1)"/>
+ <use href="#flor" transform="translate(900 1160) scale(-1 -1)"/>
+ <g stroke="url(#gold)" fill="none" stroke-width="2.6" opacity=".9">
+  <path d="M250 44H365 M535 44H650M250 1117H370M530 1117H650"/>
+  <path d="M385 42l15-12 15 12 15-12 15 12 15-12 15 12 15-12 15 12"/>
+  <path d="M386 1118q35-27 64 0 32-27 64 0"/>
+ </g>
+ <g fill="#a03e2a" stroke="#a7772d" stroke-width="2"><path d="M450 15l12 25-12 21-12-21z"/><path d="M450 1145l12-25-12-21-12 21z"/></g>
+ <g opacity=".7" fill="#997042"><circle cx="76" cy="580" r="5"/><circle cx="824" cy="580" r="5"/></g>
+ </svg>
