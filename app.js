@@ -84,8 +84,8 @@
   </svg>`;
 
   // Painted plate placement follows the chronology; each folio remains editable HTML.
-  const scenicFolios = {3:'village',7:'training',11:'stables',14:'knight',16:'training',20:'stables',25:'knight',28:'village',31:'training',32:'stables',35:'knight',36:'village'};
-  const sceneCaptions = {village:'Přítoky i okolice Kuttenbergu',training:'Pierwsze nauki szermierki',stables:'Stajnia i dawna codzienność',knight:'Jan Švarc i jego giermek'};
+  const scenicFolios = {4:'village',15:'stables',22:'ambush',36:'squire'};
+  const sceneCaptions = {village:'Rodzinne Přítoky',training:'Nauki szermierki',stables:'Wśród koni i uprzęży',knight:'W służbie Jana Švarca',childhood:'Dzieciństwo Vojtiecha w Přítokach',forge:'Pierwszy trening z Vítem',journey:'Na gościńcu ku Kuttenbergowi',meeting:'Przybycie Jana Švarca',ambush:'Pierwsze starcie na trakcie',squire:'Giermek przed kolejną wyprawą'};
   function renderPage(page, number) {
     const foot = folioNo(number);
     const title = page.title ? '<h2 class="folio-title">'+esc(page.title)+'</h2>' : '';
@@ -95,7 +95,7 @@
     if(page.type==='title') return wrapper('<div class="folio-prologue">Kronika z początków XV stulecia</div><div class="folio-cover-title">'+esc(page.title)+'</div><div class="folio-line"></div><div class="page-title-ornament">❦ ✠ ❦</div><div class="folio-cover-sub">'+esc(page.subtitle)+'</div><p class="lead-in">'+esc(page.text)+'</p>'+smallCross,'title-illuminated');
     if(page.type==='crest') return wrapper(title+'<img class="crest-image" src="assets/crest.webp" alt="Herb Vojtiecha Havela — czarny kruk"/><p class="annotation">'+esc(page.note)+'</p>'+smallCross,'heraldic-page');
     if(page.type==='illustration') {
-      const scene=['village','training','stables','knight'].includes(page.scene)?page.scene:'village';
+      const scene=['village','training','stables','knight','childhood','forge','journey','meeting','ambush','squire'].includes(page.scene)?page.scene:'childhood';
       return wrapper(title+'<figure class="illustration-frame"><div class="story-illustration scene-'+scene+'" role="img" aria-label="'+esc(page.title)+'"></div><figcaption>'+esc(page.note || sceneCaptions[scene])+'</figcaption></figure>'+smallCross,'illustrated');
     }
     if(page.type==='text'){

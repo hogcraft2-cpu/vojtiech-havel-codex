@@ -16,8 +16,8 @@ window.CODEX_PAGES = [
   {
     "type": "illustration",
     "title": "Ziemia, która go wychowała",
-    "scene": "stables",
-    "note": "Přítoky, nieopodal Kuttenbergu. Początek drogi Vojtiecha."
+    "scene": "childhood",
+    "note": "Młody Vojtiech spogląda na rodzinne Přítoky i marzy o rycerskim świecie."
   },
   {
     "type": "text",
@@ -49,8 +49,8 @@ window.CODEX_PAGES = [
   {
     "type": "illustration",
     "title": "Pierwsza stal",
-    "scene": "training",
-    "note": "Chłopak ćwiczył, zanim ktokolwiek zechciał nazwać go wojakiem."
+    "scene": "forge",
+    "note": "U kowala Víta chłopak odkrywa talent do walki mieczem."
   },
   {
     "type": "text",
@@ -109,8 +109,8 @@ window.CODEX_PAGES = [
   {
     "type": "illustration",
     "title": "Miasto srebra",
-    "scene": "village",
-    "note": "W cieniu kuttenberskich wież marzenia nabierały ciężaru."
+    "scene": "journey",
+    "note": "Z ojcem Mikulášem przemierza trakt prowadzący do srebrnego miasta."
   },
   {
     "type": "text",
@@ -151,8 +151,8 @@ window.CODEX_PAGES = [
   {
     "type": "illustration",
     "title": "Pierwsze spotkanie",
-    "scene": "knight",
-    "note": "Jan Švarc był surowszy niż rycerze z marzeń chłopca."
+    "scene": "meeting",
+    "note": "Pierwsze spotkanie z Janem Švarcem przy jego zmęczonym koniu."
   },
   {
     "type": "text",
@@ -188,7 +188,8 @@ window.CODEX_PAGES = [
     "paragraphs": [
       "ierwszy poważny sprawdzian przyszedł na trakcie. Uzbrojeni ludzie zatrzymali eskortowaną przez Jana karawanę i zażądali opłaty w imieniu nieznanego pana. Rycerz próbował rozmawiać, lecz jeden z napastników zeskoczył z konia i chwycił za broń.",
       "Vojtiech stał przy tylnym wozie. Pamiętał tamten dzień, kiedy nie potrafił obronić ojca. Teraz strach wrócił, ale nie odsunął się na bok. Kiedy napastnik uderzył woźnicę, chłopak zasłonił go tarczą i odbił pierwszy cios. Zrobił to niemal odruchowo."
-    ]
+    ],
+    "plate": "ambush"
   },
   {
     "type": "text",
@@ -257,7 +258,7 @@ window.CODEX_PAGES = [
     "type": "illustration",
     "title": "Żelazo, śnieg i nauka",
     "scene": "training",
-    "note": "Zima 1404. Każda poprawiona zasłona była cenna, a każda pomyłka bolesna."
+    "note": "Dalsze ćwiczenia, które przygotowują młodzieńca do cięższej służby."
   },
   {
     "type": "text",
@@ -290,7 +291,7 @@ window.CODEX_PAGES = [
     "type": "illustration",
     "title": "W cieniu rycerskiego płaszcza",
     "scene": "knight",
-    "note": "Rok 1405. Giermek zaczyna rozumieć, że słowo bywa równie niebezpieczne jak oręż."
+    "note": "W cieniu płaszcza Jana Švarca uczy się odpowiedzialności."
   },
   {
     "type": "text",
@@ -308,7 +309,8 @@ window.CODEX_PAGES = [
     "paragraphs": [
       " roku 1406 Vojtiech Havel liczył dwadzieścia lat. Miał mocne ramiona, bliznę na przedramieniu po nieudanym sparingu i dłonie twarde od wodzy oraz rękojeści. Nie był rycerzem. Nie nosił złoconych ostróg, nie posiadał ziemi ani własnego pocztu. Pozostał giermkiem Jana Švarca, choć niejeden podróżny brał go już za doświadczonego zbrojnego.",
       "Kiedy wracał czasem do Přítok, wieś wydawała mu się mniejsza niż przed laty. Ojciec przyglądał mu się bez pytań, matka zaś długo zatrzymywała dłoń na jego rękawie. Vojtiech widział już tyle dróg i twarzy, że trudno było opowiedzieć o nich przy jednym wieczornym posiłku."
-    ]
+    ],
+    "plate": "squire"
   },
   {
     "type": "text",

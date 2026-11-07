@@ -1,0 +1,96 @@
+/* Medieval candlelight, thin smoke and hand-illuminated chronicle artwork. */
+.codex-illuminated .manuscript-atmosphere {
+  position:fixed;inset:-7%;z-index:-2;pointer-events:none;
+  background:url('assets/candle-atmosphere.webp') center center / 115% 115% no-repeat;
+  opacity:.59;mix-blend-mode:screen;
+  filter:brightness(.93) saturate(.74);
+  transform-origin:50% 55%;
+  animation:atmosphere-drift 20s ease-in-out infinite alternate;
+}
+.codex-illuminated .manuscript-atmosphere::before,
+.codex-illuminated .manuscript-atmosphere::after {
+  content:'';position:absolute;pointer-events:none;border-radius:50%;
+  filter:blur(24px);mix-blend-mode:screen;
+}
+.codex-illuminated .manuscript-atmosphere::before{
+  width:45vw;height:45vh;left:-15%;top:-11%;
+  background:radial-gradient(ellipse,rgba(249,142,41,.26),transparent 69%);
+  animation:glimmer 3.3s ease-in-out infinite alternate;
+}
+.codex-illuminated .manuscript-atmosphere::after{
+  width:40vw;height:50vh;right:-16%;top:-9%;
+  background:radial-gradient(ellipse,rgba(228,135,52,.18),transparent 72%);
+  animation:glimmer 3.8s ease-in-out -2s infinite alternate;
+}
+@keyframes atmosphere-drift {0%{transform:translate(-.6%,.8%) scale(1.01);opacity:.45}50%{opacity:.65}100%{transform:translate(.8%,-1.4%) scale(1.075);opacity:.59}}
+@keyframes glimmer {from{opacity:.6;transform:scale(.91)}to{opacity:1;transform:scale(1.1)}}
+
+/* Six individual scenes, each used at a different point in the chronicle.
+   One optimized 3x2 texture, not six repeated background pictures. */
+.codex-illuminated .story-illustration.scene-childhood,
+.codex-illuminated .story-illustration.scene-forge,
+.codex-illuminated .story-illustration.scene-journey,
+.codex-illuminated .story-illustration.scene-meeting,
+.codex-illuminated .story-illustration.scene-ambush,
+.codex-illuminated .story-illustration.scene-squire,
+.codex-illuminated .folio-vignette-art.scene-childhood,
+.codex-illuminated .folio-vignette-art.scene-forge,
+.codex-illuminated .folio-vignette-art.scene-journey,
+.codex-illuminated .folio-vignette-art.scene-meeting,
+.codex-illuminated .folio-vignette-art.scene-ambush,
+.codex-illuminated .folio-vignette-art.scene-squire {
+ background-image:url('assets/chronicle-gallery.webp');
+ background-size:300% 200%;background-repeat:no-repeat;
+ filter:contrast(1.05) saturate(.94);
+}
+.codex-illuminated .scene-childhood{background-position:0% 0%}
+.codex-illuminated .scene-forge{background-position:50% 0%}
+.codex-illuminated .scene-journey{background-position:100% 0%}
+.codex-illuminated .scene-meeting{background-position:0% 100%}
+.codex-illuminated .scene-ambush{background-position:50% 100%}
+.codex-illuminated .scene-squire{background-position:100% 100%}
+
+/* A subtle, shifting reflection of a lamp across the open leaves.
+   Never blocks clicks or makes the text unreadable. */
+.codex-illuminated .reading-light {
+  position:absolute;top:0;left:calc(-1 * var(--pw));
+  width:calc(2 * var(--pw));height:100%;z-index:24;pointer-events:none;
+  border-radius:8px;
+  background:radial-gradient(ellipse 85% 90% at 11% 4%,rgba(255,210,137,.27),transparent 68%),
+             radial-gradient(ellipse 80% 65% at 98% 3%,rgba(241,168,93,.15),transparent 69%);
+  mix-blend-mode:soft-light;
+  opacity:0;transition:opacity 1.2s ease;
+}
+.codex-illuminated .book.open .reading-light{opacity:.9;animation:booklight-flicker 3.6s ease-in-out infinite alternate}
+@keyframes booklight-flicker {0%{opacity:.57;filter:brightness(.89)}29%{opacity:.92;filter:brightness(1.08)}60%{opacity:.72;filter:brightness(.94)}100%{opacity:.88;filter:brightness(1.03)}}
+
+/* The turning leaf catches a glint and briefly deepens the shadow. */
+.codex-illuminated .flip-sheet.animate .sheet-side{
+  animation:turning-parchment-light 1.2s ease-in-out both;
+}
+@keyframes turning-parchment-light{0%{filter:brightness(1)}43%{filter:brightness(1.10) sepia(.045)}67%{filter:brightness(.89)}100%{filter:brightness(1)}}
+
+/* Lively but readable illustrations: thin decorative separators and aging. */
+.codex-illuminated .illustration-frame .story-illustration{
+ box-shadow:inset 0 0 14px 7px rgba(91,52,26,.14);
+}
+.codex-illuminated .illustration-frame figcaption{
+ letter-spacing:.01em;
+}
+.codex-illuminated .folio-vignette-art{
+ -webkit-mask-image:radial-gradient(ellipse 74% 78% at 50% 48%,#000 59%,transparent 97%);
+ mask-image:radial-gradient(ellipse 74% 78% at 50% 48%,#000 59%,transparent 97%);
+}
+.codex-illuminated .folio-content .folio-glyph{opacity:.72}
+
+@media(max-width:699px){
+ .codex-illuminated .manuscript-atmosphere{background-size:auto 100%;opacity:.35}
+ .codex-illuminated .reading-light{opacity:.25}
+}
+@media(prefers-reduced-motion:reduce){
+ .codex-illuminated .manuscript-atmosphere,
+ .codex-illuminated .manuscript-atmosphere::before,
+ .codex-illuminated .manuscript-atmosphere::after,
+ .codex-illuminated .book.open .reading-light,
+ .codex-illuminated .flip-sheet.animate .sheet-side {animation:none!important}
+}
