@@ -34,6 +34,24 @@ jobs:
           test -s assets/crest.webp
           test -s assets/paper.webp
           test -s assets/study.webp
+      - name: Validate chapters, JavaScript and illustrations
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check pages.js
+          node --check app.js
+          node <<'JS'
+          const fs=require('node:fs');
+          global.window={};
+          require('./pages.js');
+          const p=window.CODEX_PAGES, c=window.CODEX_CHAPTERS;
+          if(!Array.isArray(p) || p.length<20 || p.length%2)throw Error('Invalid folio count');
+          if(!Array.isArray(c) || c.length<7)throw Error('Missing table of contents');
+          for(const [i,item] of p.entries()){
+            if(item.type==='illustration' && !fs.existsSync(item.src)) throw Error('Illustration missing on folio '+(i+1)+': '+item.src);
+          }
+          console.log('Verified',p.length,'folios,',c.length,'chapters');
+          JS
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
