@@ -231,3 +231,32 @@ body.codex-premium{background:#0b0705;}
  .codex-premium .atelier-embers,.codex-premium .stage::before,
  .codex-premium .book.open .reading-light{animation:none!important}
 }
+/* Four deliberately different illustration folios — not one repeated picture frame.
+   Some appear as pigment washed into vellum, others as framed or arched miniatures. */
+.codex-premium .folio.atelier-plate.plate-variant-0 .illustration-frame{
+  width:94%;height:81%;
+  background:transparent!important;border:0!important;
+  box-shadow:none!important;padding:0!important;clip-path:none!important;
+  outline:0!important;border-radius:0!important;
+}
+.codex-premium .folio.atelier-plate.plate-variant-0 .story-illustration{
+  border:0!important;border-radius:0!important;height:85%;
+  -webkit-mask-image:radial-gradient(ellipse 80% 88% at 50% 47%,black 55%,transparent 98%)!important;
+  mask-image:radial-gradient(ellipse 80% 88% at 50% 47%,black 55%,transparent 98%)!important;
+}
+.codex-premium .folio.atelier-plate.plate-variant-0 .illustration-frame figcaption{
+  color:#705037;border-top:1px solid #bc92575c;
+}
+.codex-premium .folio.atelier-plate.plate-variant-2 .illustration-frame{
+  width:90%;height:79%;border-radius:0!important;
+  border:4px double #9c6b3b!important;outline:2px solid #e0bb78!important;
+  clip-path:polygon(2% 0,98% 0,100% 2%,100% 98%,98% 100%,2% 100%,0 98%);
+  background:linear-gradient(135deg,#684626,#ccad79,#88663c,#bb9151)!important;
+}
+.codex-premium .folio.atelier-plate.plate-variant-2 .story-illustration{
+  border-radius:0!important;
+  filter:sepia(.25) contrast(1.18) saturate(.72);
+}
+.codex-premium .folio.atelier-plate.plate-variant-2 .illustration-frame figcaption{
+  background:transparent;font-style:italic;
+}
