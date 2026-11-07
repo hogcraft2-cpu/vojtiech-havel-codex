@@ -47,6 +47,7 @@
     const title = page.title ? `<h2 class="folio-title">${esc(page.title)}</h2>` : '';
     if (page.type === 'title') return `<div class="folio-content"><div class="folio-cover-title">${esc(page.title)}</div><div class="folio-line"></div><div class="page-title-ornament">❧ ✠ ❧</div><div class="folio-cover-sub">${esc(page.subtitle)}</div><p class="lead-in">${esc(page.text)}</p>${foot}</div>`;
     if (page.type === 'crest') return `<div class="folio-content">${title}<img class="crest-image" src="assets/crest.webp" alt="Oryginalny herb Vojtiecha Havela"/><p class="annotation">${esc(page.note)}</p>${foot}</div>`;
+    if (page.type === 'illustration') return `<div class="folio-content">${title}<figure class="manuscript-art"><img src="${esc(page.src)}" alt="${esc(page.caption||page.title)}" loading="eager"><figcaption>${esc(page.caption||'')}</figcaption></figure>${foot}</div>`;
     if (page.type === 'miniature') return `<div class="folio-content">${title}<figure class="miniature-figure"><img class="miniature-image" src="${esc(page.src)}" alt="${esc(page.title||'Miniatura Vojtiecha Havela')}" loading="eager" /><figcaption class="annotation">${esc(page.note||'Ilustracja kroniki')}</figcaption></figure>${foot}</div>`;
     if (page.type === 'text') return `<div class="folio-content">${title}${(page.paragraphs||[]).map((p,i)=>`<p>${i===0&&page.initial?`<span class="initial">${esc(page.initial)}</span>`:''}${esc(p)}</p>`).join('')}${page.footer?`<p class="annotation">${esc(page.footer)}</p>`:''}${foot}</div>`;
     if (page.type === 'map') return `<div class="folio-content">${title}${mapSvg}<p class="annotation">${esc(page.note)}</p>${foot}</div>`;
@@ -54,9 +55,24 @@
     return `<div class="folio-content">${foot}</div>`;
   }
 
+  function fitFolio(el) {
+    const node = el.querySelector('.folio-content');
+    if (!node) return;
+    node.style.fontSize = '';
+    node.style.lineHeight = '';
+    const base = Number.parseFloat(getComputedStyle(node).fontSize) || 16;
+    const min = innerWidth < 500 ? 9 : 12;
+    let size = base;
+    for(let attempts=0;attempts<18 && node.scrollHeight > node.clientHeight+2 && size>min;attempts++){
+      size=Math.max(min,size-.5);
+      node.style.fontSize=size+'px';
+      node.style.lineHeight='1.32';
+    }
+  }
   const renderSpread = () => {
     left.innerHTML = renderPage(pages[spread*2],spread*2);
     right.innerHTML = renderPage(pages[spread*2+1],spread*2+1);
+    fitFolio(left);fitFolio(right);
   };
 
   function updateUI() {
@@ -101,6 +117,7 @@
       flipBack.innerHTML = renderPage(pages[destination*2+1],destination*2+1);
       left.innerHTML = renderPage(pages[destination*2],destination*2);
     }
+    fitFolio(flipFront);fitFolio(flipBack);fitFolio(left);fitFolio(right);
     updateUI();
     // Force style flush so the CSS animation always restarts on rapid successive turns.
     void sheet.offsetWidth;
@@ -137,7 +154,7 @@
     if(e.key==='Home' && open && !busy) {spread=0;renderSpread();save();updateUI();}
     if(e.key==='End' && open && !busy) {spread=MAX_SPREAD;renderSpread();save();updateUI();}
   });
-  window.addEventListener('resize',sizeBook);
+  window.addEventListener('resize',()=>{sizeBook();requestAnimationFrame(()=>{fitFolio(left);fitFolio(right);});});
   $('fullscreen').addEventListener('click',async()=>{
     try {if(document.fullscreenElement) await document.exitFullscreen(); else await document.documentElement.requestFullscreen();} catch(_) { /* Browser may disallow fullscreen. */ }
   });
