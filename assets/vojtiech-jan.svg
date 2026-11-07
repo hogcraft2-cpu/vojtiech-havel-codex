@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 720" role="img" aria-label="Miniatura średniowieczna: Vojtiech Havel zostaje giermkiem rycerza Jana Švarca">
+<defs>
+ <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#f0d8ab"/><stop offset="1" stop-color="#bf9d65"/></linearGradient>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#8498a0"/><stop offset="1" stop-color="#dfcaa3"/></linearGradient>
+ <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".59" numOctaves="3" seed="4"/><feComponentTransfer><feFuncA type="linear" slope=".18"/></feComponentTransfer></filter>
+ <clipPath id="inner"><path d="M53 606V180Q57 92 260 57Q463 92 467 180V606Z"/></clipPath>
+</defs>
+<rect width="520" height="720" rx="7" fill="url(#paper)"/>
+<path d="M17 17H503V703H17Z" stroke="#70352b" stroke-width="12" fill="none"/>
+<path d="M31 31H489V689H31Z" stroke="#d9b466" stroke-width="5" fill="none"/>
+<path d="M40 40H480V680H40Z" stroke="#7f4a35" stroke-width="2" fill="none"/>
+<g fill="#6c3145" stroke="#ad7b42" stroke-width="3">
+ <path d="M44 53q30-22 43 22q-33-6-43-22Zm432 0q-30-22-43 22q33-6 43-22Z"/>
+ <path d="M44 669q30 22 43-22q-33 6-43 22Zm432 0q-30 22-43-22q33 6 43 22Z"/>
+</g>
+<g clip-path="url(#inner)">
+ <rect x="51" y="57" width="417" height="554" fill="url(#sky)"/>
+ <path d="M50 340Q128 289 181 318Q256 274 342 309Q402 288 470 338V615H50Z" fill="#8f9a71"/>
+ <g stroke="#63513b" stroke-width="4">
+ <path d="M292 323V195l28-18 25 17v130Z" fill="#cdb89a"/>
+ <path d="M281 195l40-68 40 68Z" fill="#814936"/>
+ <path d="M346 318V229h49v89Z" fill="#cdb89a"/>
+ <path d="M339 229l33-32 30 32Z" fill="#854736"/>
+ <path d="M393 316V207l29-18 27 18v109Z" fill="#cdb89a"/>
+ <path d="M387 209l35-42 34 42Z" fill="#814a35"/>
+ <path d="M303 263h130" stroke="#6e5541" stroke-width="6"/>
+ </g>
+ <path d="M50 466Q260 421 470 453V611H50Z" fill="#95865f"/>
+ <path d="M48 548L466 520L464 614H48Z" fill="#a8956a"/>
+ <!-- Knight Jan -->
+ <path d="M74 424Q80 338 122 339Q179 333 189 418L211 564H56Z" fill="#9b493c" stroke="#5d332d" stroke-width="7"/>
+ <path d="M92 409L96 562M178 414L181 559" stroke="#dfbd7c" stroke-width="8"/>
+ <path d="M105 339v38l31 24 26-25v-37Z" fill="#bfa090" stroke="#5e473e" stroke-width="4"/>
+ <path d="M96 322Q108 293 137 295Q169 298 177 325L164 367H110Z" fill="#978b7b" stroke="#4c443c" stroke-width="7"/>
+ <path d="M105 330L116 359M117 320L128 358M130 317L139 358M144 318L153 355M158 323L166 349" stroke="#c2b4a1" stroke-width="3"/>
+ <ellipse cx="136" cy="282" rx="35" ry="43" fill="#c99a73" stroke="#6a4534" stroke-width="6"/>
+ <path d="M103 267Q101 237 136 237Q169 238 171 268Q148 251 119 263Z" fill="#4a352a"/>
+ <path d="M110 302Q112 328 137 341Q167 326 166 300L151 321L121 320Z" fill="#4a3327"/>
+ <path d="M119 282h6M147 282h6" stroke="#32251e" stroke-width="4"/>
+ <path d="M89 417Q117 440 167 429" stroke="#c8b799" stroke-width="11" fill="none"/>
+ <path d="M90 431Q81 467 105 497L184 464" fill="none" stroke="#b9afa1" stroke-width="18" stroke-linecap="round"/>
+ <path d="M174 400Q203 420 207 462" stroke="#c1b2a1" stroke-width="19" stroke-linecap="round" fill="none"/>
+ <path d="M114 554l-4 63h37l-5-63ZM163 552l5 65h36l-12-65Z" fill="#4c473f" stroke="#292823" stroke-width="5"/>
+ <!-- Squire Vojtiech -->
+ <path d="M282 440Q291 387 325 387Q362 386 371 440L391 560H279Z" fill="#66604c" stroke="#3a3b31" stroke-width="6"/>
+ <path d="M300 433L300 554M357 433L365 553" stroke="#bda076" stroke-width="7"/>
+ <ellipse cx="331" cy="351" rx="35" ry="43" fill="#d8aa83" stroke="#674733" stroke-width="5"/>
+ <path d="M297 345Q298 307 330 310Q369 305 370 344Q356 341 355 324Q330 350 301 348Z" fill="#594032"/>
+ <path d="M312 355h5M343 355h5" stroke="#3d3027" stroke-width="4"/>
+ <path d="M324 381Q331 384 342 380" stroke="#704b37" stroke-width="3" fill="none"/>
+ <path d="M295 443Q275 476 249 490L196 468" fill="none" stroke="#d5aa7b" stroke-width="17" stroke-linecap="round"/>
+ <path d="M361 431Q383 461 394 484" stroke="#d5aa7b" stroke-width="15" stroke-linecap="round" fill="none"/>
+ <path d="M294 554h31l-7 62h-31ZM342 553h32l11 63h-32Z" fill="#4b3b2c" stroke="#3b2b23" stroke-width="5"/>
+ <path d="M288 614l-13 14h46l-3-14Zm66 0l-3 14h44l-10-14Z" fill="#2b2520"/>
+ <!-- sword and horse -->
+ <path d="M232 468L218 543L211 577L203 542L190 472Z" fill="#a6a09a" stroke="#4d4b48" stroke-width="4"/>
+ <path d="M176 471L252 471L241 483H184Z" fill="#a07745" stroke="#59412b" stroke-width="4"/>
+ <path d="M206 480v-32h12v32Z" fill="#805332" stroke="#583622" stroke-width="4"/>
+ <path d="M406 456Q398 411 413 365Q424 338 441 340Q455 355 458 385L454 507L467 578H433L431 514Z" fill="#d2c0a0" stroke="#6d5d48" stroke-width="5"/>
+ <path d="M414 365l-1-34q7-21 19 8l13-28q12 17 9 31" fill="#c7ad87" stroke="#6f5c49" stroke-width="5"/>
+ <circle cx="444" cy="367" r="4" fill="#2b2924"/>
+</g>
+<path d="M53 606V180Q57 92 260 57Q463 92 467 180V606Z" fill="none" stroke="#945b3a" stroke-width="8"/>
+<path d="M64 606V183Q69 109 260 72Q451 109 456 183V606Z" fill="none" stroke="#dfb95d" stroke-width="3"/>
+<path d="M60 634H460" stroke="#865033" stroke-width="3"/><text x="260" y="662" font-family="Georgia,serif" font-size="19" font-style="italic" text-anchor="middle" fill="#74372a">Vojtiech i Jan Švarc</text>
+<rect x="5" y="5" width="510" height="710" filter="url(#grain)" fill="#65543b" opacity=".2" pointer-events="none"/>
+</svg>
