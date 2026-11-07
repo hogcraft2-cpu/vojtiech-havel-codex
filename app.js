@@ -12,6 +12,41 @@
   let busy = false;
   let spread = 0;
   const MAX_SPREAD = pages.length / 2 - 1;
+  const soundBtn = $('sound');
+  let soundEnabled = true;
+  try{ soundEnabled=localStorage.getItem('vojtiech-book-sound')!=='off'; }catch(_){}
+  let audioContext;
+  function playPaperSound(power=1){
+    if(!soundEnabled)return;
+    try {
+      const API=window.AudioContext||window.webkitAudioContext;
+      if(!API)return;
+      audioContext ||= new API();
+      if(audioContext.state==='suspended')audioContext.resume().catch(()=>{});
+      const duration=.34, n=Math.floor(audioContext.sampleRate*duration),buff=audioContext.createBuffer(1,n,audioContext.sampleRate),data=buff.getChannelData(0);
+      let smooth=0;
+      for(let i=0;i<n;i++){
+        let u=i/n, env=Math.pow(Math.sin(Math.PI*u),1.5)*(1-u);
+        smooth=.73*smooth+(.27*(Math.random()*2-1));
+        data[i]=(smooth+(Math.random()*2-1)*.08)*env;
+      }
+      const src=audioContext.createBufferSource(),lowpass=audioContext.createBiquadFilter(),gain=audioContext.createGain();
+      src.buffer=buff;lowpass.type='lowpass';lowpass.frequency.value=1500;gain.gain.value=.18*power;
+      src.connect(lowpass);lowpass.connect(gain);gain.connect(audioContext.destination);src.start();
+    }catch(_){}
+  }
+  function updateSound(){
+    if(!soundBtn)return;
+    soundBtn.textContent=soundEnabled?'♪':'♩';
+    soundBtn.title=soundEnabled?'Wyłącz dźwięk kartek':'Włącz dźwięk kartek';
+    soundBtn.setAttribute('aria-label',soundBtn.title);
+    soundBtn.setAttribute('aria-pressed',String(soundEnabled));
+  }
+  if(soundBtn){soundBtn.addEventListener('click',()=>{
+    soundEnabled=!soundEnabled;
+    try{localStorage.setItem('vojtiech-book-sound',soundEnabled?'on':'off')}catch(_){}
+    updateSound(); if(soundEnabled)playPaperSound(.3);
+  });updateSound();}
   const save = () => { try { localStorage.setItem('vojtiech-codex-spread', String(spread)); } catch (_) {} };
   try { spread = Math.max(0, Math.min(MAX_SPREAD, Number(localStorage.getItem('vojtiech-codex-spread')) || 0)); } catch (_) {}
 
@@ -47,6 +82,8 @@
     const title = page.title ? `<h2 class="folio-title">${esc(page.title)}</h2>` : '';
     if (page.type === 'title') return `<div class="folio-content"><div class="folio-cover-title">${esc(page.title)}</div><div class="folio-line"></div><div class="page-title-ornament">❧ ✠ ❧</div><div class="folio-cover-sub">${esc(page.subtitle)}</div><p class="lead-in">${esc(page.text)}</p>${foot}</div>`;
     if (page.type === 'crest') return `<div class="folio-content">${title}<img class="crest-image" src="assets/crest.webp" alt="Oryginalny herb Vojtiecha Havela"/><p class="annotation">${esc(page.note)}</p>${foot}</div>`;
+    if (page.type === 'illustration' && page.scene) return `<div class="folio-content illustrated">${title}<div class="story-illustration scene-${esc(page.scene)}" role="img" aria-label="${esc(page.title)}"></div><p class="annotation">${esc(page.note)}</p>${foot}</div>`;
+    if (page.type === 'backcover') return `<div class="folio-content rear-content"><div class="rear-cover"><span class="rear-border"></span><span class="rear-symbol">✠</span><span class="rear-headline">${esc(page.title)}</span><span class="rear-ornament">❧ ✠ ❧</span><span class="rear-subtitle">${esc(page.subtitle)}</span></div></div>`;
     if (page.type === 'illustration') return `<div class="folio-content">${title}<figure class="manuscript-art"><img src="${esc(page.src)}" alt="${esc(page.caption||page.title)}" loading="eager"><figcaption>${esc(page.caption||'')}</figcaption></figure>${foot}</div>`;
     if (page.type === 'miniature') return `<div class="folio-content">${title}<figure class="miniature-figure"><img class="miniature-image" src="${esc(page.src)}" alt="${esc(page.title||'Miniatura Vojtiecha Havela')}" loading="eager" /><figcaption class="annotation">${esc(page.note||'Ilustracja kroniki')}</figcaption></figure>${foot}</div>`;
     if (page.type === 'text') return `<div class="folio-content">${title}${(page.paragraphs||[]).map((p,i)=>`<p>${i===0&&page.initial?`<span class="initial">${esc(page.initial)}</span>`:''}${esc(p)}</p>`).join('')}${page.footer?`<p class="annotation">${esc(page.footer)}</p>`:''}${foot}</div>`;
@@ -73,6 +110,8 @@
     left.innerHTML = renderPage(pages[spread*2],spread*2);
     right.innerHTML = renderPage(pages[spread*2+1],spread*2+1);
     fitFolio(left);fitFolio(right);
+    left.classList.toggle('is-backcover',pages[spread*2]?.type==='backcover');
+    right.classList.toggle('is-backcover',pages[spread*2+1]?.type==='backcover');
   };
 
   function updateUI() {
@@ -90,6 +129,7 @@
     busy = true;
     book.classList.remove('settled');
     book.classList.add('open');
+    playPaperSound(.58);
     open = true;
     updateUI();
     setTimeout(() => {book.classList.add('settled');busy=false;updateUI();},1360);
@@ -107,6 +147,7 @@
     const destination = spread + direction;
     if (destination < 0 || destination > MAX_SPREAD) return;
     busy=true;
+    playPaperSound();
     sheet.className = 'flip-sheet ' + (direction===1?'forward':'backward') + ' show';
     if(direction===1) {
       flipFront.innerHTML = renderPage(pages[spread*2+1],spread*2+1);
