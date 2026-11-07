@@ -99,3 +99,10 @@ button{font:inherit;cursor:pointer}
 .folio-content .miniature-image{height:min(100%,calc(var(--ph) * .66));max-height:calc(var(--ph) * .66);width:100%;object-fit:contain;filter:saturate(.82) sepia(.12) drop-shadow(0 3px 5px #563a2266);border-radius:2px;}
 .folio-content .miniature-figure figcaption{font-size:clamp(10px,calc(var(--pw) * .027),13px);line-height:1.2;text-align:center;margin:0;color:#795538;}
 @media(max-width:800px){.folio-content .miniature-image{max-height:calc(var(--ph) * .61)}.folio-content .miniature-figure{gap:2px}}
+
+
+/* Illuminated manuscript plates in the novel; sized as single full folios. */
+.manuscript-art{position:relative;margin:4px auto 0;width:94%;height:calc(100% - 85px);display:flex;align-items:center;flex-direction:column;justify-content:flex-start}
+.manuscript-art img{width:100%;max-height:84%;min-height:0;object-fit:contain;border:1px solid #8d643e;box-shadow:0 5px 14px #50331b38}
+.manuscript-art figcaption{color:#704b30;font:italic clamp(10px,calc(var(--pw) * .029),13px)/1.32 'IM Fell English',Georgia,serif;text-align:center;margin-top:9px}
+@media(max-width:800px){.manuscript-art{height:calc(100% - 42px);width:97%}.manuscript-art img{max-height:84%}.manuscript-art figcaption{font-size:10px}}
