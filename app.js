@@ -47,8 +47,8 @@
     try{localStorage.setItem('vojtiech-book-sound',soundEnabled?'on':'off')}catch(_){}
     updateSound(); if(soundEnabled)playPaperSound(.3);
   });updateSound();}
-  const save = () => { try { localStorage.setItem('vojtiech-codex-spread', String(spread)); } catch (_) {} };
-  try { spread = Math.max(0, Math.min(MAX_SPREAD, Number(localStorage.getItem('vojtiech-codex-spread')) || 0)); } catch (_) {}
+  // Every visitor always begins on the title spread. Previous reading position is not persisted.
+  // Sound preference remains local to the visitor, but the book's page never does.
 
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const folioNo = (n) => `<span class="folio-bottom">✧ &nbsp; ${n+1} &nbsp; ✧</span>`;
@@ -146,6 +146,8 @@
   function openBook() {
     if (busy || open) return;
     busy = true;
+    spread = 0;
+    renderSpread();
     book.classList.remove('settled');
     book.classList.add('open');
     playPaperSound(.58);
@@ -158,7 +160,7 @@
     if (!open || busy) return;
     busy=true;book.classList.remove('settled');
     requestAnimationFrame(() => book.classList.remove('open'));
-    setTimeout(()=>{open=false;busy=false;updateUI();},1370);
+    setTimeout(()=>{open=false;busy=false;spread=0;renderSpread();updateUI();},1370);
   }
 
   function turnPage(direction) {
@@ -187,18 +189,20 @@
       renderSpread();
       sheet.className='flip-sheet';
       busy = false;
-      save();
       updateUI();
     },1240);
   }
 
   function sizeBook(){
     const vw=window.innerWidth, vh=window.innerHeight;
-    const availableHeight=vh-(vw < 700 ? 172 : 172);
-    const sideMargin=vw < 700 ? 18 : Math.max(100,Math.round(vw*.1));
-    const w=Math.max(145,Math.min(720,(vw-sideMargin)/2,availableHeight/1.30));
-    document.documentElement.style.setProperty('--pw',w.toFixed(2)+'px');
-    document.documentElement.style.setProperty('--ph',(w*1.30).toFixed(2)+'px');
+    const narrow = vw < 700, short = vh < 740;
+    const topGap = narrow ? 76 : (short ? 65 : 76);
+    const bottomGap = narrow ? 84 : (short ? 82 : 92);
+    const availableHeight = Math.max(240, vh - topGap - bottomGap - 8);
+    const sideMargin = narrow ? 14 : Math.max(38, Math.round(vw * .055));
+    const w = Math.max(135, Math.min(790, (vw - sideMargin) / 2, availableHeight / 1.22));
+    document.documentElement.style.setProperty('--pw', w.toFixed(2) + 'px');
+    document.documentElement.style.setProperty('--ph', (w * 1.22).toFixed(2) + 'px');
   }
 
   $('frontCover').addEventListener('click',openBook);
@@ -212,8 +216,8 @@
     if(dialog.open || readerDialog.open || e.altKey || e.ctrlKey || e.metaKey) return;
     if(e.key==='ArrowRight') {e.preventDefault();open?turnPage(1):openBook();}
     if(e.key==='ArrowLeft') {e.preventDefault();turnPage(-1);}
-    if(e.key==='Home' && open && !busy) {spread=0;renderSpread();save();updateUI();}
-    if(e.key==='End' && open && !busy) {spread=MAX_SPREAD;renderSpread();save();updateUI();}
+    if(e.key==='Home' && open && !busy) {spread=0;renderSpread();updateUI();}
+    if(e.key==='End' && open && !busy) {spread=MAX_SPREAD;renderSpread();updateUI();}
   });
   window.addEventListener('resize',()=>{sizeBook();requestAnimationFrame(()=>{fitFolio(left);fitFolio(right);});});
   $('fullscreen').addEventListener('click',async()=>{
@@ -243,8 +247,17 @@
     b.addEventListener('click',()=>{
       dialog.close();
       if(busy)return;
-      spread=Math.max(0,Math.min(MAX_SPREAD,ch.spread));renderSpread();save();
-      if(!open)openBook();else updateUI();
+      const destination=Math.max(0,Math.min(MAX_SPREAD,ch.spread));
+      if (!open) {
+        // Opening animation always reveals folios 1–2 first; a deliberate
+        // table-of-contents choice jumps afterward.
+        openBook();
+        if (destination !== 0) setTimeout(() => {
+          if (open && !busy) { spread=destination;renderSpread();updateUI(); }
+        }, 1450);
+      } else {
+        spread=destination;renderSpread();updateUI();
+      }
     });
     entries.appendChild(b);
   });
