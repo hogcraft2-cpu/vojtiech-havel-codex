@@ -347,3 +347,46 @@ body.codex-premium{background:#0d0907}
  .codex-premium .book.open .reading-light,.codex-premium .emberfield,
  .codex-premium .flip-sheet .sheet-side{animation:none!important}
 }
+
+/* Individually stamped marginal notes: each chapter has a different rhythm. */
+.codex-premium .prem-marginalia {
+ position:absolute;z-index:3;
+ right:7.8%;top:var(--marginal-height,54%);
+ font:normal clamp(17px,calc(var(--pw)*.047),36px) 'UnifrakturMaguntia',Georgia,serif;
+ color:#884e2d26;
+ text-shadow:1px 0 #f3d7a31a;
+ pointer-events:none;
+ transform:rotate(-15deg);
+}
+.codex-premium .folio.left .prem-marginalia{right:auto;left:8%;transform:rotate(13deg)}
+.codex-premium .prem-chapter-mark{
+ position:absolute;bottom:5.4%;right:7.6%;z-index:3;pointer-events:none;
+ color:#d59b5b99;
+ text-shadow:0 1px 1px #421a12,1px 1px 1px #e4ad4b;
+ font:normal clamp(13px,calc(var(--pw)*.035),25px) Georgia,serif;
+}
+.codex-premium .folio[data-chapter-folio="true"] .folio-content .folio-title{
+ text-shadow:0 1px #f8dbac,0 0 11px #a66c413b;
+}
+.codex-premium .premium-flip .reading-light{
+ animation:scribe-turn-sweep 1.21s ease-in-out;
+}
+@keyframes scribe-turn-sweep {
+ 0%{opacity:.35;filter:brightness(1)}
+ 38%{opacity:.96;filter:brightness(1.22)}
+ 65%{opacity:.62;filter:brightness(.88)}
+ 100%{opacity:.7;filter:brightness(1)}
+}
+.codex-premium .book.open .folio{
+ transition:filter .25s ease;
+}
+.codex-premium .book.open .folio:hover{
+ filter:brightness(1.035) saturate(1.02);
+}
+@media(max-width:699px){
+ .codex-premium .prem-marginalia{opacity:.5;font-size:18px}
+ .codex-premium .prem-chapter-mark{font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){
+ .codex-premium .premium-flip .reading-light{animation:none!important}
+}
