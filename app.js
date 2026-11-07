@@ -11,6 +11,12 @@
   let open = false;
   let busy = false;
   let spread = 0;
+  let mobileSide = 0; // 0 = lewa karta, 1 = prawa karta na telefonie
+  const singleLeaf = () => window.innerWidth < 700;
+  function setMobileSide(side){
+    mobileSide = side;
+    book.setAttribute('data-mobile-side',side===0?'left':'right');
+  }
   const MAX_SPREAD = pages.length / 2 - 1;
   const soundBtn = $('sound');
   let soundEnabled = true;
@@ -102,7 +108,7 @@
         return '<p>'+start+esc(paragraph)+'</p>';
       }).join('');
       const chapter=page.title?.startsWith('Rozdział') ? 'chapter-folio' : '';
-      return wrapper(title+vignette+paragraphs+(page.footer?'<p class="annotation">'+esc(page.footer)+'</p>':'')+smallCross,'prose-folio '+chapter);
+      return wrapper(title+vignette+paragraphs+(page.footer?'<p class="annotation">'+esc(page.footer)+'</p>':'')+smallCross,'prose-folio '+chapter+(vignette?' vignette-folio':''));
     }
     if(page.type==='map') return wrapper(title+mapSvg+'<p class="annotation">'+esc(page.note)+'</p>','map-page');
     if(page.type==='drawing') return wrapper(title+swordSvg+'<p class="annotation">'+esc(page.note)+'</p>','drawing-page');
@@ -133,10 +139,10 @@
   };
 
   function updateUI() {
-    $('status').textContent = open ? `${spread*2+1}–${spread*2+2} / ${pages.length}` : 'Okładka';
-    $('hint').textContent = open ? 'Kliknij stronę lub użyj strzałek ← →, aby przewracać kartki' : 'Dotknij okładki lub wybierz „Otwórz księgę”';
-    prev.disabled = busy || !open || spread === 0;
-    next.disabled = busy || (open && spread === MAX_SPREAD);
+    $('status').textContent = open ? (singleLeaf() ? `${spread*2+mobileSide+1} / ${pages.length}` : `${spread*2+1}–${spread*2+2} / ${pages.length}`) : 'Okładka';
+    $('hint').textContent = open ? (singleLeaf() ? 'Dotknij strony lub użyj strzałek; „Czytaj” powiększa tekst' : 'Kliknij stronę lub użyj strzałek ← →, aby przewracać kartki') : 'Dotknij okładki lub wybierz „Otwórz księgę”';
+    prev.disabled = busy || !open || (spread === 0 && (!singleLeaf() || mobileSide === 0));
+    next.disabled = busy || (open && spread === MAX_SPREAD && (!singleLeaf() || mobileSide === 1));
     next.innerHTML = open ? 'Następna <span>›</span>' : 'Otwórz księgę <span>›</span>';
     close.hidden = !open;
     $('reader').disabled = !open || busy;
@@ -147,9 +153,11 @@
     if (busy || open) return;
     busy = true;
     spread = 0;
+    setMobileSide(0);
     renderSpread();
     book.classList.remove('settled');
     book.classList.add('open');
+    document.body.classList.add('codex-reading');
     playPaperSound(.58);
     open = true;
     updateUI();
@@ -160,13 +168,24 @@
     if (!open || busy) return;
     busy=true;book.classList.remove('settled');
     requestAnimationFrame(() => book.classList.remove('open'));
-    setTimeout(()=>{open=false;busy=false;spread=0;renderSpread();updateUI();},1370);
+    setTimeout(()=>{open=false;busy=false;spread=0;renderSpread();document.body.classList.remove('codex-reading');updateUI();},1370);
   }
 
   function turnPage(direction) {
     if (!open || busy) return;
+    if (singleLeaf()) {
+      // Czytanie jednej dużej karty na raz, nie miniaturek dwóch kart.
+      if (direction > 0 && mobileSide === 0) {
+        setMobileSide(1);playPaperSound(.4);updateUI();return;
+      }
+      if (direction < 0 && mobileSide === 1) {
+        setMobileSide(0);playPaperSound(.4);updateUI();return;
+      }
+    }
     const destination = spread + direction;
     if (destination < 0 || destination > MAX_SPREAD) return;
+    // Pan to the upcoming folio during the turn, not after the animation ends.
+    if (singleLeaf()) setMobileSide(direction>0?0:1);
     busy=true;
     playPaperSound();
     sheet.className = 'flip-sheet ' + (direction===1?'forward':'backward') + ' show';
@@ -187,6 +206,7 @@
     setTimeout(() => {
       spread = destination;
       renderSpread();
+      if (singleLeaf()) setMobileSide(direction>0?0:1);
       sheet.className='flip-sheet';
       busy = false;
       updateUI();
@@ -196,13 +216,13 @@
   function sizeBook(){
     const vw=window.innerWidth, vh=window.innerHeight;
     const narrow = vw < 700, short = vh < 740;
-    const topGap = narrow ? 76 : (short ? 65 : 76);
-    const bottomGap = narrow ? 84 : (short ? 82 : 92);
+    const topGap = narrow ? 75 : (short ? 60 : 62);
+    const bottomGap = narrow ? 78 : (short ? 70 : 72);
     const availableHeight = Math.max(240, vh - topGap - bottomGap - 8);
-    const sideMargin = narrow ? 14 : Math.max(38, Math.round(vw * .055));
-    const w = Math.max(135, Math.min(790, (vw - sideMargin) / 2, availableHeight / 1.22));
+    const sideMargin = narrow ? 34 : Math.max(38, Math.round(vw * .055));
+    const w = narrow ? Math.max(145,Math.min(460,vw-sideMargin,availableHeight/1.20)) : Math.max(135, Math.min(790, (vw - sideMargin) / 2, availableHeight / 1.20));
     document.documentElement.style.setProperty('--pw', w.toFixed(2) + 'px');
-    document.documentElement.style.setProperty('--ph', (w * 1.22).toFixed(2) + 'px');
+    document.documentElement.style.setProperty('--ph', (w * 1.20).toFixed(2) + 'px');
   }
 
   $('frontCover').addEventListener('click',openBook);
@@ -210,16 +230,16 @@
   prev.addEventListener('click',()=>turnPage(-1));
   next.addEventListener('click',()=>open?turnPage(1):openBook());
   close.addEventListener('click',closeBook);
-  left.addEventListener('click',()=>turnPage(-1));
+  left.addEventListener('click',()=>turnPage(singleLeaf()?1:-1));
   right.addEventListener('click',()=>turnPage(1));
   window.addEventListener('keydown',(e)=>{
     if(dialog.open || readerDialog.open || e.altKey || e.ctrlKey || e.metaKey) return;
     if(e.key==='ArrowRight') {e.preventDefault();open?turnPage(1):openBook();}
     if(e.key==='ArrowLeft') {e.preventDefault();turnPage(-1);}
-    if(e.key==='Home' && open && !busy) {spread=0;renderSpread();updateUI();}
-    if(e.key==='End' && open && !busy) {spread=MAX_SPREAD;renderSpread();updateUI();}
+    if(e.key==='Home' && open && !busy) {spread=0;setMobileSide(0);renderSpread();updateUI();}
+    if(e.key==='End' && open && !busy) {spread=MAX_SPREAD;setMobileSide(singleLeaf()?1:0);renderSpread();updateUI();}
   });
-  window.addEventListener('resize',()=>{sizeBook();requestAnimationFrame(()=>{fitFolio(left);fitFolio(right);});});
+  window.addEventListener('resize',()=>{sizeBook();if(open)setMobileSide(0);requestAnimationFrame(()=>{fitFolio(left);fitFolio(right);updateUI();});});
   $('fullscreen').addEventListener('click',async()=>{
     try {if(document.fullscreenElement) await document.exitFullscreen(); else await document.documentElement.requestFullscreen();} catch(_) { /* Browser may disallow fullscreen. */ }
   });
@@ -229,9 +249,12 @@
   const readerPages=$('readerPages');
   function showReader(){
     if(!open||busy)return;
-    readerPages.innerHTML=
-      '<article class="reader-leaf">'+renderPage(pages[spread*2],spread*2)+'</article>'+
-      '<article class="reader-leaf">'+renderPage(pages[spread*2+1],spread*2+1)+'</article>';
+    if (singleLeaf()) {
+      const current = spread*2 + mobileSide;
+      readerPages.innerHTML = '<article class="reader-leaf">'+renderPage(pages[current],current)+'</article>';
+    } else {
+      readerPages.innerHTML = '<article class="reader-leaf">'+renderPage(pages[spread*2],spread*2)+'</article>'+ '<article class="reader-leaf">'+renderPage(pages[spread*2+1],spread*2+1)+'</article>';
+    }
     readerDialog.showModal();
   }
   $('reader').addEventListener('click',showReader);
@@ -253,10 +276,10 @@
         // table-of-contents choice jumps afterward.
         openBook();
         if (destination !== 0) setTimeout(() => {
-          if (open && !busy) { spread=destination;renderSpread();updateUI(); }
+          if (open && !busy) { spread=destination;setMobileSide(0);renderSpread();updateUI(); }
         }, 1450);
       } else {
-        spread=destination;renderSpread();updateUI();
+        spread=destination;setMobileSide(0);renderSpread();updateUI();
       }
     });
     entries.appendChild(b);
