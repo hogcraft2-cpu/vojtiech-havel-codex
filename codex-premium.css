@@ -390,3 +390,17 @@ body.codex-premium{background:#0d0907}
 @media(prefers-reduced-motion:reduce){
  .codex-premium .premium-flip .reading-light{animation:none!important}
 }
+
+.codex-premium .prem-chapter-engraving{
+ width:clamp(73px,calc(var(--pw)*.23),150px);
+ height:clamp(73px,calc(var(--pw)*.23),150px);
+ right:5.5%;bottom:8%;opacity:.35;
+ background-image:url('assets/engraved-marginalia.svg');
+ background-repeat:no-repeat;
+ background-size:200% 200%;
+ filter:sepia(.3) contrast(1.18);
+ mix-blend-mode:multiply;
+}
+@media(max-width:699px){
+ .codex-premium .prem-chapter-engraving{width:85px;height:85px;opacity:.20;bottom:8%}
+}
