@@ -34,9 +34,10 @@
     if(content.classList.contains('chapter-folio')){
       article.dataset.chapterFolio='true';
       const mark=document.createElement('span');
-      mark.className='prem-chapter-mark';
-      mark.textContent='✠';
+      mark.className='prem-chapter-mark prem-chapter-engraving';
+      mark.textContent='';
       mark.setAttribute('aria-hidden','true');
+      mark.style.backgroundPosition=['0% 0%','100% 0%','0% 100%','100% 100%'][number%4];
       article.appendChild(mark);
     } else delete article.dataset.chapterFolio;
   }
