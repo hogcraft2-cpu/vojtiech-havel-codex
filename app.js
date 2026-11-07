@@ -220,9 +220,10 @@
     const bottomGap = narrow ? 78 : (short ? 70 : 72);
     const availableHeight = Math.max(240, vh - topGap - bottomGap - 8);
     const sideMargin = narrow ? 34 : Math.max(38, Math.round(vw * .055));
-    const w = narrow ? Math.max(145,Math.min(460,vw-sideMargin,availableHeight/1.20)) : Math.max(135, Math.min(790, (vw - sideMargin) / 2, availableHeight / 1.20));
+    const ratio = narrow ? 1.45 : 1.20; // taller, more readable single folio on phones
+    const w = narrow ? Math.max(145,Math.min(460,vw-sideMargin,availableHeight/ratio)) : Math.max(135, Math.min(790, (vw - sideMargin) / 2, availableHeight / ratio));
     document.documentElement.style.setProperty('--pw', w.toFixed(2) + 'px');
-    document.documentElement.style.setProperty('--ph', (w * 1.20).toFixed(2) + 'px');
+    document.documentElement.style.setProperty('--ph', (w * ratio).toFixed(2) + 'px');
   }
 
   $('frontCover').addEventListener('click',openBook);
