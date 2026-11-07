@@ -47,6 +47,7 @@
     const title = page.title ? `<h2 class="folio-title">${esc(page.title)}</h2>` : '';
     if (page.type === 'title') return `<div class="folio-content"><div class="folio-cover-title">${esc(page.title)}</div><div class="folio-line"></div><div class="page-title-ornament">❧ ✠ ❧</div><div class="folio-cover-sub">${esc(page.subtitle)}</div><p class="lead-in">${esc(page.text)}</p>${foot}</div>`;
     if (page.type === 'crest') return `<div class="folio-content">${title}<img class="crest-image" src="assets/crest.webp" alt="Oryginalny herb Vojtiecha Havela"/><p class="annotation">${esc(page.note)}</p>${foot}</div>`;
+    if (page.type === 'miniature') return `<div class="folio-content">${title}<figure class="miniature-figure"><img class="miniature-image" src="${esc(page.src)}" alt="${esc(page.title||'Miniatura Vojtiecha Havela')}" loading="eager" /><figcaption class="annotation">${esc(page.note||'Ilustracja kroniki')}</figcaption></figure>${foot}</div>`;
     if (page.type === 'text') return `<div class="folio-content">${title}${(page.paragraphs||[]).map((p,i)=>`<p>${i===0&&page.initial?`<span class="initial">${esc(page.initial)}</span>`:''}${esc(p)}</p>`).join('')}${page.footer?`<p class="annotation">${esc(page.footer)}</p>`:''}${foot}</div>`;
     if (page.type === 'map') return `<div class="folio-content">${title}${mapSvg}<p class="annotation">${esc(page.note)}</p>${foot}</div>`;
     if (page.type === 'drawing') return `<div class="folio-content">${title}${swordSvg}<p class="annotation">${esc(page.note)}</p>${foot}</div>`;
