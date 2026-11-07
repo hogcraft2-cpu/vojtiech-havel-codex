@@ -1,0 +1,71 @@
+name: Initialize and publish Vojtiech Havel codex
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bootstrap.yml'
+      - 'vojtiech-havel-codex-repo.zip'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: bootstrap-codex
+  cancel-in-progress: false
+
+jobs:
+  initialize-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Unpack supplied project
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f index.html ]; then
+            test -f vojtiech-havel-codex-repo.zip
+            unzip -o vojtiech-havel-codex-repo.zip -d .
+          fi
+          test -f index.html
+          test -f app.js
+          test -f pages.js
+          test -f styles.css
+          test -f assets/cover.webp
+          test -f assets/crest.webp
+          test -f assets/paper.webp
+          test -f assets/study.webp
+          test -f .github/workflows/pages.yml
+
+      - name: Commit source files to the repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html app.js pages.js styles.css assets/ README.md .nojekyll .gitignore .github/workflows/pages.yml
+          if ! git diff --cached --quiet; then
+            git commit -m "Unpack complete interactive Vojtiech Havel codex"
+            git push origin HEAD:main
+          fi
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload book website
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy website
+        id: deployment
+        uses: actions/deploy-pages@v4
