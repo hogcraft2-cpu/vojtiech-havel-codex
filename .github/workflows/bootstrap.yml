@@ -1,10 +1,7 @@
-name: Initialize and publish Vojtiech Havel codex
+name: Build and publish Vojtiech Havel codex
 on:
   push:
     branches: [main]
-    paths:
-      - '.github/workflows/bootstrap.yml'
-      - 'vojtiech-havel-codex-repo.zip'
   workflow_dispatch:
 
 permissions:
@@ -13,11 +10,11 @@ permissions:
   id-token: write
 
 concurrency:
-  group: bootstrap-codex
+  group: deploy-codex
   cancel-in-progress: false
 
 jobs:
-  initialize-and-deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -26,7 +23,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Unpack supplied project
+      - name: Unpack initial source archive
         shell: bash
         run: |
           set -euo pipefail
@@ -42,17 +39,16 @@ jobs:
           test -f assets/crest.webp
           test -f assets/paper.webp
           test -f assets/study.webp
-          test -f .github/workflows/pages.yml
 
-      - name: Commit source files to the repository
+      - name: Commit standalone website files
         shell: bash
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add index.html app.js pages.js styles.css assets/ README.md .nojekyll .gitignore .github/workflows/pages.yml
+          git add index.html app.js pages.js styles.css assets/ README.md .nojekyll .gitignore
           if ! git diff --cached --quiet; then
-            git commit -m "Unpack complete interactive Vojtiech Havel codex"
+            git commit -m "Install complete Vojtiech Havel interactive book"
             git push origin HEAD:main
           fi
 
@@ -61,11 +57,11 @@ jobs:
         with:
           enablement: true
 
-      - name: Upload book website
+      - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
 
-      - name: Deploy website
+      - name: Publish website
         id: deployment
         uses: actions/deploy-pages@v4
